@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+
+# Expo and Metro local state
+.expo/
+.expo-shared/
+.metro-health-check*
+dist/
+web-build/
+
+# Tests and tooling caches
+coverage/
+.eslintcache
+*.tsbuildinfo
+expo-env.d.ts
+
+# Native generated files
+ios/Pods/
+ios/build/
+android/.gradle/
+android/build/
+android/app/build/
+*.orig.*
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.pem
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE settings
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# Operating system files
+.DS_Store
+Thumbs.db
