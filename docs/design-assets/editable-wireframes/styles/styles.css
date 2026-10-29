@@ -1,0 +1,894 @@
+:root {
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+    color: var(--label);
+    background: #f1efeb;
+    font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+a {
+    color: var(--action);
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+    touch-action: manipulation;
+}
+
+button {
+    cursor: pointer;
+    min-height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 11px 14px;
+    background: white;
+    color: var(--label);
+    font-weight: 600;
+}
+
+button.primary {
+    background: var(--action);
+    border-color: var(--action);
+    color: white;
+}
+
+button.danger {
+    color: var(--danger);
+}
+
+button:disabled {
+    background: #e5e5ea;
+    color: var(--secondary);
+    border-color: #e5e5ea;
+    cursor: wait;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    min-height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: white;
+    color: var(--label);
+}
+
+textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+label {
+    display: block;
+    margin: 16px 0 10px;
+    line-height: 1.5;
+}
+
+fieldset {
+    border: 0;
+    margin: 22px 0;
+    padding: 0;
+}
+
+legend {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+fieldset label {
+    margin: 8px 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+    width: 22px;
+    min-height: 22px;
+    accent-color: var(--action);
+}
+
+.studio {
+    width: 265px;
+    padding: 28px 22px;
+    border-right: 1px solid #d7d3cd;
+    background: #faf9f6;
+    flex: none;
+    height: 100vh;
+    overflow: auto;
+    position: sticky;
+    top: 0;
+}
+
+.brand {
+    font-size: 23px;
+    color: var(--label);
+    font-weight: 750;
+}
+
+.brand small {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-top: 8px;
+    color: var(--action);
+}
+
+.studio p {
+    font-size: 12px;
+    color: var(--secondary);
+}
+
+.studio label {
+    font-size: 13px;
+}
+
+.studio select {
+    padding: 7px;
+    margin-top: 5px;
+}
+
+.studio nav {
+    margin-top: 24px;
+}
+
+.studio nav a {
+    display: block;
+    padding: 10px 0;
+    border-top: 1px solid #e4e0db;
+    font-size: 13px;
+    color: var(--secondary);
+}
+
+.studio nav a[aria-current] {
+    color: var(--action);
+    font-weight: 700;
+}
+
+main {
+    padding: 24px 32px 40px;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    color: var(--secondary);
+    margin: 0 0 14px;
+}
+
+.phone {
+    width: var(--phone-width, 390px);
+    height: 844px;
+    max-width: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 12px 50px #30291c17;
+    border: 1px solid #d7d3cd;
+}
+
+.statusbar {
+    padding: 17px 22px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+}
+
+header {
+    padding: 8px 20px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    gap: 8px;
+}
+
+header h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+header button {
+    border: 0;
+    padding: 5px;
+    min-width: 44px;
+}
+
+.content {
+    padding: 24px 20px;
+    overflow: auto;
+    flex: 1;
+    min-height: 0;
+    scrollbar-width: thin;
+}
+
+h2 {
+    font-size: 28px;
+    line-height: 1.25;
+    letter-spacing: -0.7px;
+    margin: 8px 0 14px;
+}
+
+h3 {
+    font-size: 19px;
+    margin: 26px 0 12px;
+}
+
+p {
+    line-height: 1.65;
+    margin: 10px 0;
+}
+
+small,
+.muted {
+    color: var(--secondary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.hero {
+    width: calc(100% + 40px);
+    margin: -24px -20px 22px;
+    height: 250px;
+    object-fit: cover;
+    object-position: 42% 48%;
+}
+
+.detail-photo {
+    height: 350px;
+}
+
+.dog-photo {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    object-position: 38% 45%;
+    border-radius: 20px;
+}
+
+.candidate {
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 24px;
+    margin: 0 0 24px;
+}
+
+.candidate h2 {
+    font-size: 27px;
+    margin: 14px 0 5px;
+}
+
+.candidate a {
+    display: block;
+    color: inherit;
+}
+
+.pill {
+    display: inline-block;
+    padding: 7px 12px;
+    background: var(--accent);
+    color: var(--action);
+    font-size: 14px;
+    border-radius: 20px;
+    font-weight: 650;
+}
+
+.row {
+    padding: 16px 0;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+}
+
+.row img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.row .grow {
+    flex: 1;
+}
+
+.row strong {
+    display: block;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.actions > * {
+    flex: 1;
+}
+
+.wide {
+    width: 100%;
+    margin-top: 16px;
+}
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.tabs a {
+    padding: 10px 18px;
+    border-radius: 12px;
+    color: var(--secondary);
+    background: #f2f2f7;
+}
+
+.tabs .selected {
+    background: var(--accent);
+    color: var(--action);
+    font-weight: 700;
+}
+
+footer {
+    padding: 12px 12px 22px;
+    border-top: 1px solid #e3e3e5;
+    background: white;
+}
+
+footer nav {
+    display: flex;
+    gap: 8px;
+}
+
+footer a {
+    flex: 1;
+    text-align: center;
+    color: var(--secondary);
+    font-size: 14px;
+    padding: 10px 3px;
+}
+
+footer a.active {
+    color: var(--action);
+    font-weight: 700;
+}
+
+.notice {
+    background: #f2f2f7;
+    padding: 16px;
+    border-radius: 12px;
+    margin: 16px 0;
+}
+
+.error {
+    color: var(--danger);
+}
+
+.sheet {
+    border-top: 4px solid #d1d1d6;
+    border-radius: 24px;
+    background: #f8f8fa;
+    padding: 20px;
+    margin-top: 35px;
+}
+
+.bubble {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    background: #f2f2f7;
+    border-radius: 16px;
+    padding: 12px 16px;
+    margin: 16px 0;
+    max-width: 85%;
+}
+
+.bubble.mine {
+    background: var(--action);
+    color: white;
+    margin-left: auto;
+}
+
+.step {
+    color: var(--action);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.footnote {
+    font-size: 12px;
+    color: var(--secondary);
+    margin-top: 16px;
+}
+
+.large .content {
+    font-size: 21px;
+}
+
+.large h2 {
+    font-size: 34px;
+}
+
+.large .muted,
+.large small {
+    font-size: 19px;
+}
+
+.export .studio,
+.export .eyebrow,
+.export .footnote {
+    display: none;
+}
+
+.export main {
+    padding: 0;
+}
+
+.export .phone {
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.export {
+    background: #fff;
+}
+
+.export .phone {
+    height: auto;
+    min-height: 844px;
+}
+
+.export .content {
+    overflow: visible;
+}
+
+.export header {
+    min-height: 60px;
+}
+
+@media (max-width: 720px) {
+    body {
+        display: block;
+    }
+
+    .studio {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 16px;
+    }
+
+    .studio nav {
+        display: none;
+    }
+
+    .studio label {
+        display: inline-block;
+        width: 46%;
+        margin: 7px 1%;
+    }
+
+    .studio p {
+        margin: 5px 0;
+    }
+
+    main {
+        padding: 18px 8px;
+    }
+
+    .phone {
+        border-radius: 18px;
+    }
+
+    .eyebrow {
+        font-size: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+    }
+}
+
+.export main {
+    width: max-content;
+    flex: none;
+    min-width: 0;
+}
+
+.export .phone {
+    max-width: none;
+}
+
+.export {
+    display: block;
+}
+
+.export header h1 {
+    overflow-wrap: anywhere;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--action);
+    outline-offset: 3px;
+}
+
+.phone header a,
+.phone .tabs a,
+.phone footer a,
+.phone p > a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.phone footer nav > a {
+    display: flex;
+}
+
+.dog-row {
+    color: var(--label);
+    cursor: pointer;
+}
+
+.restoring {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 350px;
+    text-align: center;
+    gap: 20px;
+}
+
+.spinner {
+    width: 30px;
+    height: 30px;
+    border: 3px solid #d1d1d6;
+    border-top-color: var(--action);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#filter-dialog {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    max-width: calc(100vw - 32px);
+    max-height: min(60vh, 520px);
+    overflow: auto;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: white;
+    color: var(--label);
+    box-shadow: 0 12px 48px #0003;
+}
+
+#filter-dialog::backdrop {
+    background: rgb(0 0 0 / 30%);
+}
+
+.dialog-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.dialog-heading h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.dialog-heading button {
+    flex: none;
+}
+
+#filter-dialog fieldset {
+    margin: 16px 0;
+}
+
+#filter-dialog fieldset label {
+    display: inline-flex;
+    margin: 4px 12px 4px 0;
+}
+
+#filter-dialog .primary {
+    position: sticky;
+    bottom: 0;
+}
+
+#filter-dialog .muted {
+    font-size: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .spinner {
+        animation: none;
+        border-style: dotted;
+    }
+}
+
+.export:has(dialog[open]) .phone {
+    height: 844px;
+    min-height: 844px;
+}
+
+.export:has(dialog[open]) .content {
+    overflow: auto;
+}
+
+.dialog-heading {
+    position: sticky;
+    top: -20px;
+    background: white;
+    z-index: 1;
+    padding-bottom: 8px;
+}
+
+header[hidden] {
+    display: none;
+}
+
+.guardian-photo {
+    width: 112px;
+    height: 112px;
+    border: 1px dashed var(--border);
+    border-radius: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--secondary);
+    margin: 20px auto;
+}
+
+#action-dialog {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    max-width: calc(100vw - 32px);
+    max-height: 65vh;
+    overflow: auto;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: white;
+    color: var(--label);
+    box-shadow: 0 12px 48px #0003;
+}
+
+#action-dialog::backdrop {
+    background: rgb(0 0 0 / 30%);
+}
+
+#action-dialog h2 {
+    font-size: 24px;
+}
+
+#action-dialog .dog-photo {
+    max-height: 150px;
+    object-fit: cover;
+}
+
+.export:has(#action-dialog[open]) .phone {
+    height: 844px;
+    min-height: 844px;
+}
+
+.export:has(#action-dialog[open]) .content {
+    overflow: auto;
+}
+
+.appointment-card {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.appointment-card h3 {
+    margin: 14px 0 8px;
+}
+
+.appointment-boxes {
+    gap: 5px;
+    display: flex;
+}
+
+.appointment-boxes button {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 5px;
+    font-size: 14px;
+}
+
+.appointment-boxes [aria-selected='true'] {
+    background: var(--accent);
+    color: var(--action);
+    border-color: var(--action);
+}
+
+.public-guardian {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 18px 0;
+}
+
+.public-guardian strong,
+.public-guardian small {
+    display: block;
+}
+
+.guardian-avatar {
+    width: 44px;
+    height: 44px;
+    border: 1px dashed var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary);
+    font-size: 12px;
+    flex: none;
+}
+
+.rating-options {
+    display: flex;
+    gap: 4px;
+}
+
+.rating-options label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    min-height: 48px;
+    margin: 4px 0;
+    cursor: pointer;
+}
+
+.rating-options input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    min-height: 0;
+    opacity: 0;
+}
+
+.rating-options span {
+    font-size: 34px;
+    color: var(--secondary);
+}
+
+.rating-options .filled span {
+    color: var(--action);
+}
+
+.rating-options label:has(input:focus-visible) {
+    outline: 2px solid var(--action);
+    outline-offset: 2px;
+}
+
+#rating-value {
+    display: block;
+    color: var(--secondary);
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.appointment-boxes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+img.guardian-avatar {
+    object-fit: cover;
+}
+
+.public-guardian > div {
+    min-width: 0;
+}
+
+.public-guardian strong {
+    overflow-wrap: anywhere;
+}
+
+/* 로그인 진행 및 공통 안내 모달 */
+.phone { position: relative; }
+.login-loading-overlay { position: absolute; inset: 0; z-index: 5; display: grid; place-items: center; background: rgb(0 0 0 / 30%); }
+#feedback-dialog { position: fixed; inset: auto; margin: 0; transform: translate(-50%, -50%); max-width: calc(100vw - 32px); padding: 20px; border: 1px solid var(--line); border-radius: 20px; background: white; color: var(--label); box-shadow: 0 12px 48px #0003; }
+#feedback-dialog::backdrop { background: rgb(0 0 0 / 30%); }
+.feedback-modal { text-align: center; }
+.feedback-modal-icon { display: inline-grid; place-items: center; width: 42px; height: 42px; margin-bottom: 10px; border-radius: 15px; background: var(--color-accent-tint); color: #8d6b24; }
+.feedback-modal-icon .sun-icon { width: 23px; height: 23px; }
+.feedback-modal h2 { margin: 0 0 6px; font-size: 19px; line-height: 1.3; }
+.feedback-modal p { margin: 0 0 16px; color: var(--color-secondary); font-size: 14px; line-height: 1.5; word-break: keep-all; }
+.phone .feedback-modal button.ui-button { display: flex; justify-content: center; width: 100%; margin: 0; }
+.feedback-modal-sample { max-width: 300px; margin: 0 auto; padding: 20px; border: 1px solid var(--color-separator); border-radius: 20px; background: var(--sun-paper); box-shadow: 0 8px 24px #30291c18; }
+.login-field-notice { display: block; margin: 7px 2px 0; }
+.login-field-notice .ui-inline-error { margin: 0; }
+.phone .ui-confirm { text-align: center; }
+.phone .ui-confirm .actions { justify-content: center; }
+.phone .sun-field-feedback .ui-inline-error { display: flex; margin: 0; font-size: inherit; }
+.phone .result-notice > .pill { margin-bottom: 16px; }
+.phone .result-notice > .sun-note { margin-top: 16px; }
+.phone .ui-confirm .feedback-modal-icon { margin-bottom: 10px; }
+.choice-error { grid-column: 1 / -1; margin-top: 8px; }
+#action-dialog:has(.ui-confirm) { padding: 20px; }
+.feedback-modal-sample .ui-state { padding: 0; text-align: center; }
+.phone .feedback-modal-sample :is(.ui-state, .ui-confirm) .actions { justify-content: center; }
+.dialog-loading-overlay { position: absolute; inset: 0; display: grid; place-items: center; background: rgb(0 0 0 / 30%); border-radius: inherit; }
+/* 공통 패널의 내용 간격과 행동 버튼을 통일한다. */
+.phone :is(.feedback-modal, .ui-state, .ui-confirm) h2 { margin: 0 0 6px; line-height: 1.3; }
+.phone :is(.feedback-modal, .ui-state, .ui-confirm) > p { margin: 0; line-height: 1.5; }
+.phone :is(.feedback-actions, .ui-state .actions, .ui-confirm .actions) { display: flex; gap: 8px; width: 100%; margin-top: 16px; }
+.phone :is(.feedback-actions, .ui-state .actions, .ui-confirm .actions) > button.ui-button { flex: 1 1 0; width: 0; min-width: 0; margin: 0; justify-content: center; }
+.phone .feedback-actions > button.ui-button:only-child, .phone .ui-state .actions > button.ui-button:only-child, .phone .ui-confirm .actions > button.ui-button:only-child { width: 100%; }
+.phone #gender-fields .sun-note { margin-top: 6px; }
+#action-dialog:has(.feedback-modal) { padding: 20px; }
+.phone #action-dialog .result-notice h2 { font-size: 20px; line-height: 1.35; text-align: center; word-break: keep-all; }
+.phone #gender-fields .sun-note { margin-top: 0; padding: 4px 0 8px; }
+.phone #action-dialog .result-notice .ui-page-heading { margin-bottom: 8px; }
+.phone #action-dialog[data-preview-screen="REC-SENT"] .feedback-actions { max-width: 150px; margin-left: auto; margin-right: auto; }
+.phone #gender-fields .ui-checkbox-group { margin: 20px 0 4px; padding: 0; border: 0; }
+.phone #gender-fields .sun-note { padding: 2px 0 6px; }
+.phone .message-failure.ui-inline-error { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 6px; }
+.phone .message-failure .appointment-error-icon { margin: 0; }
+.phone .message-failure button.ui-button { display: inline-flex; align-items: center; margin: 0; }
+.phone .interest-sent .feedback-actions { max-width: 150px; margin-left: auto; margin-right: auto; }
+.phone .match-sheet .sheet-heading { position: relative; justify-content: center; align-items: center; padding: 0 44px; }
+.phone .match-sheet .sheet-heading h2 { flex: none; max-width: 220px; margin: 0; text-align: center; font-size: 20px; line-height: 1.35; word-break: keep-all; }
+.phone .match-sheet .sheet-close { position: absolute; right: 0; top: 0; }
+.phone .match-sheet-content > img { display: block; width: 100%; max-height: 150px; object-fit: cover; border-radius: 18px; }
+.phone .match-dogs { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 16px 0 4px; font-size: 20px; line-height: 1.35; }
+.phone .match-dogs .sun-icon { width: 20px; height: 20px; flex: none; }
+.phone .match-sheet-content > p { margin: 0; text-align: center; line-height: 1.5; }
+.phone .match-sheet-content .actions { margin-top: 18px; }
+.phone .interest-sent .feedback-modal h2 { margin: 0 0 6px; font-size: 20px; line-height: 1.3; }

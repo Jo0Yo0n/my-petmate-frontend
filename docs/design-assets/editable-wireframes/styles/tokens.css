@@ -1,0 +1,26 @@
+/* 전체 와이어프레임의 기반 변수. 채택한 시각 기준은 sunshine.css이며 RN 앱에 자동 연결되지 않는다. */
+:root {
+    --color-action: #b74336;
+    --color-action-pressed: #96362c;
+    --color-accent-tint: #fcedea;
+    --color-grouped: #f2f2f7;
+    --color-label: #1c1c1e;
+    --color-secondary: #595959;
+    --color-separator: #d1d1d6;
+    --color-border: #767676;
+    --color-danger: #b42318;
+    --color-disabled: #e5e5ea;
+    --space-inset: 20px;
+    --space-section: 24px;
+    --space-major: 32px;
+    --radius-control: 12px;
+    --radius-action: 16px;
+    --radius-photo: 24px;
+    --radius-sheet: 28px;
+    --type-title: 28px;
+    --type-identity: 34px;
+    --type-section: 20px;
+    --type-body: 16px;
+    --type-secondary: 15px;
+    --type-action: 17px;
+}
