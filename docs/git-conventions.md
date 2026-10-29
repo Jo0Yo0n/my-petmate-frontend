@@ -1,6 +1,6 @@
 # Git 규칙
 
-이 문서는 프론트엔드 저장소의 커밋 메시지·단위·사전 확인과 브랜치명을 정한다. [백엔드 개발 규칙의 커밋 기준](../../my-petmate-server/docs/development-conventions.md#커밋)을 참고해 같은 메시지 형식과 type을 사용한다. 작업 권한·PR은 [프론트 개발 규칙](development-conventions.md#git과-pr)을 따른다.
+이 문서는 프론트엔드 저장소의 커밋 메시지·단위·사전 확인과 브랜치명을 정한다.
 
 ## 커밋 규칙
 
@@ -25,13 +25,15 @@
 | `feat`     | 사용자에게 제공하는 새 기능               | `feat: add email login`                         |
 | `fix`      | 기존 동작의 오류 수정                     | `fix: prevent duplicate login submissions`      |
 | `docs`     | 문서만 변경                               | `docs: detail F0 and F1 implementation tasks`   |
+| `design`   | 목업·시안·디자인 에셋 변경                | `design: update interactive mockups and shared UI components` |
 | `test`     | 테스트 추가·수정                          | `test: cover concurrent token refresh requests` |
 | `refactor` | 사용자 동작을 유지하는 코드 구조 변경     | `refactor: simplify session cleanup`            |
 | `chore`    | 다른 type에 해당하지 않는 저장소 유지보수 | `chore: ignore local Expo state`                |
 | `build`    | 앱 생성·빌드 설정·의존성 변경             | `build: initialize Expo application`            |
 | `ci`       | CI 워크플로 변경                          | `ci: run frontend checks on pull requests`      |
 
-표의 예시는 메시지 작성 예이며 해당 기능·설정의 구현 완료를 뜻하지 않는다. 기능에 필요한 테스트·문서를 함께 변경했다면 주된 목적에 맞는 type을 사용한다. 테스트가 포함됐다는 이유만으로 `test`로 분류하지 않는다.
+표의 예시는 메시지 작성 예이며 해당 기능·설정의 구현 완료를 뜻하지 않는다. 기능에 필요한 테스트·문서를 함께 변경했다면 주된 목적에 맞는 type을 사용한다. 테스트가 포함됐다는 이유만으로 `test`로 분류하지
+않는다.
 
 ### 커밋 단위
 
@@ -45,16 +47,17 @@
 ### 커밋 전 확인
 
 1. `git status --short`와 `git diff`로 변경 범위와 기존 변경을 확인한다. 새 파일은 내용도 별도로 확인한다.
-2. [개발 규칙의 검증 기준](development-conventions.md#검증)에 따라 변경에 필요한 검사를 실행한다. 문서 변경이면 링크·앵커·기준 문서 일치·공백을 확인한다. 앱 변경이면 실제 구성된 검사 명령을 사용한다.
+2. 문서 변경이면 링크·앵커·기준 문서 일치·공백을 확인한다. 앱 변경이면 실제 구성된 검사 명령을 사용한다.
 3. 포함할 파일이나 변경 구간만 선택해 stage한다. 기존 미커밋 변경이 있는 상태에서 전체 파일을 일괄 stage하지 않는다.
 4. `git diff --cached`와 `git diff --cached --check`로 실제 커밋 대상·공백 오류·민감한 값의 포함 여부를 확인한다.
-5. 변경 목적에 맞는 type과 제목을 작성한다. 검증 결과·미실행 사유는 해당 구현 계획 또는 PR에 기록하고 실행하지 않은 검사를 통과했다고 적지 않는다.
+5. 변경 목적에 맞는 type과 제목을 작성한다. 검증 결과와 미실행 사유를 구분해 보고한다. PR을 작성할 때는 필요한 검증 결과를 포함한다.
 
 AI는 사용자가 커밋을 요청한 경우에만 커밋한다. 문서 작성·코드 수정 요청을 커밋·push·PR 생성 요청으로 해석하지 않는다. 커밋 권한이 push나 PR 생성까지 자동으로 포함하지 않는다.
 
 ## 브랜치명 규칙
 
 브랜치명만 보고 작업 종류·프론트 단계·작업 내용을 확인할 수 있게 한다. 새 작업 브랜치는 다음 형식을 사용한다.
+하나의 브랜치는 하나의 설명 가능한 작업 범위를 담는다. 서로 독립적인 작업을 이름에 나열해 묶지 않는다.
 
 ```text
 <type>/<stage>-<short-kebab-summary>
@@ -81,12 +84,3 @@ AI는 사용자가 커밋을 요청한 경우에만 커밋한다. 문서 작성�
 | F1 세션 복원                | `feat/f1-session-restore`         |
 | F1 동시 토큰 갱신 오류 수정 | `fix/f1-concurrent-token-refresh` |
 | F1 인증 통합 테스트         | `test/f1-auth-integration`        |
-
-예시는 이름 작성 기준이며 구현 완료나 후속 단계 착수를 뜻하지 않는다.
-
-### 적용 범위
-
-- 새 작업 브랜치에 적용한다. 기존 브랜치를 일괄 변경하지 않는다.
-- 하나의 브랜치는 하나의 설명 가능한 작업 범위를 담는다. 서로 독립적인 작업을 이름에 나열해 묶지 않는다.
-- 브랜치명은 대상 범위를 표시하며 마일스톤 완료를 의미하지 않는다. 완료 여부는 구현·검증 기록으로 판단한다.
-- 이 문서는 이름 규칙이다. 브랜치 생성·전환 시 기존 미커밋 변경을 보존하고, 커밋·push·PR 권한은 [개발 규칙](development-conventions.md#git과-pr)을 따른다.

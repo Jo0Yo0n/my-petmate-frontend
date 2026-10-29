@@ -1,0 +1,596 @@
+body {
+    display: block;
+    background: #edeae2;
+    color: #332e24;
+}
+
+.catalog-header,
+#catalog {
+    max-width: 1440px;
+    margin: auto;
+    padding: 24px;
+}
+
+.catalog-header h1 {
+    font-size: 30px;
+}
+
+.catalog-header p {
+    max-width: 1000px;
+    line-height: 1.7;
+}
+
+.catalog-header label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 24px;
+}
+
+.catalog-header select {
+    width: auto;
+}
+
+#component-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 0;
+}
+
+.catalog-section {
+    margin: 0 0 48px;
+    scroll-margin-top: 20px;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 390px), 1fr));
+    gap: 24px;
+    align-items: start;
+}
+
+.catalog-item {
+    min-width: 0;
+}
+
+.catalog-item h3 {
+    font-size: 16px;
+    margin: 0 0 8px;
+}
+
+.catalog-item code {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+}
+
+.catalog-item .phone {
+    width: min(100%, var(--sample-width, 390px));
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    border-radius: 20px;
+    box-shadow: none;
+}
+
+.catalog-item .content {
+    overflow: visible;
+    padding: 20px;
+}
+
+.catalog-item .phone .appointment-card {
+    margin: 0;
+}
+
+.catalog-item .ui-state {
+    padding: 8px 0;
+}
+
+.catalog-item .ui-state .actions {
+    flex-wrap: wrap;
+}
+
+.catalog-section table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fffefb;
+}
+
+.catalog-section th,
+.catalog-section td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #e4ded0;
+    vertical-align: top;
+}
+
+.catalog-section td a {
+    display: inline-block;
+    margin: 0 12px 8px 0;
+    padding: 4px;
+}
+
+.phone .sun-field input[data-preview-focus] {
+    border-color: #8d6b24;
+    outline: 3px solid #eadbb5;
+    outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+    .catalog-header,
+    #catalog {
+        padding: 16px;
+    }
+
+    .catalog-header h1 {
+        font-size: 25px;
+    }
+
+    .catalog-section table {
+        font-size: 13px;
+    }
+
+    .catalog-section td,
+    .catalog-section th {
+        padding: 8px;
+    }
+}
+
+#catalog {
+    display: block;
+    width: 100%;
+    min-width: 0;
+}
+
+.catalog-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 20px 32px;
+    padding-top: 36px;
+    border-bottom: 1px solid #e4ded0;
+}
+
+.catalog-heading {
+    min-width: 0;
+    max-width: 760px;
+}
+
+.catalog-header .catalog-eyebrow {
+    margin: 0 0 8px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #6c6457;
+}
+
+.catalog-header h1 {
+    margin: 0 0 12px;
+    font-size: 32px;
+    line-height: 1.3;
+    word-break: keep-all;
+}
+
+.catalog-header .catalog-intro {
+    margin: 0;
+    max-width: 56ch;
+    font-size: 16px;
+    line-height: 1.75;
+    word-break: keep-all;
+}
+
+.catalog-header .catalog-scope {
+    margin: 12px 0 0;
+    font-size: 13px;
+    color: #6c6457;
+}
+
+.catalog-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    padding-top: 4px;
+}
+
+.catalog-links a {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.catalog-controls {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px 28px;
+}
+
+.catalog-header .catalog-controls label {
+    margin: 0;
+    font-size: 14px;
+    gap: 12px;
+}
+
+.catalog-controls select {
+    min-width: 110px;
+}
+
+.catalog-controls input[type='checkbox'] {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    min-height: 20px;
+    margin: 0;
+}
+
+.catalog-header .catalog-instructions {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 13px;
+    color: #6c6457;
+    max-width: 80ch;
+}
+
+#catalog-feedback:empty {
+    display: none;
+}
+
+#catalog-feedback {
+    grid-column: 1 / -1;
+    margin: 0;
+}
+
+#component-nav {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
+    padding: 0;
+}
+
+#component-nav a {
+    padding: 10px 12px;
+    background: #fffefb;
+    border: 1px solid #e4ded0;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    word-break: keep-all;
+}
+
+@media (max-width: 720px) {
+    .catalog-header {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+        padding-top: 24px;
+    }
+
+    .catalog-header h1 {
+        font-size: 26px;
+    }
+
+    .catalog-links {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 0;
+        gap: 12px 20px;
+    }
+
+    #component-nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .catalog-header .catalog-intro {
+        font-size: 15px;
+    }
+}
+
+.catalog-table-wrap {
+    overflow-x: auto;
+}
+
+#unit-index table {
+    table-layout: fixed;
+    font-size: 14px;
+}
+
+#unit-index th:first-child {
+    width: 24%;
+}
+
+#unit-index td {
+    overflow-wrap: anywhere;
+    line-height: 1.7;
+}
+
+.catalog-item .phone header {
+    position: static;
+    min-height: 72px;
+    padding: 8px 0;
+}
+
+.catalog-item .phone footer {
+    position: static;
+    padding: 8px 0;
+    margin: 0 -12px;
+}
+
+.catalog-item .phone .sun-dock {
+    position: static;
+    width: 100%;
+    transform: none;
+    margin: 0;
+    padding: 0;
+}
+
+.catalog-item .phone .sun-composer form {
+    min-width: 0;
+}
+
+.catalog-item .phone .row img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.catalog-item .phone .chat-person img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.catalog-item .phone .sun-dog-picker img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.catalog-item .phone .sun-candidate-photo,
+.catalog-item .phone .candidate-visual > img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.catalog-item .phone .actions {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.catalog-item .phone .ui-inline-error {
+    font-size: 14px;
+}
+
+.large .catalog-item .phone .ui-inline-error {
+    font-size: 19px;
+}
+
+.catalog-item .phone .identity-line {
+    flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+    #unit-index th:first-child {
+        width: 28%;
+    }
+
+    #unit-index table {
+        font-size: 12px;
+    }
+}
+
+.catalog-item .phone[data-view='schedule'] .content {
+    padding: 24px;
+}
+
+.phone[data-view='schedule'] .approved-schedule-heading {
+    margin-bottom: 24px;
+}
+
+.approved-schedule-heading h2 {
+    margin: 0 0 12px;
+    font-size: 26px;
+    letter-spacing: -0.7px;
+}
+
+.approved-schedule-heading p {
+    margin: 0;
+    color: var(--sun-secondary);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.phone[data-view='schedule'] form > .error:empty {
+    display: none;
+}
+
+.phone[data-view='schedule'] .schedule-intro textarea {
+    min-height: 76px;
+    height: 76px;
+}
+
+.phone[data-view='schedule'] .schedule-intro .sun-field-feedback:empty {
+    display: none;
+}
+
+.phone[data-view='schedule'] .schedule-intro .sun-field {
+    margin: 0 0 16px;
+}
+
+.phone[data-view='schedule'] .schedule-intro output {
+    bottom: 25px;
+}
+
+body.schedule-preview {
+    margin: 0;
+    background: var(--sun-cream);
+}
+
+.schedule-preview .catalog-header,
+.schedule-preview #catalog > :not(#unit-approved-schedule) {
+    display: none;
+}
+
+.schedule-preview #catalog {
+    margin: 0;
+    padding: 0;
+    max-width: none;
+}
+
+.schedule-preview #unit-approved-schedule {
+    margin: 0;
+}
+
+.schedule-preview #unit-approved-schedule > :not(.catalog-grid),
+.schedule-preview #unit-approved-schedule .catalog-item > :not(.phone) {
+    display: none;
+}
+
+.schedule-preview #unit-approved-schedule .catalog-grid {
+    display: block;
+}
+
+.schedule-preview .catalog-item .phone {
+    width: 100%;
+    max-width: 390px;
+    margin: auto;
+    border: 0;
+    border-radius: 0;
+    min-height: 844px;
+}
+
+.phone[data-view='schedule'] .approved-schedule-heading {
+    margin-bottom: 20px;
+}
+
+.approved-schedule-heading > div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.approved-schedule-heading > div a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+}
+
+.approved-schedule-heading > div .sun-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.approved-schedule-heading > div h2 {
+    margin: 0;
+}
+
+.approved-schedule-heading p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.phone[data-view='schedule']
+:is(.time-range, .weekday-choice, .intensity-choice, .schedule-region) {
+    margin-bottom: 16px;
+}
+
+.phone[data-view='schedule'] .schedule-intro textarea {
+    min-height: 60px;
+    height: 60px;
+}
+
+.phone[data-view='schedule'] form > button[type='submit'] {
+    margin-top: 0;
+}
+
+.phone[data-view='schedule'] .region-help {
+    line-height: 1.4;
+}
+
+.phone[data-view='schedule'] .approved-schedule-heading {
+    margin-bottom: 16px;
+}
+
+.phone[data-view='schedule']
+:is(.time-range, .weekday-choice, .intensity-choice, .schedule-region) {
+    margin-bottom: 12px;
+}
+
+.catalog-item .phone[data-view='schedule'] .content {
+    padding: 20px 24px;
+}
+
+.phone[data-view='schedule'] .schedule-intro .sun-field {
+    margin-bottom: 8px;
+}
+
+.phone[data-view='schedule'] .schedule-intro output {
+    bottom: 17px;
+}
+
+.phone[data-view='schedule'] .approved-schedule-heading h2 {
+    font-size: 20px;
+    line-height: 1.3;
+}
+
+.phone[data-view='schedule'] .approved-schedule-heading {
+    margin-bottom: 12px;
+}
+
+.catalog-item .phone[data-view='schedule'] .content {
+    padding: 18px 24px;
+}
+
+.catalog-group {
+    margin: 0 0 64px;
+    scroll-margin-top: 20px;
+}
+
+.catalog-group-title {
+    margin: 0 0 28px;
+    padding: 16px 0;
+    border-bottom: 2px solid #d9d1bf;
+    font-size: 28px;
+}
+
+.catalog-nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    border: 1px solid #e4ded0;
+    border-radius: 14px;
+    background: #f8f6ef;
+}
+
+#component-nav .catalog-nav-group a {
+    border: 0;
+    background: transparent;
+    padding: 5px 0;
+    font-size: 13px;
+}
+
+#component-nav .catalog-nav-group .catalog-nav-title {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 6px;
+    color: #332e24;
+}
+
+.catalog-item .phone .compact-card {
+    margin: 0;
+}
+
+#component-nav .catalog-nav-group:last-child {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+}
+.catalog-feedback-dialog { width: min(300px, 100%); box-sizing: border-box; margin: 0 auto; padding: 20px; border: 1px solid var(--color-separator); border-radius: 20px; background: var(--sun-paper); box-shadow: 0 8px 24px #30291c18; }
+.catalog-bottom-sheet { margin: -20px; padding: 20px 24px 24px; border-radius: 28px 28px 0 0; background: var(--sun-paper); }

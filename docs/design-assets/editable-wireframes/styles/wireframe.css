@@ -1,0 +1,113 @@
+/* 같은 DOM·동작 위에 적용하는 무채색 와이어프레임 테마. */
+html[data-design='wireframe'] {
+    --sun-gold: #dedede;
+    --sun-gold-pressed: #c9c9c9;
+    --sun-cream: #f8f8f8;
+    --sun-paper: #fff;
+    --sun-ink: #222;
+    --sun-secondary: #666;
+    --sun-line: #d4d4d4;
+    --sun-tint: #ededed;
+    --sun-olive: #555;
+    --color-grouped: #eee;
+    --color-border: #aaa;
+    background: #eee;
+}
+
+html[data-design='wireframe'] .phone {
+    border-color: #bbb;
+    box-shadow: none;
+}
+
+html[data-design='wireframe']
+.phone
+:is(
+    button,
+    input,
+    select,
+    textarea,
+    .pill,
+    .bubble,
+    .appointment-card,
+    .compatibility,
+    .guardian-info-surface,
+    .sent-interest
+  ) {
+    box-shadow: none;
+    border-color: #aaa;
+}
+
+html[data-design='wireframe']
+.phone
+:is(button, .pill, .bubble, .compatibility, .guardian-info-surface) {
+    background: #f0f0f0;
+    color: #333;
+}
+
+html[data-design='wireframe']
+.phone
+:is(.primary, .bubble.mine, .selected-row) {
+    background: #dedede;
+    color: #222;
+}
+
+html[data-design='wireframe']
+.phone
+:is(.match-label, .photo-corner, .brand-mark, .chat-context > span) {
+    background: #ddd;
+    color: #333;
+}
+
+html[data-design='wireframe']
+.phone
+:is(
+    a,
+    .sun-icon,
+    .sun-note,
+    .appointment-card .pill,
+    .appointment-direction
+  ) {
+    color: #444;
+}
+
+html[data-design='wireframe'] .phone .appointment-card {
+    --appointment-accent: #777;
+    --appointment-tint: #eee;
+}
+
+html[data-design='wireframe']
+.phone
+:is(header, .statusbar, .content, footer, .sun-composer) {
+    background: var(--sun-cream);
+}
+
+html[data-design='wireframe'] .phone img {
+    filter: grayscale(1);
+}
+
+html[data-design='wireframe']
+.phone
+input:is([type='radio'], [type='checkbox']) {
+    accent-color: #555;
+}
+
+html[data-design='wireframe'] .phone .sent-interest-cancel {
+    background: transparent;
+}
+
+html[data-design='wireframe']
+.phone
+button.ui-button:is(.primary, .danger, :disabled) {
+    background: var(--sun-tint);
+    color: var(--sun-ink);
+    box-shadow: none;
+}
+
+html[data-design='wireframe'] .phone button.ui-button:disabled {
+    color: #888;
+}
+
+html[data-design='wireframe'] .phone .sent-interest-cancel::before {
+    background: #ccc;
+    box-shadow: none;
+}

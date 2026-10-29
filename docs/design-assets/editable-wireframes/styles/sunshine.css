@@ -1,0 +1,2055 @@
+/* Sunshine — 화면을 구성하는 시안 원본. 기존 동작 스타일 위에 적용한다. */
+:root {
+  --sun-gold: #f2cd70;
+  --sun-gold-pressed: #e4ba52;
+  --sun-cream: #faf8f2;
+  --sun-paper: #fffefb;
+  --sun-ink: #332e24;
+  --sun-secondary: #6c6457;
+  --sun-line: #e4ded0;
+  --sun-tint: #f7edd0;
+  --sun-olive: #566341;
+  --color-action: var(--sun-gold);
+  --color-action-pressed: var(--sun-gold-pressed);
+
+  --color-accent-tint: var(--sun-tint);
+  --color-label: var(--sun-ink);
+  --color-secondary: var(--sun-secondary);
+
+  --color-grouped: #f0ece3;
+  --color-separator: var(--sun-line);
+  --color-border: #978b75;
+  background: #edeae2;
+  color: var(--sun-ink);
+}
+a {
+  color: #795c20;
+}
+.phone {
+  background: var(--sun-cream);
+  border: 1px solid #dad4c7;
+  border-radius: 38px;
+  box-shadow: 0 24px 70px #423b2914;
+  position: relative;
+  isolation: isolate;
+}
+.phone .content {
+  background: var(--sun-cream);
+  padding: 24px;
+  scrollbar-width: none;
+}
+.phone .content::-webkit-scrollbar {
+  display: none;
+}
+.phone .statusbar {
+  background: var(--sun-cream);
+  padding: 17px 24px 9px;
+  color: var(--sun-ink);
+}
+.phone h2 {
+  letter-spacing: -1.1px;
+  line-height: 1.28;
+  font-weight: 750;
+}
+.phone p {
+  line-height: 1.65;
+}
+.phone .primary {
+  background: var(--sun-gold);
+  border-color: var(--sun-gold);
+  color: var(--sun-ink);
+  font-weight: 700;
+  box-shadow: 0 3px 0 #d3a84c20;
+}
+.phone .primary:disabled {
+  background: #e8e3d8;
+  border-color: #e8e3d8;
+  color: #6c6457;
+  box-shadow: none;
+}
+.phone button {
+  border-radius: 17px;
+  min-height: 50px;
+}
+.phone input,
+.phone select,
+.phone textarea {
+  border-color: #978b75;
+  background: var(--sun-paper);
+  color: var(--sun-ink);
+  border-radius: 14px;
+}
+.phone input:not([type="radio"]):not([type="checkbox"]):focus,
+.phone select:focus,
+.phone textarea:focus {
+  border-color: #8d6b24;
+  outline: 2px solid #dac382;
+  outline-offset: 2px;
+}
+.phone :focus-visible {
+  outline-color: #8d6b24;
+}
+.phone input::placeholder {
+  color: #82796b;
+  font-size: 14px;
+  font-weight: 400;
+}
+.phone input[type="radio"],
+.phone input[type="checkbox"] {
+  accent-color: #846518;
+}
+.sun-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  flex: none;
+  background: currentColor;
+  mask-image: var(--icon);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-image: var(--icon);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  vertical-align: middle;
+}
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+.sun-wordmark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--sun-ink);
+  font-size: 21px;
+  font-weight: 750;
+  letter-spacing: -0.6px;
+}
+.brand-mark {
+  background: var(--sun-gold);
+  color: var(--sun-ink);
+  border-radius: 15px;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  transform: rotate(-7deg);
+}
+.brand-mark .sun-icon {
+  width: 25px;
+  height: 25px;
+  transform: rotate(7deg);
+}
+.brand-caption {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: var(--sun-secondary);
+  margin-top: 2px;
+}
+.sun-eyebrow {
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 1.7px;
+  font-weight: 700;
+  color: #876a2b;
+}
+/* Login: a welcoming photograph, compact identity and a real, labelled form. */
+.phone[data-view="login"] .content {
+  padding: 10px 26px 22px;
+}
+.login-layout .sun-wordmark {
+  margin: 0 0 22px;
+}
+.login-visual {
+  position: relative;
+  margin: 0 0 23px;
+}
+.sun-login-photo {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: 45% 42%;
+  border-radius: 100px 100px 28px 28px;
+}
+.phone .login-copy h2 {
+  font-size: 30px;
+  margin: 6px 0 9px;
+  letter-spacing: -1.15px;
+}
+.login-copy p {
+  font-size: 13px;
+  color: var(--sun-secondary);
+  margin: 0 0 20px;
+}
+.phone .sun-field {
+  line-height: 1.5;
+}
+.phone .sun-field input {
+  display: block;
+  font-size: 16px;
+}
+.phone[data-view="login"] .wide {
+  margin-top: 18px;
+}
+.phone .auth-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--sun-secondary);
+  margin: 12px 0 0;
+}
+.phone .auth-switch a {
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 44px;
+}
+.auth-switch .sun-icon {
+  width: 16px;
+  height: 16px;
+}
+/* Signup: clear sections, generous fields and explicit selectable tiles. */
+.phone[data-view="signup"] .content {
+  padding: 8px 24px 32px;
+}
+.signup-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+.signup-top .brand-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 13px;
+}
+.sun-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  font-size: 13px;
+  color: var(--sun-secondary);
+}
+.sun-back .sun-icon {
+  width: 20px;
+  height: 20px;
+}
+.phone .signup-copy h2 {
+  font-size: 30px;
+  margin: 7px 0 12px;
+}
+.signup-copy > p {
+  font-size: 14px;
+  color: var(--sun-secondary);
+  margin: 0 0 28px;
+}
+.sun-section-heading {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  margin: 32px 0 20px;
+}
+.sun-section-heading > span {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sun-tint);
+  color: #7b6027;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex: none;
+  margin-top: 1px;
+}
+.phone .sun-section-heading h3 {
+  font-size: 17px;
+  letter-spacing: -0.4px;
+  margin: 0 0 5px;
+}
+.phone .sun-section-heading p {
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--sun-secondary);
+}
+.phone .password-hint {
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--sun-secondary);
+  margin: 10px 0 0;
+}
+.phone .type-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  margin: 16px 0 24px;
+}
+.phone .type-tiles label {
+  position: relative;
+  margin: 0;
+  min-width: 0;
+  display: block;
+}
+.type-tiles input,
+.discovery-tiles input {
+  position: absolute;
+  opacity: 0;
+  width: 1px !important;
+  height: 1px !important;
+  min-height: 0 !important;
+}
+.type-tiles label > span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--sun-line);
+  border-radius: 18px;
+  padding: 19px 5px 14px;
+  background: var(--sun-paper);
+  gap: 5px;
+  color: var(--sun-ink);
+  height: 100%;
+}
+.type-tiles .sun-icon {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 4px;
+  color: #746c58;
+}
+.type-tiles strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+.phone .type-tiles small {
+  font-size: 10px;
+  color: var(--sun-secondary);
+}
+.type-tiles input:checked + span,
+.discovery-tiles input:checked + span {
+  background: var(--sun-tint);
+  border: 2px solid #8d6b24;
+  padding-top: 18px;
+  padding-bottom: 13px;
+}
+.type-tiles input:focus-visible + span,
+.discovery-tiles input:focus-visible + span {
+  outline: 3px solid #8d6b24;
+  outline-offset: 3px;
+}
+.phone .discovery-tiles {
+  border: 0;
+  margin: 16px 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.phone .discovery-tiles label {
+  display: block;
+  position: relative;
+  margin: 0;
+}
+.discovery-tiles label > span {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 18px 16px;
+  border: 1px solid var(--sun-line);
+  background: var(--sun-paper);
+  border-radius: 17px;
+  color: var(--sun-ink);
+}
+.discovery-tiles label > span > .sun-icon {
+  color: #8d6b24;
+  width: 24px;
+  height: 24px;
+}
+.discovery-tiles strong {
+  display: block;
+  font-size: 15px;
+}
+.phone .discovery-tiles small {
+  display: block;
+  font-size: 11px;
+  margin-top: 3px;
+}
+.discovery-tiles input:checked + span {
+  padding: 17px 15px;
+}
+.sun-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--sun-olive);
+  padding: 16px 0;
+}
+.phone .sun-note p {
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--sun-secondary);
+  margin: 0;
+}
+.sun-note .sun-icon {
+  width: 18px;
+  height: 18px;
+}
+/* Discovery: photograph-led editorial list, with a compact filter toolbar. */
+.phone header {
+  background: var(--sun-cream);
+  border-bottom: 1px solid var(--sun-line);
+  padding: 5px 20px 12px;
+  min-height: 62px;
+}
+.phone[data-view="recommendations"] header {
+  border-bottom: 0;
+  padding: 5px 24px 9px;
+}
+.phone header .sun-wordmark {
+  font-size: 19px;
+  gap: 8px;
+}
+.phone header .brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+}
+.phone header .brand-caption {
+  display: none;
+}
+.phone .icon-button {
+  border: 0 !important;
+  background: transparent;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  color: var(--sun-ink);
+  border-radius: 50%;
+}
+.phone[data-view="recommendations"] .content {
+  padding: 6px 24px 24px;
+}
+.phone .recommendation-intro h2 {
+  font-size: 26px;
+  letter-spacing: -0.8px;
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+.discovery-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 0 16px;
+  margin-bottom: 4px;
+}
+.phone .sun-dog-picker {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 !important;
+  min-width: 0;
+}
+.picker-photo {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  object-position: 35% 30%;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.phone .sun-dog-picker small {
+  display: block;
+  font-size: 10px;
+  line-height: 1.3;
+  color: var(--sun-secondary);
+}
+.phone .sun-dog-picker select {
+  min-height: 28px;
+  border: 0;
+  padding: 0 20px 0 0;
+  margin: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 650;
+  width: auto;
+  max-width: 100px;
+}
+.phone .filter-trigger {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  border: 1px solid var(--sun-line);
+  background: var(--sun-paper);
+  padding: 8px 12px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--sun-ink);
+}
+.filter-trigger .sun-icon {
+  width: 18px;
+  height: 18px;
+}
+.sun-candidate {
+  margin: 0 0 30px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--sun-line);
+}
+.sun-candidate a {
+  display: block;
+  color: var(--sun-ink);
+}
+.candidate-visual {
+  position: relative;
+}
+.sun-candidate-photo {
+  width: 100%;
+  height: clamp(220px, calc(var(--phone-width, 390px) - 100px), 260px);
+  display: block;
+  object-fit: cover;
+  object-position: 43% 38%;
+  border-radius: 26px;
+}
+.match-label {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--sun-paper);
+  border-radius: 30px;
+  padding: 7px 10px;
+  color: #5d633e;
+  font-size: 11px;
+  font-weight: 650;
+  box-shadow: 0 2px 8px #00000008;
+}
+.match-label .sun-icon {
+  width: 17px;
+  height: 17px;
+}
+.photo-corner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--sun-gold);
+}
+.photo-corner .sun-icon {
+  width: 20px;
+  height: 20px;
+}
+.candidate-copy {
+  padding: 18px 2px 0;
+}
+.identity-line {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.phone .identity-line h3,
+.phone .identity-line h2 {
+  font-size: 30px;
+  font-weight: 750;
+  letter-spacing: -1px;
+  margin: 0;
+  line-height: 1.2;
+}
+.identity-line > span {
+  font-size: 13px;
+  color: var(--sun-secondary);
+}
+.phone .location-line {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--sun-secondary);
+  font-size: 12px;
+  margin: 9px 0;
+}
+.location-line .sun-icon {
+  width: 15px;
+  height: 15px;
+}
+.location-line > span:not(.sun-icon) {
+  margin: 0 1px;
+}
+.phone .candidate-reason {
+  font-size: 13px;
+  color: var(--sun-secondary);
+  margin: 12px 0 16px;
+}
+.candidate-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.sun-guardian {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.guardian-symbol {
+  width: 33px;
+  height: 33px;
+  background: #eee9dd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #827660;
+}
+.guardian-symbol .sun-icon {
+  width: 18px;
+  height: 18px;
+}
+.sun-guardian strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+}
+.phone .sun-guardian small {
+  display: block;
+  font-size: 10px;
+  color: var(--sun-secondary);
+  margin-top: 2px;
+}
+.detail-link {
+  font-size: 11px;
+  color: #80642b;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.detail-link .sun-icon {
+  width: 14px;
+  height: 14px;
+}
+/* Profile: immersive image, quiet information hierarchy and a fixed decision dock. */
+.phone[data-view="detail"] .content {
+  padding: 0;
+  overflow-x: hidden;
+}
+.sun-detail-hero {
+  position: relative;
+}
+.sun-detail-photo {
+  width: 100%;
+  height: 354px;
+  object-fit: cover;
+  object-position: 43% 37%;
+  display: block;
+}
+.detail-photo-label {
+  position: absolute;
+  bottom: 32px;
+  left: 24px;
+  background: var(--sun-paper);
+  border-radius: 30px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 6px 10px;
+  color: #736340;
+}
+.sun-profile {
+  position: relative;
+  margin-top: -17px;
+  background: var(--sun-cream);
+  border-radius: 26px 26px 0 0;
+  padding: 25px 24px 28px;
+}
+.phone .sun-profile .identity-line h2 {
+  font-size: 36px;
+  letter-spacing: -1.3px;
+}
+.sun-profile > .sun-guardian {
+  padding: 15px 0 20px;
+}
+.sun-profile > .sun-guardian .guardian-symbol {
+  width: 38px;
+  height: 38px;
+}
+.sun-profile > .sun-guardian strong {
+  font-size: 13px;
+}
+.phone .sun-profile > .sun-guardian small {
+  font-size: 11px;
+}
+.compatibility {
+  background: var(--sun-tint);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 0 0 30px;
+}
+.compatibility-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.compatibility-heading > .sun-icon {
+  width: 33px;
+  height: 33px;
+  color: #8d6b24;
+}
+.compatibility-heading small {
+  display: block;
+  font-size: 11px;
+  color: #786238;
+}
+.compatibility-heading strong {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.phone .compatibility p {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+.compatibility p .sun-icon {
+  width: 16px;
+  height: 16px;
+  color: #6b743e;
+}
+.profile-section {
+  padding: 0 0 26px;
+  margin-bottom: 26px;
+  border-bottom: 1px solid var(--sun-line);
+}
+.profile-section:last-child {
+  margin-bottom: 0;
+  border: 0;
+  padding-bottom: 0;
+}
+.phone .profile-section h3 {
+  font-size: 21px;
+  letter-spacing: -0.6px;
+  margin: 7px 0 15px;
+}
+.phone .profile-section > p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--sun-secondary);
+  margin: 0;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.walking-time {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 0;
+}
+.walking-time > .sun-icon {
+  color: #8d6b24;
+  width: 26px;
+  height: 26px;
+}
+.walking-time small {
+  display: block;
+  font-size: 11px;
+  color: var(--sun-secondary);
+}
+.walking-time strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+.profile-facts {
+  margin: 0;
+}
+.profile-facts > div {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--sun-line);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.profile-facts dt {
+  color: var(--sun-secondary);
+}
+.profile-facts dd {
+  margin: 0;
+  color: var(--sun-ink);
+}
+.sun-detail-actions {
+  display: flex;
+  gap: 12px;
+  padding: 12px 24px;
+  background: var(--sun-paper);
+  border-top: 1px solid var(--sun-line);
+  flex: none;
+}
+.phone .sun-detail-actions .pass-action {
+  width: 90px;
+  border: 1px solid var(--sun-line);
+  background: white;
+  font-size: 15px;
+  color: var(--sun-secondary);
+}
+.phone .sun-detail-actions .primary {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 15px;
+}
+/* Chat: the conversation scrolls independently from the persistent composer. */
+.phone[data-view="chat"] .content {
+  background: #f3f0e7;
+  padding: 18px 20px 24px;
+}
+.phone[data-view="chat"] header {
+  background: var(--sun-paper);
+  gap: 5px;
+  padding: 4px 16px 10px;
+}
+.chat-person {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 1;
+}
+.chat-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 40% 30%;
+}
+.chat-person strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+}
+.phone .chat-person small {
+  font-size: 10px;
+  display: block;
+  color: var(--sun-secondary);
+  margin-top: 2px;
+}
+.chat-context {
+  text-align: center;
+  padding: 4px 0 18px;
+}
+.chat-context > span {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  background: #e8e4d8;
+  border-radius: 30px;
+  padding: 5px 10px;
+  font-size: 10px;
+  color: var(--sun-secondary);
+}
+.chat-context .sun-icon {
+  width: 12px;
+  height: 12px;
+}
+.phone .chat-context p {
+  font-size: 10px;
+  color: var(--sun-secondary);
+  margin: 8px 0;
+}
+.phone[data-view="chat"] .bubble {
+  max-width: 87%;
+  background: var(--sun-paper);
+  border-radius: 18px 18px 18px 4px;
+  font-size: 14px;
+  line-height: 1.75;
+  padding: 12px 15px;
+  color: var(--sun-ink);
+  margin: 14px 0;
+  box-shadow: 0 1px 0 #44361a08;
+}
+.phone[data-view="chat"] .bubble.mine {
+  background: var(--sun-gold);
+  color: var(--sun-ink);
+  border-radius: 18px 18px 4px 18px;
+  margin-left: auto;
+}
+.phone .appointment-card {
+  border: 1px solid #ded7c7;
+  border-radius: 14px;
+  border-left: 3px solid #b69a4c;
+  background: var(--sun-paper);
+  padding: 14px 16px;
+  margin: 14px 0;
+  box-shadow: 0 3px 8px #49391b03;
+}
+.appointment-heading {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.appointment-context {
+  font-size: 12px;
+  color: var(--sun-secondary);
+}
+.phone .appointment-card .pill {
+  font-size: 12px;
+  background: var(--sun-tint);
+  color: #78602d;
+  padding: 4px 9px;
+  border-radius: 7px;
+  line-height: 1.7;
+}
+.phone .appointment-card h3 {
+  font-size: 17px;
+  letter-spacing: -0.4px;
+  margin: 8px 0 6px;
+}
+.phone .appointment-card > p {
+  font-size: 13px;
+  color: var(--sun-secondary);
+  line-height: 1.9;
+  margin: 0;
+}
+.phone .appointment-card button {
+  font-size: 12px;
+  min-height: 44px;
+  margin-top: 15px;
+  border-color: var(--sun-line);
+  background: #f5f1e7;
+  color: var(--sun-ink);
+  padding: 8px 12px;
+  border-radius: 11px;
+}
+.phone .appointment-card button.primary:not(:disabled) {
+  background: var(--sun-gold);
+  border-color: var(--sun-gold);
+  color: var(--sun-ink);
+}
+.large .phone .appointment-card > p,
+.large .phone[data-view="chat"] .appointment-card[data-historical="true"] > p {
+  font-size: 19px;
+}
+.sun-composer {
+  background: var(--sun-paper);
+  display: block;
+  padding: 0;
+  border-top: 1px solid var(--sun-line);
+  flex: none;
+}
+.propose-action {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  color: #8d6b24;
+}
+.propose-action .sun-icon {
+  width: 25px;
+  height: 25px;
+}
+.phone .sun-composer form {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  flex: 1;
+  min-width: 0;
+}
+.phone .sun-composer textarea {
+  min-width: 0;
+  min-height: 48px;
+  flex: 1;
+  width: 0;
+  margin: 0;
+  border: 1px solid var(--sun-line);
+  border-radius: 24px;
+  background: var(--sun-cream);
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 22px;
+  height: 48px;
+  max-height: 158px;
+  box-sizing: border-box;
+  resize: none;
+  overflow-y: hidden;
+}
+.phone .sun-composer textarea::placeholder {
+  font-size: 12px;
+}
+.phone .sun-composer button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  line-height: 1;
+  border-radius: 50%;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  margin: 0;
+}
+.sun-composer .sun-icon {
+  width: 21px;
+  height: 21px;
+}
+/* Shared navigation and supporting states inherit the warm semantic palette. */
+.phone footer {
+  border-top: 1px solid var(--sun-line);
+  background: var(--sun-paper);
+  padding: 7px 16px 13px;
+}
+.phone footer nav {
+  gap: 4px;
+}
+.phone footer nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: 52px;
+  padding: 4px 2px;
+  border-radius: 16px;
+  font-size: 9px;
+  color: #857c6d;
+}
+.phone footer a .sun-icon {
+  width: 21px;
+  height: 21px;
+}
+.phone footer nav a.active {
+  background: transparent;
+  color: #66501e;
+  font-weight: 700;
+}
+.phone footer a.active .sun-icon {
+  background: #806222;
+  box-shadow: none;
+}
+.phone footer a.active > span:last-child {
+  background: var(--sun-tint);
+  padding: 1px 10px;
+  border-radius: 20px;
+}
+.phone .pill {
+  color: #78602d;
+  background: var(--sun-tint);
+}
+.phone .notice {
+  background: #f0ece3;
+}
+.phone dialog {
+  background: var(--sun-paper);
+  border: 1px solid var(--sun-line);
+  box-shadow: 0 20px 60px #30281525;
+}
+.phone dialog::backdrop {
+  background: #302b224d;
+}
+.phone .dialog-heading,
+.phone .sheet-toolbar {
+  background: var(--sun-paper);
+}
+.phone .sheet-toolbar button {
+  color: #795c20;
+}
+.phone .bubble.mine {
+  color: var(--sun-ink);
+  background: var(--sun-gold);
+}
+.header-spacer {
+  width: 44px;
+}
+.studio {
+  background: #f6f3eb;
+  border-color: #dcd5c5;
+}
+.studio a,
+.brand small {
+  color: #795c20;
+}
+.studio nav a[aria-current] {
+  color: #795c20;
+}
+.studio p {
+  line-height: 1.6;
+}
+.api-scope {
+  color: #6c6457;
+}
+/* Captures show a real, scrollable 844px frame; full-content exports are explicit. */
+.export .phone {
+  height: 844px;
+  min-height: 844px;
+  border-radius: 0;
+}
+.export .content {
+  overflow: auto;
+}
+.export main {
+  padding: 0;
+}
+.export:has(dialog[open]) .phone {
+  height: 844px;
+}
+html[data-capture="full"] .export:not(:has(dialog[open])) .phone {
+  height: auto;
+  min-height: 844px;
+}
+html[data-capture="full"] .export:not(:has(dialog[open])) .content {
+  overflow: visible;
+}
+.large .phone .login-copy h2,
+.large .phone .signup-copy h2 {
+  font-size: 36px;
+}
+.large .phone .sun-field,
+.large .phone .sun-field input,
+.large .phone .sun-field input::placeholder {
+  font-size: 19px;
+}
+.large .phone[data-view="chat"] .bubble,
+.large .phone .profile-section > p {
+  font-size: 21px;
+}
+.large .phone .sun-composer textarea {
+  font-size: 18px;
+}
+.large .phone .recommendation-intro h2 {
+  font-size: 30px;
+}
+.large .phone .candidate-reason,
+.large .phone .location-line,
+.large .phone .profile-facts > div {
+  font-size: 18px;
+}
+.large .phone .type-tiles small,
+.large .phone .discovery-tiles small,
+.large .phone .password-hint {
+  font-size: 15px;
+}
+.large .phone .type-tiles strong,
+.large .phone .discovery-tiles strong {
+  font-size: 19px;
+}
+.large .phone .sun-section-heading p {
+  font-size: 16px;
+}
+.large .phone .sun-section-heading h3 {
+  font-size: 22px;
+}
+@media (max-width: 720px) {
+  .phone {
+    border-radius: 28px;
+  }
+  .export .phone {
+    border-radius: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sun-candidate-photo {
+    transition: filter 0.2s;
+  }
+}
+/* Main reading text stays at 15px; smaller sizes are metadata and captions. */
+.login-copy p,
+.signup-copy > p,
+.phone .candidate-reason {
+  font-size: 15px;
+}
+.phone[data-view="chat"] .bubble {
+  font-size: 15px;
+}
+.phone .appointment-card > p {
+  font-size: 15px;
+}
+.phone .sun-section-heading p,
+.phone .password-hint,
+.phone .type-tiles small,
+.phone .discovery-tiles small,
+.phone .sun-note p {
+  font-size: 13px;
+}
+.phone .sun-field {
+  font-size: 14px;
+}
+.phone .location-line,
+.phone .identity-line > span {
+  font-size: 13px;
+}
+.phone footer nav a {
+  font-size: 11px;
+}
+.phone .sun-guardian strong {
+  font-size: 13px;
+}
+.phone .sun-guardian small {
+  font-size: 12px;
+}
+/* Native radio marks convey selection independently of the gold fill. */
+.phone .type-tiles input,
+.phone .discovery-tiles input {
+  opacity: 1;
+  width: 17px !important;
+  height: 17px !important;
+  min-height: 17px !important;
+  margin: 0;
+  z-index: 1;
+  box-shadow: none;
+}
+.phone .type-tiles input {
+  top: 10px;
+  right: 10px;
+}
+.phone .discovery-tiles input {
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.phone .discovery-tiles label > span {
+  padding-right: 42px;
+}
+.phone .discovery-tiles input:checked + span {
+  padding-right: 41px;
+}
+
+/* Refined field family: quiet surfaces, consistent labels, explicit focus and feedback. */
+.phone .sun-field {
+  display: block;
+  margin: 20px 0 0;
+  font-weight: 600;
+}
+.sun-field-label {
+  display: block;
+  margin: 0 0 9px 2px;
+  color: var(--sun-ink);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.phone .sun-field input {
+  border: 1px solid #978b75;
+  border-radius: 14px;
+  background: #fffefa;
+  min-height: 54px;
+  margin: 0;
+  padding: 14px 16px;
+  line-height: 1.5;
+  box-shadow: 0 2px 4px #493a1703;
+}
+.phone .sun-field input:focus {
+  border-color: #8d6b24;
+  outline: 3px solid #eadbb5;
+  outline-offset: 2px;
+  background: #ffffff;
+}
+.phone .sun-field input[aria-invalid="true"] {
+  border: 2px solid var(--color-danger);
+  padding: 13px 15px;
+}
+.phone .sun-field input[aria-invalid="true"]:focus {
+  outline-color: #f3d8d0;
+}
+.phone .sun-field input:disabled {
+  background: #f0ece3;
+  border-color: #c9c1b0;
+  box-shadow: none;
+}
+.sun-field-feedback {
+  display: block;
+  margin: 8px 2px 0;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.sun-field-feedback:empty {
+  display: none;
+}
+.sun-field-feedback[data-tone="error"] {
+  color: var(--color-danger);
+}
+.sun-field-feedback[data-tone="success"] {
+  color: var(--sun-olive);
+}
+  margin: 20px 0 28px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+  padding: 0;
+  margin: 0 0 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 8px;
+  margin: 0;
+  min-height: 52px;
+  border: 1px solid #978b75;
+  border-radius: 13px;
+  background: var(--sun-paper);
+  color: var(--sun-ink);
+  font-size: 15px;
+  font-weight: 500;
+}
+  background: var(--sun-tint);
+  border: 2px solid #8d6b24;
+  padding: 12px 7px;
+  color: var(--sun-ink);
+  font-weight: 650;
+}
+  width: 17px;
+  height: 17px;
+  min-height: 17px;
+  padding: 0;
+  margin: 0;
+}
+  font-size: 12px;
+  line-height: 1.7;
+  margin: 12px 0 0;
+}
+.large .phone .sun-field-label,
+.large .phone .sun-field-feedback,
+  font-size: 17px;
+}
+  font-size: 19px;
+}
+
+  outline: 3px solid #8d6b24;
+  outline-offset: 3px;
+}
+/* F1 common components and account screens. */
+.ui-page-heading { margin-bottom: 24px; }
+.ui-page-heading h2 { margin: 0 0 10px; font-size: 28px; }
+.ui-page-heading p, .ui-state > p, .ui-confirm > p { color: var(--sun-secondary); line-height: 1.7; }
+.ui-notice { padding: 14px 16px; border-left: 3px solid #8d6b24; background: #f0ece3; border-radius: 8px; font-size: 14px; line-height: 1.7; }
+.ui-notice[data-tone="error"] { border-color: var(--color-danger); color: var(--color-danger); }
+.ui-state { padding: 36px 0; }
+.ui-state > .sun-icon { width: 36px; height: 36px; color: #8d6b24; }
+.ui-state .actions { flex-wrap: wrap; margin-top: 24px; }
+.ui-state .actions button { flex: 1; min-width: 120px; }
+.ui-avatar { display: inline-flex; width: 80px; height: 80px; border-radius: 50%; align-items: center; justify-content: center; object-fit: cover; color: var(--sun-secondary); background: #eee9dd; }
+.ui-avatar .sun-icon { width: 32px; height: 32px; }
+.ui-guardian-summary { margin: 24px 0; }
+.ui-account-actions { display: flex; flex-direction: column; border-top: 1px solid var(--sun-line); margin-top: 28px; }
+.ui-account-actions a { padding: 16px 0; min-height: 44px; }
+.phone .ui-danger-link { color: var(--color-danger); }
+.phone[data-view="guardian"] .type-tiles { margin-top: 28px; }
+.phone[data-view="guardian"] .type-tiles legend, .phone[data-view="guardian"] .discovery-tiles legend { font-size: 14px; margin-bottom: 12px; }
+.large .phone .ui-state > p, .large .phone .ui-notice, .large .phone .ui-confirm > p { font-size: 19px; }
+.large .phone[data-view="guardian"] .sun-field input { font-size: 19px; }
+.phone .ui-confirm .actions { margin-top: 24px; }
+.phone .type-tiles strong, .phone .type-tiles small { display: block; text-align:center; }
+.phone .type-tiles label > span > span { display:flex; flex-direction:column; gap:5px; align-items:center; }
+.phone .ui-state h2, .phone .ui-confirm h2 { word-break:keep-all; overflow-wrap:anywhere; }
+
+/* 내 정보: 기존 항목과 문구를 유지하고 표면·간격·행동 강조만 조정한다. */
+.phone[data-view="guardianInfo"] .content { padding-top:24px; }
+.guardian-info-surface { padding:22px 20px 12px; border:1px solid var(--sun-line); border-radius:24px; background:var(--sun-paper); }
+.phone[data-view="guardianInfo"] .ui-guardian-summary { display:flex; align-items:center; gap:18px; margin:0 0 20px; }
+.guardian-info-surface .ui-avatar { flex:none; background:var(--sun-tint); color:#8d6b24; }
+.phone[data-view="guardianInfo"] .ui-guardian-summary h3 { margin:0; font-size:24px; letter-spacing:-0.5px; overflow-wrap:anywhere; min-width:0; }
+.guardian-info-surface .profile-facts > div { grid-template-columns:100px minmax(0,1fr); padding:14px 0; font-size:15px; border-color:var(--sun-line); }
+.guardian-info-surface .profile-facts > div:last-child { border:0; }
+.guardian-info-surface .profile-facts dt { font-size:14px; }
+.guardian-edit-actions { display:flex; justify-content:flex-end; margin-top:18px; }
+.phone .guardian-edit { min-height:46px; padding:10px 16px; border:1px solid #978b75; border-radius:14px; background:var(--sun-paper); color:var(--sun-ink); font-size:15px; font-weight:600; }
+.phone[data-view="guardianInfo"] .ui-account-actions { margin-top:22px; border:0; align-items:flex-end; }
+.phone[data-view="guardianInfo"] .ui-account-actions a { padding:12px 0; font-size:14px; color:var(--sun-secondary); }
+.phone[data-view="guardianInfo"] .ui-account-actions .ui-danger-link { color:var(--color-danger); }
+.large .phone[data-view="guardianInfo"] .ui-guardian-summary h3 { font-size:28px; }
+.large .guardian-info-surface .profile-facts > div, .large .guardian-info-surface .profile-facts dt, .large .phone .guardian-edit, .large .phone[data-view="guardianInfo"] .ui-account-actions a { font-size:18px; }
+
+/* 기존 정보를 유지하고 보조 행동을 오른쪽으로 정렬한다. */
+.phone[data-view="guardianInfo"] .ui-account-actions { flex-direction:row; justify-content:flex-end; gap:24px; }
+.phone[data-view="guardian"] fieldset { border:0; }
+.phone[data-view="guardian"] form > button[type="submit"] { display:block; margin-left:auto; width:auto; min-width:100px; }
+.phone[data-view="restore"] .content { display:grid; place-items:center; }
+.ui-loading { display:flex; align-items:center; justify-content:center; min-height:80px; }
+.phone:is([data-view="authError"],[data-view="restoreError"]) .content { display:flex; flex-direction:column; justify-content:center; }
+.phone:is([data-view="authError"],[data-view="restoreError"]) .ui-state { padding:24px 0; }
+.phone .ui-state .actions { justify-content:flex-end; }
+.phone .ui-state .actions button { flex:0 1 auto; }
+.phone .appointment-card > .appointment-error {
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  margin:12px 0 0;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:#b5362d;
+  font-size:14px;
+  line-height:1.6;
+}
+.appointment-error-icon, .phone p.error.ui-inline-error:not(:empty)::before {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 18px;
+  width:18px;
+  height:18px;
+  margin-top:2px;
+  border-radius:50%;
+  background:#b5362d;
+  color:white;
+  font-size:13px;
+  font-weight:700;
+  line-height:1;
+}
+.phone .appointment-card > p { line-height:1.65; }
+.phone .appointment-card .actions { justify-content:flex-end; margin-top:10px; }
+.phone .appointment-card .actions > button { flex:0 0 auto; min-width:72px; margin-top:0; }
+.appointment-actions { display:flex; justify-content:flex-end; margin-top:10px; }
+.phone .appointment-actions button { margin-top:0; }
+/* 현재 약속의 일정 옆에 취소를 배치해 불필요한 카드 높이를 줄인다. */
+.phone[data-view="chat"] .appointment-card[data-status="accepted"][data-historical="false"] { display:grid; grid-template-columns:minmax(0,1fr) auto; column-gap:12px; }
+.phone[data-view="chat"] .appointment-card[data-status="accepted"][data-historical="false"] > .appointment-heading,
+.phone[data-view="chat"] .appointment-card[data-status="accepted"][data-historical="false"] > h3,
+.phone[data-view="chat"] .appointment-card[data-status="accepted"][data-historical="false"] > .appointment-error { grid-column:1 / -1; }
+.phone[data-view="chat"] .appointment-card[data-status="accepted"][data-historical="false"] > .appointment-actions:not(.ui-action-pair) { grid-column:2; grid-row:3; align-self:end; margin:0; }
+
+/* 공통 UI 단위. 화면의 내용·업무 상태는 호출자가 결정한다. */
+.ui-inline-error { display:flex; align-items:flex-start; gap:8px; padding:0; border:0; background:transparent; color:#b5362d; line-height:1.6; }
+.ui-inline-error .appointment-error-icon, .phone p.error.ui-inline-error:not(:empty)::before { margin-top:3px; }
+.phone .ui-inline-error button { display:block; width:auto; min-height:44px; margin:8px 0 0; }
+.sun-guardian .guardian-symbol img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+.sun-guardian strong, .sun-guardian small { overflow-wrap:anywhere; }
+.sun-field :is(select,textarea) { width:100%; max-width:100%; background:#fffefa; border:1px solid #978b75; border-radius:10px; padding:12px; font:inherit; color:var(--sun-ink); }
+.sun-field textarea { min-height:120px; resize:vertical; }
+.sun-field :is(select,textarea):focus-visible { outline:3px solid #eadbb5; outline-offset:2px; border-color:#8d6b24; }
+.sun-field :is(select,textarea)[aria-invalid="true"] { border:2px solid var(--color-danger); padding:11px; }
+.ui-form-fields { margin:0; padding:0; border:0; min-width:0; }
+.ui-checkbox-group label { display:flex; align-items:center; gap:10px; }
+.ui-checkbox-group input { flex:none; width:20px; height:20px; min-height:20px; margin:0; }
+.selected-row { background:var(--sun-tint); }
+.appointment-boxes [aria-pressed="true"] { background:var(--sun-tint); border-color:#8d6b24; }
+
+/* 승인한 산책 조건 폼: 화면·목차가 공유하는 입력 단위. */
+.phone :is(.time-range,.weekday-choice,.intensity-choice,.schedule-region) { min-width:0; margin:0 0 24px; padding:0; border:0; }
+.phone :is(.time-range,.weekday-choice,.intensity-choice,.schedule-region) > legend { width:100%; padding:0; margin:0 0 12px; color:var(--sun-ink); font-size:18px; font-weight:700; line-height:1.4; }
+.phone .time-values { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.phone .time-values label { display:flex; flex-direction:column; align-items:center; gap:5px; margin:0; padding:10px 6px; min-width:0; background:var(--sun-paper); border:1px solid var(--sun-line); border-radius:13px; }
+.phone .time-values label > span { font-size:14px; color:var(--sun-secondary); }
+.phone .time-values input { min-width:0; width:100%; min-height:34px; margin:0; padding:0; border:0; border-radius:4px; background:transparent; font-size:26px; font-weight:700; text-align:center; color:var(--sun-ink); }
+.phone .time-values input::-webkit-calendar-picker-indicator { width:14px; margin:0; opacity:.6; }
+.phone .time-track { position:relative; height:44px; margin:10px 8px 0; }
+.phone .time-track::before { content:""; position:absolute; inset:18px 0 auto; height:8px; border-radius:8px; background:#e8e3d8; }
+.phone .time-track-selected { position:absolute; top:18px; left:var(--range-start); right:calc(100% - var(--range-end)); height:8px; background:var(--sun-gold); }
+.phone .time-track input[type="range"] { position:absolute; inset:0; width:100%; height:44px; min-height:44px; margin:0; padding:0; border:0; background:transparent; appearance:none; pointer-events:none; box-shadow:none; }
+.phone .time-track input[type="range"]::-webkit-slider-thumb { appearance:none; width:18px; height:18px; border-radius:50%; background:var(--sun-gold); border:2px solid white; box-shadow:0 0 0 1px #aa812b; pointer-events:auto; cursor:grab; }
+.phone .time-track input[type="range"]::-moz-range-thumb { width:18px; height:18px; border-radius:50%; background:var(--sun-gold); border:2px solid white; box-shadow:0 0 0 1px #aa812b; pointer-events:auto; }
+.phone .time-track input[type="range"]:focus-visible { outline:2px solid #8d6b24; outline-offset:2px; border-radius:10px; }
+.phone .time-ticks { display:flex; justify-content:space-between; padding:0 6px; color:var(--sun-secondary); font-size:12px; }
+.phone .time-help { margin:8px 0 0; color:var(--sun-secondary); font-size:13px; line-height:1.6; }
+.phone .weekday-choice > div { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:5px; }
+.phone .weekday-choice label { position:relative; display:block; min-width:0; margin:0; }
+.phone .weekday-choice input { position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; }
+.phone .weekday-choice label > span { display:flex; align-items:center; justify-content:center; min-height:44px; border:1px solid var(--sun-line); border-radius:11px; background:var(--sun-paper); font-size:16px; }
+.phone .weekday-choice input:checked + span { background:var(--sun-tint); border-color:#9b772a; color:#6b4d17; font-weight:700; }
+.phone .weekday-choice input:focus-visible + span { outline:3px solid #cfb77c; outline-offset:2px; }
+.phone .intensity-choice > div { position:relative; display:grid; grid-template-columns:70px minmax(0,1fr) 70px; padding:0; }
+.phone .intensity-choice > div::before { content:""; position:absolute; height:1px; top:17px; left:35px; right:35px; background:#c9c0b1; }
+.phone .intensity-choice label { position:relative; display:flex; flex-direction:column; align-items:center; gap:7px; min-height:64px; margin:0; font-size:14px; color:var(--sun-secondary); }
+.phone .intensity-choice input { position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; }
+.phone .intensity-point { position:relative; display:block; width:16px; height:16px; margin-top:10px; border:1px solid #aba293; border-radius:50%; background:var(--sun-paper); pointer-events:none; }
+.phone .intensity-choice input:checked ~ .intensity-point { background:var(--sun-gold); border-color:#9b772a; box-shadow:0 0 0 4px var(--sun-tint); }
+.phone .intensity-choice input:checked ~ span:last-child { color:var(--sun-ink); font-weight:700; }
+.phone .intensity-choice input:focus-visible ~ .intensity-point { outline:2px solid #8d6b24; outline-offset:5px; }
+.phone :is(.weekday-choice,.intensity-choice,.time-range):disabled { opacity:.6; }
+.phone .schedule-region legend { display:flex; justify-content:space-between; }
+.phone .schedule-region [data-region-count] { font-size:14px; font-weight:400; color:var(--sun-secondary); }
+.phone .schedule-region summary { display:flex; align-items:center; gap:8px; min-height:48px; padding:10px 14px; list-style:none; background:var(--sun-paper); border:1px solid var(--sun-line); border-radius:12px; font-size:16px; }
+.phone .schedule-region summary::-webkit-details-marker { display:none; }
+.phone .schedule-region summary .sun-icon:last-child { margin-left:auto; }
+.phone .schedule-region .region-selection { padding:12px 0; }
+.phone .region-selection label { display:flex; flex-direction:column; align-items:stretch; gap:8px; margin:0 0 12px; }
+.phone .region-selection select { width:100%; min-width:0; min-height:48px; margin:0; border:1px solid #bdb29c; background:var(--sun-paper); border-radius:10px; }
+.phone .region-chips, .phone [id$="selected-regions"] { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+.phone .region-chip { display:inline-flex; align-items:center; gap:12px; min-height:40px; width:auto; margin:0; padding:6px 12px; border:1px solid #b69a4c; border-radius:12px; background:var(--sun-cream); color:var(--sun-ink); font-size:14px; }
+.phone .region-chip .sun-icon { width:16px; height:16px; }
+.phone .region-help { margin:8px 0 0; color:var(--sun-secondary); font-size:12px; }
+.phone .region-error { margin:8px 0 0; color:var(--color-danger); font-size:13px; }
+.phone .region-error:empty { display:none; }
+.phone .schedule-intro { position:relative; }
+.phone .schedule-intro textarea { padding-bottom:28px; }
+.phone .schedule-intro output { position:absolute; right:12px; bottom:9px; color:var(--sun-secondary); font-size:12px; }
+.phone .sun-field :is(select,textarea) { border-color:var(--sun-line); border-radius:12px; padding:12px 14px; font-size:16px; line-height:1.6; }
+.phone .sun-field select { appearance:none; padding-right:38px; background-image:url('../assets/icons/caret-down.svg'); background-position:right 12px center; background-repeat:no-repeat; background-size:16px; }
+.phone .sun-field :is(select,textarea):disabled { background:#f0ede5; color:var(--sun-secondary); }
+.phone .sun-field textarea[readonly] { background:var(--sun-cream); }
+.phone .sun-field :is(select,textarea)[aria-invalid="true"] { border-color:var(--color-danger); }
+.large .phone :is(.weekday-choice,.intensity-choice) label { font-size:17px; }
+.large .phone :is(.time-range,.weekday-choice,.intensity-choice,.schedule-region) > legend { font-size:21px; }
+.phone .time-values label { position:relative; gap:2px; padding:6px; }
+.phone .time-values label > span { line-height:1.3; font-size:13px; }
+.phone .time-values strong { font-size:26px; line-height:1.2; }
+.phone .time-values input { position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:pointer; }
+.phone .time-values label:focus-within { outline:2px solid #8d6b24; outline-offset:2px; }
+.phone .time-track { height:36px; margin-top:6px; }
+.phone .time-track::before, .phone .time-track-selected { top:14px; }
+.phone .time-track input[type="range"] { top:-4px; }
+.phone .time-ticks { line-height:1.3; }
+.phone .time-help { margin-top:6px; }
+.phone .intensity-choice label { min-height:44px; }
+.phone .intensity-choice label { gap:4px; line-height:1.3; }
+.phone .intensity-point { margin-top:8px; }
+.phone .intensity-choice > div::before { top:15px; }
+.phone .time-track input[type="range"]::-webkit-slider-thumb { width:44px; height:44px; border:13px solid transparent; background-clip:padding-box; box-shadow:none; filter:drop-shadow(0 0 1px #9b772a); }
+.phone .time-track input[type="range"]::-moz-range-thumb { width:18px; height:18px; border:13px solid transparent; background-clip:padding-box; box-shadow:none; }
+.phone .intensity-choice > div { grid-template-columns:40px minmax(0,1fr) 40px; }
+.phone .intensity-choice > div::before { left:20px; right:20px; }
+.phone .intensity-choice label > span:last-child { white-space:nowrap; }
+
+/* 승인한 채팅·평가·제안 시트. 외곽과 입력 사이 여백은 실제 화면/목차에 동일 적용한다. */
+.composer-controls { display:flex; align-items:flex-start; gap:10px; min-height:76px; padding:12px 16px; box-sizing:border-box; }
+.phone .composer-status { display:flex; align-items:center; gap:7px; margin:0; padding:12px 16px 0; color:var(--sun-secondary); font-size:12px; line-height:1.5; }
+.composer-status .sun-icon { flex:none; width:17px; height:17px; }
+.phone .sun-composer button:disabled { opacity:1; background:#eee2c6; color:#796847; border-color:#ded0af; }
+.phone .message-failure { margin-left:auto; max-width:87%; justify-content:flex-end; text-align:right; font-size:13px; }
+.phone .message-failure button { margin:0 0 0 auto; padding:4px 0; border:0; background:transparent; color:#926c26; text-decoration:underline; font-size:13px; }
+.phone .appointment-card > p { font-size:14px; }
+.phone .tail-rating { border:0; padding:0; margin:12px 0 24px; min-width:0; }
+.phone .tail-rating legend { font-size:22px; font-weight:700; line-height:1.5; letter-spacing:-.6px; }
+.phone .rating-privacy { font-size:13px; color:var(--sun-secondary); margin:12px 0 22px; }
+.rating-options { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:6px; }
+.phone .rating-options label { position:relative; display:grid; place-items:center; margin:0; min-height:60px; cursor:pointer; }
+.rating-options input { position:absolute; opacity:0; width:1px; height:1px; }
+.rating-options img { width:100%; max-width:64px; height:auto; pointer-events:none; }
+.rating-options .tail-selected, .rating-options .filled .tail-outline { display:none; }
+.rating-options .filled .tail-selected { display:block; }
+.rating-options label:has(input:focus-visible) { outline:3px solid #8d6b24; border-radius:12px; }
+.tail-rating:disabled { opacity:.5; }
+.phone .tail-rating output { display:block; text-align:center; font-size:16px; font-weight:600; margin-top:16px; }
+.phone .review-tags { padding:0; margin:0 0 24px; border:0; min-width:0; }
+.phone .review-tags legend { font-size:15px; font-weight:600; margin-bottom:10px; }
+.phone .review-tags label { display:flex; align-items:center; gap:12px; min-height:48px; margin:0; padding:8px 10px; background:var(--sun-paper); border-bottom:1px solid var(--sun-line); font-size:14px; }
+.phone .review-tags input { width:20px; height:20px; flex:none; margin:0; accent-color:#a87d24; }
+.phone .review-once { font-size:12px; color:var(--sun-secondary); }
+.phone .sheet-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:8px; }
+.phone .sheet-heading h2 { margin:0; font-size:24px; }
+.phone .sheet-close { display:grid; place-items:center; flex:none; width:44px; height:44px; min-height:44px; border:0; padding:0; background:transparent; }
+.phone .sheet-close .sun-icon { width:22px; height:22px; }
+.phone .sheet-copy { margin:0 0 24px; font-size:14px; color:var(--sun-secondary); }
+html[data-design] .phone #action-dialog[data-presentation="sheet"] { max-width:var(--phone-width,390px)!important; border-radius:28px 28px 0 0!important; padding:20px 24px 24px; border:0; box-sizing:border-box; }
+.phone[data-view="review"] .sun-field textarea { min-height:96px; }
+
+.phone #action-content form { border:0; padding-top:0; margin-top:0; }
+
+html[data-design] .phone #action-dialog[data-preview-screen="APPT-04"] { height:var(--phone-height,844px); border-radius:0!important; background:var(--sun-cream); }
+.phone #action-dialog[data-preview-screen="APPT-04"] .sheet-heading { margin-bottom:24px; }
+.phone .tail-rating legend { max-width:285px; font-size:26px; line-height:1.4; }
+.phone .rating-options img { transform:scale(1.6); }
+.phone .rating-options label { overflow:hidden; }
+.review-tag-options { border:1px solid var(--sun-line); border-radius:14px; overflow:hidden; }
+.phone .review-tag-options label:last-child { border-bottom:0; }
+.phone .review-comment-count { display:block; text-align:right; font-size:12px; color:var(--sun-secondary); margin-top:-16px; }
+.phone #action-dialog[data-preview-screen="APPT-04"] textarea { min-height:86px; }
+.phone #action-dialog[data-preview-screen="APPT-04"] .sun-field { margin-bottom:18px; }
+.phone .review-once { margin:10px 0; }
+.phone #action-dialog[data-preview-screen="APPT-04"] .sheet-heading { margin-bottom:12px; }
+.phone .tail-rating { margin:4px 0 16px; }
+.phone .rating-privacy { margin:10px 0 12px; }
+.phone .review-tags { margin-bottom:12px; }
+.phone .review-tags label { min-height:44px; }
+.phone #action-dialog[data-preview-screen="APPT-04"] .sun-field { margin-top:12px; }
+.phone #action-dialog[data-preview-screen="APPT-04"] button[type="submit"] { margin-top:8px; }
+.phone .review-tags label:has(input:checked) { color:var(--sun-ink); }
+
+.phone .tail-rating legend { max-width:240px; }
+.phone .rating-options label { overflow:visible; }
+.phone #action-content .sun-field + .time-range { margin-top:24px; }
+.phone .tail-rating legend { word-break:keep-all; }
+
+/* 상태는 색상과 방향·문구를 함께 사용해 구분한다. */
+.phone .appointment-card { --appointment-accent:#9b7122; --appointment-tint:#fbf0d2; border-left-color:var(--appointment-accent); }
+.phone .appointment-card[data-status="proposed"][data-direction="received"] { --appointment-accent:#386d9b; --appointment-tint:#e8f2fb; }
+.phone .appointment-card[data-status="accepted"] { --appointment-accent:#397354; --appointment-tint:#e8f3eb; }
+.phone .appointment-card[data-status="rejected"] { --appointment-accent:#a54b49; --appointment-tint:#faeae8; }
+.phone .appointment-card[data-status="canceled"] { --appointment-accent:#716b65; --appointment-tint:#efede9; }
+.phone .appointment-card .pill { color:var(--appointment-accent); background:var(--appointment-tint); font-weight:700; }
+.phone .appointment-dogs { display:flex; align-items:center; gap:10px; min-width:0; }
+.appointment-dogs > span:not(.appointment-direction) { min-width:0; }
+.phone .appointment-direction { flex:none; color:var(--appointment-accent); font-size:22px; line-height:1; }
+.phone .proposal-form .sun-field { margin:0 0 24px; }
+.phone :is(.proposal-form .sun-field-label,.time-range > legend) { font-size:16px; font-weight:650; line-height:1.5; }
+.large .phone :is(.proposal-form .sun-field-label,.time-range > legend) { font-size:20px; }
+.phone .proposal-form .sun-field-feedback:empty { display:none; }
+.phone .proposal-form .sun-field + .time-range { margin-top:0; }
+.phone .region-chips { gap:10px; }
+.phone .region-chip { margin:0; }
+.phone .row.selected-row { padding:16px; border:1px solid #e7d7a6; border-radius:14px; gap:12px; }
+.phone .row > img { flex:none; }
+.phone :is(.row .grow,.sun-guardian > span:last-child,.chat-person > span,.sun-dog-picker > span) { min-width:0; }
+.phone :is(.row strong,.identity-line h2,.identity-line h3,.sun-guardian strong,.chat-person strong,.appointment-dogs > span:not(.appointment-direction)) { display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.phone .identity-line { flex-wrap:nowrap; }
+.phone .identity-line > span { flex:none; }
+.phone .sun-dog-picker { padding:10px 12px; border:1px solid var(--sun-line); border-radius:13px; background:var(--sun-paper); gap:10px; }
+.phone .sun-dog-picker > span { flex:1; }
+.phone .sun-dog-picker small { font-size:12px; margin-bottom:4px; }
+.phone .sun-dog-picker select { width:100%; max-width:none; min-height:30px; font-size:16px; }
+.phone .sun-dog-picker img { flex:none; width:40px; height:40px; border-radius:50%; object-fit:cover; }
+.phone .tabs:not(.appointment-boxes) { display:flex; gap:4px; }
+.phone .tabs:not(.appointment-boxes) > a { flex:1; min-width:0; padding:10px 3px; font-size:13px; text-align:center; white-space:nowrap; }
+.phone .sent-interest { margin:16px 0; padding:16px; border:1px solid var(--sun-line); border-radius:14px; background:var(--sun-paper); }
+.phone .sent-interest .row { margin:0; padding:0; border:0; }
+.phone .sent-interest .row img { width:48px; height:48px; border-radius:50%; object-fit:cover; }
+.phone .sent-interest .actions { margin-top:12px; justify-content:flex-end; }
+.phone p.error.ui-inline-error { display:flex; align-items:flex-start; gap:8px; min-height:0; margin:12px 0; padding:0; border:0; border-radius:0; background:transparent; color:#b5362d; font-size:14px; line-height:1.6; }
+.phone p.error.ui-inline-error:empty { display:none; }
+.phone p.error.ui-inline-error:not(:empty)::before { content:"!"; margin-top:3px; }
+
+.phone .ui-inline-error { font-size:14px; }
+.large .phone :is(.ui-inline-error,p.error.ui-inline-error) { font-size:18px; }
+.phone .time-help { word-break:keep-all; }
+
+.phone .appointment-direction .sun-icon { display:block; width:24px; height:24px; }
+
+/* 보낸 관심: 행 전체는 상세 링크, 오른쪽 X는 별도의 취소 버튼이다. */
+.phone .sent-interest { position:relative; padding:0; overflow:hidden; }
+.phone .sent-interest .row { display:flex; gap:12px; align-items:center; min-height:88px; padding:16px 64px 16px 16px; }
+.phone .sent-interest .sent-interest-cancel { position:absolute; right:10px; top:50%; transform:translateY(-50%); display:grid; place-items:center; width:44px; min-width:44px; height:44px; min-height:44px; margin:0; padding:0; border:0; background:transparent; color:var(--sun-secondary); box-shadow:none; }
+.phone .sent-interest-cancel .sun-icon { width:20px; height:20px; }
+
+/* F1 임시 탭 안내만 본문 영역의 세로 중앙에 배치한다. */
+.phone:is([data-view="f1Recommendations"],[data-view="f1Matches"],[data-view="f1Dogs"]) .content {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.phone:is([data-view="f1Recommendations"],[data-view="f1Matches"],[data-view="f1Dogs"]) .ui-state {
+  width:100%;
+  padding:24px 0;
+}
+
+/* 문구에 맞춘 작은 버튼과 얇은 하단 그림자. */
+.phone button.ui-button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  gap:8px;
+  width:fit-content;
+  max-width:100%;
+  min-width:44px;
+  min-height:44px;
+  padding:8px 16px;
+  border:1px solid transparent;
+  border-radius:12px;
+  background:#f1efe8;
+  color:var(--sun-ink);
+  font-size:14px;
+  font-weight:600;
+  line-height:22px;
+  box-shadow:0 2px 0 #dcd7cd, 0 3px 6px #332e2410;
+  transition:transform 80ms ease, box-shadow 80ms ease;
+}
+.phone button.ui-button.primary:not(:disabled) {
+  border-color:transparent;
+  background:var(--sun-gold);
+  color:var(--sun-ink);
+  box-shadow:0 2px 0 #d1ac50, 0 3px 6px #332e2414;
+}
+.phone button.ui-button.danger:not(:disabled) {
+  border-color:transparent;
+  background:#fbe8e5;
+  color:var(--color-danger);
+  box-shadow:0 2px 0 #e8c3bd, 0 3px 6px #332e2410;
+}
+.phone button.ui-button:disabled {
+  border-color:transparent;
+  background:#e8e3d8;
+  color:#80796d;
+  box-shadow:none;
+}
+.phone button.ui-button:not(:disabled):active { transform:translateY(1px); box-shadow:0 1px 0 #332e2420; }
+.phone button.ui-button.wide { display:flex; width:fit-content; margin-left:auto; }
+.phone button.ui-button-forward { gap:10px; }
+.phone button.ui-button .sun-icon { width:18px; height:18px; }
+.phone .sun-detail-actions { justify-content:flex-end; }
+.phone .sun-detail-actions button.ui-button { flex:0 0 auto; width:fit-content; font-size:14px; }
+.phone[data-view="guardian"] form > button.ui-button[type="submit"] { min-width:44px; }
+#filter-dialog button.ui-button { width:fit-content; }
+.large .phone button.ui-button { font-size:18px; line-height:26px; }
+.phone .message-failure button.ui-button { padding:4px 0; border:0; border-radius:0; background:transparent; color:#926c26; font-size:13px; text-decoration:underline; box-shadow:none; }
+@media(prefers-reduced-motion:reduce) { .phone button.ui-button { transition:none; } }
+
+/* 헤더 제목은 뒤로 가기 바로 옆에서 시작한다. */
+.phone header h1 { flex:1; min-width:0; text-align:left; }
+
+/* 이동 탭과 같은 표면·선택 카드, 분리감은 항목 사이 여백으로 둔다. */
+.phone .tabs.appointment-boxes {
+  gap:8px;
+  padding:4px;
+  border:0;
+  border-radius:14px;
+  background:var(--color-grouped);
+}
+.phone .appointment-boxes button {
+  min-height:44px;
+  padding:10px 6px;
+  border:1px solid transparent;
+  border-radius:10px;
+  background:transparent;
+  color:var(--sun-secondary);
+  font-size:13px;
+  font-weight:400;
+  line-height:22px;
+  white-space:nowrap;
+  box-shadow:none;
+}
+.phone .appointment-boxes button[aria-pressed="true"] {
+  border-color:transparent;
+  background:var(--sun-paper);
+  box-shadow:0 1px 4px #0000000d;
+  color:var(--sun-ink);
+  font-weight:700;
+}
+.phone .sun-composer button.ui-button {
+  width:44px;
+  height:44px;
+  padding:0;
+  line-height:1;
+}
+.phone .sun-composer button.ui-button .sun-icon { width:21px; height:21px; }
+
+/* 약속 분류: 이동 탭 계열을 유지하면서 각 항목 표면과 여백을 분리한다. */
+.phone .tabs.appointment-boxes { gap:10px; padding:6px; }
+.phone .appointment-boxes button { background:var(--sun-cream); }
+.phone .appointment-boxes button[aria-pressed="true"] { background:var(--sun-paper); box-shadow:0 1px 4px #00000016; }
+
+/* 상세의 두 행동은 같은 폭으로 가운데 모은다. */
+.phone .sun-detail-actions { justify-content:center; }
+.phone .sun-detail-actions button.ui-button { flex:1 1 0; width:0; max-width:160px; min-width:0; min-height:44px; }
+.phone .ui-confirm .actions,
+.phone .actions.align-right,
+.phone[data-view="paused"] .actions,
+.phone[data-view="sent"] .actions,
+.phone[data-view="logout"] .actions,
+.phone[data-view="withdraw"] .actions { justify-content:flex-end; }
+.phone button.ui-button.danger-solid:not(:disabled) { background:#b5362d; color:#fff; box-shadow:0 2px 0 #8b2822,0 3px 6px #332e2414; }
+.phone header .icon-button,
+.phone .dialog-heading .icon-button { display:grid; place-items:center; flex:none; width:44px; height:44px; min-height:44px; margin:0; padding:0; border:0; background:transparent; box-shadow:none; }
+.phone .dialog-heading .icon-button .sun-icon { width:22px; height:22px; }
+
+.phone .received-interest { margin:16px 0; padding:16px; border:1px solid var(--sun-line); border-radius:14px; background:var(--sun-paper); }
+.phone .received-interest .row { min-width:0; margin:0; padding:0; border:0; gap:12px; color:var(--sun-ink); }
+.phone .received-interest .row img { flex:none; width:48px; height:48px; border-radius:50%; object-fit:cover; }
+.phone .received-interest .grow { min-width:0; }
+.phone .received-interest small { display:block; margin-top:4px; color:var(--sun-secondary); font-size:12px; line-height:1.6; }
+.phone .received-interest .actions { justify-content:flex-end; margin-top:10px; gap:8px; }
+.phone .sent-interest .sent-interest-cancel { border-radius:12px; background:#b5362d; color:white; }
+
+/* 팝업 필드셋 규칙이 공통 요일 컨트롤의 치수를 덮어쓰지 않게 한다. */
+.phone #filter-dialog { padding:16px; }
+.phone #filter-dialog .dialog-heading { margin-bottom:8px; }
+.phone #filter-dialog .muted { margin:8px 0 12px; }
+.phone #filter-dialog fieldset { margin:12px 0; padding:0; border:0; }
+.phone #filter-dialog fieldset > legend { margin-bottom:8px; font-size:15px; line-height:1.5; }
+.phone #filter-dialog .ui-checkbox-group label { display:inline-flex; align-items:center; gap:6px; min-height:36px; margin:0 12px 0 0; padding:0; }
+.phone #filter-dialog .weekday-choice label { display:block; min-width:0; min-height:44px; margin:0; padding:0; }
+.phone #filter-dialog .weekday-choice label > span { width:100%; min-height:44px; box-sizing:border-box; font-size:14px; }
+.phone #filter-dialog .weekday-choice > div { gap:4px; }
+.phone #filter-dialog .weekday-choice input { position:absolute; inset:0; width:100%; height:100%; margin:0; }
+.phone #filter-dialog .schedule-region summary { min-height:44px; padding:8px 10px; }
+.phone #filter-dialog .region-help { margin:8px 0; }
+.phone #filter-dialog .region-error:empty { display:none; }
+.phone #filter-dialog button.primary { position:relative; }
+.phone .sun-detail-actions button.ui-button { white-space:nowrap; }
+.large .phone .sun-detail-actions button.ui-button { font-size:16px; padding:8px 10px; gap:6px; }
+
+/* 공통 행동 규칙: 같은 깊이, 경고 빨강, 카드 행동은 오른쪽 정렬. */
+:root { --button-danger:#d92d20; --button-danger-edge:#a61b14; }
+.phone .actions { justify-content:flex-end; }
+.phone button.ui-button { --button-edge:#dcd7cd; box-shadow:0 2px 0 var(--button-edge),0 3px 6px #332e2414; }
+.phone button.ui-button.primary:not(:disabled) { --button-edge:#d1ac50; box-shadow:0 2px 0 var(--button-edge),0 3px 6px #332e2414; }
+.phone button.ui-button:is(.danger,.danger-solid):not(:disabled) { --button-edge:var(--button-danger-edge); background:var(--button-danger); color:white; box-shadow:0 2px 0 var(--button-edge),0 3px 6px #332e2414; }
+.phone button.ui-button:not(:disabled):active { box-shadow:0 1px 0 var(--button-edge); transform:translateY(1px); }
+.phone button.ui-button:disabled { box-shadow:none; }
+.phone button.ui-button .ui-button-label { min-width:0; white-space:nowrap; }
+
+/* 화면과 목차가 같은 렌더러·크기 규칙을 사용하는 주요/보조 쌍. */
+.phone .ui-action-pair,
+.phone .sun-detail-actions.ui-action-pair {
+  display:flex; align-items:center; justify-content:center; gap:12px;
+  width:100%; min-width:0; box-sizing:border-box; margin-top:12px;
+}
+.phone .sun-detail-actions.ui-action-pair { padding:12px 0; margin-top:0; }
+.phone .ui-action-pair button.ui-button {
+  flex:1 1 0; width:0; min-width:0; max-width:160px;
+  min-height:44px; height:44px; margin:0; padding:6px 12px;
+  font-size:14px; line-height:22px; gap:6px;
+}
+.large .phone .ui-action-pair button.ui-button { font-size:16px; line-height:24px; padding:6px 10px; }
+.phone .ui-action-pair .ui-button-label { flex:0 1 auto; overflow:hidden; }
+.phone .sun-composer button.ui-button { border-radius:50%; padding:0; }
+.phone .sent-interest .sent-interest-cancel { background:transparent; color:white; box-shadow:none; border-radius:0; }
+.phone .sent-interest-cancel::before { content:""; position:absolute; inset:7px; border-radius:8px; background:var(--button-danger); box-shadow:0 2px 0 var(--button-danger-edge),0 3px 6px #332e2414; z-index:-1; }
+.phone .sent-interest-cancel:active { transform:translateY(-50%) translateY(1px); }
+.phone .sent-interest-cancel:active::before { box-shadow:0 1px 0 var(--button-danger-edge); }
+.phone .sent-interest-cancel .sun-icon { width:18px; height:18px; }
+.phone .message-failure button.ui-button { padding:6px 12px; border-radius:12px; background:#f1efe8; text-decoration:none; }
+
+/* 등록 전에도 무엇을 준비하면 되는지 안내하는 공통 빈 상태. */
+.phone[data-view="dogEmpty"] .content { display:flex; flex-direction:column; justify-content:center; }
+.empty-dog { padding:24px 20px; border-radius:24px; background:var(--sun-paper); border:1px solid var(--sun-line); }
+.empty-dog-art { display:flex; flex-direction:column; align-items:center; gap:12px; margin-bottom:24px; color:var(--sun-secondary); font-size:12px; }
+.empty-dog-art > .sun-icon { width:88px; height:88px; padding:20px; box-sizing:border-box; border-radius:28px; background-color:var(--sun-gold); color:var(--sun-ink); }
+.phone .empty-dog h2 { margin:0; font-size:26px; line-height:1.4; text-align:center; }
+.phone .empty-dog > p { margin:12px 0 20px; color:var(--sun-secondary); font-size:14px; text-align:center; }
+.empty-dog ul { display:grid; gap:12px; padding:16px; margin:0; list-style:none; border-radius:14px; background:var(--sun-cream); font-size:14px; }
+.empty-dog li { display:flex; align-items:center; gap:10px; }
+.empty-dog li .sun-icon { width:18px; height:18px; color:var(--sun-secondary); }
+.phone .empty-dog-links { margin:16px 0 0; text-align:right; font-size:13px; }
+.phone .sun-dog-picker { min-width:0; box-sizing:border-box; }
+.phone[data-view="dogEmpty"] .content { justify-content:safe center; }
+
+/* 행동 버튼은 40px 표면과 최소 44px 터치 영역을 사용한다. */
+.phone button.ui-button { position:relative; min-height:40px; padding:6px 16px; line-height:22px; }
+.phone button.ui-button::after { content:""; position:absolute; left:0; right:0; top:calc(50% - 22px); height:max(100%,44px); }
+.phone .ui-action-pair button.ui-button,
+.large .phone .ui-action-pair button.ui-button { min-height:40px; height:40px; padding-top:4px; padding-bottom:4px; }
+.phone .sun-composer button.ui-button { width:40px; height:40px; min-width:40px; min-height:40px; padding:0; }
+.phone .sun-composer button.ui-button::after { left:-2px; right:-2px; }
+.phone .compact-card { margin:16px 0; padding:16px; border:1px solid var(--sun-line); border-radius:14px; background:var(--sun-paper); }
+.phone .compact-card .row { display:flex; align-items:center; min-width:0; gap:12px; padding:0; margin:0; border:0; color:var(--sun-ink); }
+.phone .compact-card .row img { flex:none; width:48px; height:48px; border-radius:50%; object-fit:cover; }
+.phone .compact-card .grow { min-width:0; flex:1; }
+.phone .compact-card small { display:block; color:var(--sun-secondary); font-size:12px; line-height:1.6; margin-top:4px; }
+.phone .compact-card.sent-interest { position:relative; padding:0; }
+.phone .compact-card.sent-interest .row { min-height:88px; padding:16px 64px 16px 16px; }
+.phone .compact-card .ui-action-pair { margin-top:12px; }
+.phone .appointment-actions-split { width:100%; justify-content:space-between; gap:12px; }
+.phone[data-view="chat"] .appointment-card[data-status="accepted"][data-historical="false"] > .appointment-actions:not(.ui-action-pair) { grid-column:1 / -1; grid-row:auto; justify-content:flex-end; }
+.phone .appointment-card .appointment-actions-split { justify-content:space-between; }
+.phone .ui-action-menu { display:grid; margin:12px 0; }
+.phone .ui-action-menu a { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 0; color:var(--sun-ink); border-bottom:1px solid var(--sun-line); }
+.phone .ui-action-menu .ui-danger-link { color:var(--button-danger); }
+.phone .result-notice > img { width:100%; max-height:260px; object-fit:cover; border-radius:18px; }
+.phone :is(header h1,.ui-page-heading h2,.result-notice h2,.profile-section h3) { min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.phone .result-notice h2 { font-size:22px; }
+.phone .row strong,.phone .identity-line :is(h2,h3),.phone .sun-guardian strong,.phone .chat-person strong,.phone .ui-button-label { overflow:hidden; text-overflow:ellipsis; }
+/* 제목은 최대 2px만 줄인 뒤 필요한 줄바꿈을 허용해 내용을 보존한다. */
+.phone :is(header h1,.ui-page-heading h2,.result-notice h2,.profile-section h3) { white-space:normal; overflow:visible; text-overflow:clip; word-break:keep-all; }
+.phone .sun-detail-hero > img { display:block; width:100%; height:354px; aspect-ratio:auto; border-radius:0; object-fit:cover; object-position:43% 37%; }
+
+/* 약속의 취소/이동도 수락/거절과 같은 폭·중앙 정렬을 공유한다. */
+.phone .appointment-card .ui-action-pair.appointment-actions { grid-column:1 / -1; grid-row:auto; justify-content:center; }
+.phone .dog-add-actions { margin-top:28px; margin-bottom:6px; justify-content:flex-end; }
+.phone .dog-list .compact-card:first-child { margin-top:20px; }
+
+/* 단일/다중 선택은 공통 가로 타일로 표시하고 입력 의미를 보존한다. */
+.phone .ui-checkbox-group .choice-options { display:flex; gap:8px; min-width:0; }
+.phone .ui-checkbox-group .choice-options > label { position:relative; display:flex; justify-content:center; align-items:center; flex:1 1 0; min-width:0; min-height:40px; margin:0; padding:8px 6px; box-sizing:border-box; border:1px solid var(--sun-line); border-radius:11px; background:var(--sun-paper); color:var(--sun-secondary); font-size:14px; line-height:22px; cursor:pointer; }
+.phone .ui-checkbox-group .choice-options input { position:absolute; inset:0; width:100%; height:100%; min-height:0; margin:0; opacity:0; border-radius:inherit; cursor:pointer; }
+.phone .ui-checkbox-group .choice-options label:has(input:checked) { border-color:#a5843d; background:var(--sun-tint); color:var(--sun-ink); font-weight:600; }
+.phone .ui-checkbox-group .choice-options label:has(input:focus-visible) { outline:2px solid #8d6b24; outline-offset:2px; }
+.phone .choice-label { min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.large .phone .choice-label { font-size:16px; }
+.phone #filter-dialog .ui-checkbox-group .choice-options > label { margin:0; padding:8px 4px; }
+
+.registration-intro { margin-bottom:24px; }
+.phone .registration-intro .step { margin:0 0 10px; color:#8d6b24; font-size:13px; font-weight:600; }
+.registration-progress { display:flex; gap:6px; margin-bottom:22px; }
+.registration-progress span { flex:1; height:4px; border-radius:4px; background:var(--sun-line); }
+.registration-progress .complete { background:var(--sun-gold); }
+.phone .registration-intro h2 { margin:0 0 10px; font-size:25px; line-height:1.4; }
+.phone .registration-intro .ui-page-heading > p { margin:0; font-size:14px; line-height:1.7; color:var(--sun-secondary); }
+.registration-section { padding:18px 16px; margin-bottom:18px; border:1px solid var(--sun-line); border-radius:18px; background:var(--sun-paper); }
+.registration-section-heading { display:flex; align-items:flex-start; gap:10px; }
+.registration-section-heading > .sun-icon { flex:none; width:22px; height:22px; color:#8d6b24; }
+.phone .registration-section-heading h3 { margin:0; font-size:17px; font-weight:650; line-height:1.4; }
+.phone .registration-section-heading p { margin:6px 0 0; color:var(--sun-secondary); font-size:12px; line-height:1.6; }
+.phone .registration-section .sun-field { margin-top:18px; }
+.phone .registration-section .sun-field input,
+.phone .registration-section .sun-field select { min-height:46px; padding:10px 12px; border-radius:12px; font-size:15px; }
+.phone .registration-section input[type="file"] { padding:8px; font-size:12px; }
+.phone .registration-section input[type="file"]::file-selector-button { border:0; border-radius:8px; padding:8px 10px; margin-right:8px; background:var(--sun-cream); color:var(--sun-ink); font:inherit; }
+.phone .registration-section .ui-checkbox-group { margin:20px 0 0; padding:0; border:0; }
+.phone .registration-section .ui-checkbox-group legend { margin-bottom:10px; font-size:14px; line-height:1.5; font-weight:600; }
+.phone .registration-form form > button[type="submit"] { margin-top:6px; }
+.large .phone .registration-section .sun-field :is(input,select) { font-size:17px; }
+.large .phone .registration-section input[type="file"] { font-size:13px; }
+
+/* 성별도 공통 가로 선택 타일을 사용한다. 최초 저장 이후 잠금은 유지한다. */
+.phone .ui-checkbox-group label:has(input:disabled) { cursor:default; }
+.profile-photo-editor { margin:24px 0 28px; text-align:center; }
+.profile-photo-control { position:relative; width:96px; height:96px; margin:0 auto; }
+.phone .profile-photo-editor .ui-avatar { width:96px; height:96px; }
+.phone .photo-edit-button { position:absolute; right:0; bottom:0; display:grid; place-items:center; width:32px; min-width:32px; height:32px; min-height:32px; padding:0; border:2px solid var(--sun-paper); border-radius:50%; background:var(--sun-gold); color:var(--sun-ink); box-shadow:0 2px 0 #d1ac50,0 3px 6px #332e2414; }
+.phone .photo-edit-button .sun-icon { width:17px; height:17px; }
+.phone .photo-edit-button::after { content:""; position:absolute; inset:-6px; }
+.phone .photo-edit-button:active { transform:translateY(1px); box-shadow:0 1px 0 #d1ac50; }
+.photo-source-options { display:flex; justify-content:center; gap:10px; padding:16px 0 0; }
+.photo-source-options[hidden],.profile-photo-editor input[hidden] { display:none; }
+.phone .photo-editor-feedback { margin:14px 0 0; font-size:13px; line-height:1.6; color:var(--sun-secondary); }
+.photo-editor-feedback:empty { display:none; }
+.phone .photo-editor-feedback .ui-inline-error { text-align:left; }
+.phone .photo-source-sheet { position:fixed; top:auto; right:auto; margin:0; transform:translateX(-50%); max-width:calc(100vw - 24px); padding:16px; box-sizing:border-box; border:1px solid var(--sun-line); border-radius:20px; background:var(--sun-paper); color:var(--sun-ink); box-shadow:0 12px 40px #332e2430; text-align:center; }
+.phone .photo-source-sheet:not([open]) { display:none; }
+.photo-source-sheet::backdrop { background:#332e244d; }
+.phone .photo-source-sheet h3 { margin:0 0 14px; font-size:14px; font-weight:600; color:var(--sun-secondary); }
+.photo-source-sheet .photo-source-options { display:grid; padding:0; gap:10px; }
+.phone .photo-source-sheet button.ui-button { width:100%; }
+.phone .photo-source-sheet .photo-source-cancel { margin-top:14px; }
+.photo-source-sheet .photo-source-options { grid-template-columns:minmax(0,1fr); justify-content:stretch; }
+
+/* 확인 창은 내용과 행동을 함께 가운데 정렬한다. */
+.phone .ui-confirm { text-align: center; }
+.phone .ui-confirm .actions { justify-content: center; }
+.phone .result-notice > .pill { display: inline-flex; margin-bottom: 16px; }
+.phone .result-notice > .sun-note { margin-top: 16px; }
+.phone:is([data-view="authError"],[data-view="restoreError"],[data-view="f1Recommendations"],[data-view="f1Matches"],[data-view="f1Dogs"]) .ui-state > :is(.feedback-modal-icon,h2,p) { position: relative; top: -16px; }
+.phone .ui-state > .feedback-modal-icon { margin-bottom: 10px; }
+.phone .feedback-modal-sample :is(.ui-state, .ui-confirm) .actions { justify-content: center; }
+.phone :is(.feedback-modal, .ui-state, .ui-confirm) h2 { margin: 0 0 6px; line-height: 1.3; }
+.phone :is(.feedback-modal, .ui-state, .ui-confirm) > p { margin: 0; line-height: 1.5; }
+.phone :is(.feedback-actions, .ui-state .actions, .ui-confirm .actions) { display: flex; gap: 8px; width: 100%; margin-top: 16px; }
+.phone :is(.feedback-actions, .ui-state .actions, .ui-confirm .actions) > button.ui-button { flex: 1 1 0; width: 0; min-width: 0; margin: 0; justify-content: center; }
+.phone #gender-fields .sun-note { margin-top: 6px; }
+.phone #action-dialog .result-notice h2 { font-size: 20px; line-height: 1.35; text-align: center; word-break: keep-all; }
+.phone #gender-fields .sun-note { margin-top: 0; padding: 4px 0 8px; }
+.phone #action-dialog .result-notice .ui-page-heading { margin-bottom: 8px; }
+.phone #action-dialog[data-preview-screen="REC-04"] .sheet-heading { align-items: flex-start; gap: 10px; }
+.phone #action-dialog[data-preview-screen="REC-04"] .sheet-heading h2 { flex: 1; min-width: 0; margin-top: 8px; font-size: 20px; line-height: 1.35; word-break: keep-all; }
+/* 미리보기와 실제 화면이 같은 정렬을 사용한다. */
+.phone #action-dialog[data-preview-screen="REC-SENT"] .feedback-actions { max-width: 150px; margin-left: auto; margin-right: auto; }
+.phone #gender-fields .ui-checkbox-group { margin: 20px 0 4px; padding: 0; border: 0; }
+.phone #gender-fields .sun-note { padding: 2px 0 6px; }
+.phone #action-dialog[data-preview-screen="REC-04"] .sheet-heading { position: relative; justify-content: center; align-items: center; padding: 0 44px; }
+.phone #action-dialog[data-preview-screen="REC-04"] .sheet-heading h2 { flex: none; max-width: 220px; margin: 0; text-align: center; font-size: 20px; line-height: 1.35; }
+.phone #action-dialog[data-preview-screen="REC-04"] .sheet-close { position: absolute; right: 0; top: 0; }
+.phone .message-failure.ui-inline-error { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 6px; }
+.phone .message-failure .appointment-error-icon { margin: 0; }
+.phone .message-failure .message-failure-copy { line-height: 1.4; }
+.phone .message-failure button.ui-button { display: inline-flex; align-items: center; margin: 0; }
+/* 화면과 목차에서 같은 관심 안내와 매칭 시트를 표시한다. */
+.phone .interest-sent .feedback-actions { max-width: 150px; margin-left: auto; margin-right: auto; }
+.phone .match-sheet .sheet-heading { position: relative; justify-content: center; align-items: center; padding: 0 44px; }
+.phone .match-sheet .sheet-heading h2 { flex: none; max-width: 220px; margin: 0; text-align: center; font-size: 20px; line-height: 1.35; word-break: keep-all; }
+.phone .match-sheet .sheet-close { position: absolute; right: 0; top: 0; }
+.phone .match-sheet-content > img { display: block; width: 100%; max-height: 150px; object-fit: cover; border-radius: 18px; }
+.phone .match-dogs { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 16px 0 4px; color: var(--sun-ink); font-size: 20px; line-height: 1.35; }
+.phone .match-dogs .sun-icon { width: 20px; height: 20px; flex: none; color: #8d6b24; }
+.phone .match-sheet-content > p { text-align: center; margin: 0; color: var(--sun-secondary); line-height: 1.5; }
+.phone .match-sheet-content .actions { margin-top: 18px; }
+.phone .interest-sent .feedback-modal h2 { margin: 0 0 6px; font-size: 20px; line-height: 1.3; }
+
+/* 보호자의 저장 활동 정보와 이번 추천 조건은 같은 입력을 사용한다. */
+.phone .guardian-activity { margin:28px 0; }
+.phone .guardian-activity > h3 { font-size:18px; margin:0 0 8px; }
+.phone .availability-row { margin:16px 0; padding:16px 12px; min-width:0; border:1px solid var(--sun-line); border-radius:16px; background:var(--sun-paper); }
+.phone .availability-row .time-range { margin-bottom:12px; }
+.phone .activity-error { color:var(--button-danger); font-size:14px; line-height:1.6; }
+.phone .activity-error:empty { display:none; }
+.phone .activity-override { display:flex; align-items:center; gap:10px; min-height:44px; font-weight:600; }
+.phone .activity-override input { flex:none; width:20px; height:20px; min-height:20px; }
+.phone [data-region-override],.phone [data-time-override] { border:0; padding:0; margin:0; min-width:0; }
+.phone [data-region-override][hidden],.phone [data-time-override][hidden] { display:none; }
+.phone .guardian-info-surface .profile-facts dd { white-space:pre-line; overflow-wrap:anywhere; }
+.phone .recommendation-basis { margin:0 0 20px; color:var(--sun-secondary); font-size:14px; line-height:1.7; }
+.large .phone .recommendation-basis,.large .phone .activity-error { font-size:18px; }
+
+.phone .availability-chips { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0; }
+.phone button.availability-chip { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:8px 12px; border:1px solid var(--sun-line); border-radius:24px; background:var(--sun-tint); color:var(--sun-ink); font:inherit; font-size:14px; }
+.phone .availability-chip .sun-icon { flex:none; width:16px; height:16px; }
+.phone .availability-row { background:transparent; border:0; padding:0; margin:20px 0 12px; }
+.phone .schedule-region summary { border-color:var(--sun-input-line, #978b75); background:var(--sun-paper); border-radius:14px; }
+.phone .activity-override { padding:12px 0; border-bottom:1px solid var(--sun-line); }
+.phone .availability-chip span { white-space:pre-line; }
+/* 지역·선호 조건도 Sunshine의 입력 필드와 선택 색을 공유한다. */
+.phone .schedule-region .region-selection { display:grid; gap:12px; padding:16px 0 8px; }
+.phone .schedule-region .region-selection label { display:grid; gap:8px; margin:0; color:var(--sun-secondary); font-size:14px; }
+.phone .schedule-region .region-selection select { width:100%; min-height:54px; box-sizing:border-box; padding:12px 16px; border:1px solid #978b75; border-radius:14px; background:var(--sun-paper); color:var(--sun-ink); font:inherit; font-size:16px; }
+.phone .schedule-region .region-selection button { justify-self:end; }
+.phone .availability-row { padding:18px 14px; border:1px solid var(--sun-line); border-radius:18px; background:var(--sun-paper); }
+.phone .availability-editor > button { width:100%; border:1px solid #978b75; border-radius:12px; background:var(--sun-tint); color:var(--sun-ink); }
+.phone .activity-override { justify-content:space-between; flex-direction:row-reverse; font-size:15px; line-height:1.6; }
+.phone .activity-override input { appearance:none; width:42px; height:26px; border:1px solid #978b75; border-radius:20px; background:var(--sun-line); position:relative; cursor:pointer; }
+.phone .activity-override input::after { content:''; position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:50%; background:var(--sun-paper); }
+.phone .activity-override input:checked { background:var(--sun-gold); border-color:#8d6b24; }
+.phone .activity-override input:checked::after { left:19px; }
+.phone .activity-override input:focus-visible { outline:3px solid #cfb77c; outline-offset:2px; }
+.phone #filter-dialog .availability-row { padding:14px 10px; }
+
+/* 활동 정보의 입력은 한 표면 안에서 가볍게 구분한다. */
+.phone .schedule-region .region-selection { gap:0; padding:8px 16px 14px; margin-top:8px; border:1px solid var(--sun-line); border-radius:16px; background:var(--sun-paper); }
+.phone .schedule-region .region-field { display:grid; grid-template-columns:72px minmax(0,1fr); align-items:center; gap:8px; border-bottom:1px solid var(--sun-line); padding:6px 0; }
+.phone .region-field-label { font-size:13px; color:var(--sun-secondary); }
+.phone .region-field-control { position:relative; display:block; min-width:0; }
+.phone .schedule-region .region-field select { appearance:none; -webkit-appearance:none; min-height:48px; padding:10px 28px 10px 8px; border:0; border-radius:8px; background:transparent; font-size:16px; }
+.phone .region-field-control > .sun-icon { position:absolute; right:4px; top:50%; transform:translateY(-50%); width:18px; height:18px; pointer-events:none; color:var(--sun-secondary); }
+.phone .region-picker-actions { display:flex; justify-content:flex-end; padding-top:12px; }
+.phone .availability-entry-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; padding-top:14px; border-top:1px solid var(--sun-line); }
+.phone .availability-entry-footer > span { color:var(--sun-secondary); font-size:12px; line-height:1.6; }
+.phone .availability-entry-footer > button { flex:none; width:auto; background:var(--sun-gold); border:1px solid var(--sun-gold); border-radius:12px; }
+.phone .availability-row .weekday-choice > legend { font-size:17px; }
+.phone .availability-row .time-range > legend { font-size:14px; color:var(--sun-secondary); }
+.large .phone .availability-entry-footer > span { font-size:16px; }
+
+/* 선택한 B안: 요일·시간·삭제를 일정한 열에 둔다. */
+.phone .availability-chips { display:grid; gap:0; margin:12px 8px 20px; padding:4px 12px; border:1px solid #eee8dc; border-radius:14px; background:#fbf8ef; }
+.phone .availability-chips:empty { display:none; }
+.phone div.availability-chip { display:grid; grid-template-columns:minmax(44px,.65fr) minmax(0,1.5fr) 44px; align-items:center; gap:8px; min-height:64px; padding:6px 0; border-bottom:1px solid var(--sun-line); }
+.phone div.availability-chip:last-child { border-bottom:0; }
+.phone .availability-days { color:var(--sun-secondary); font-size:14px; line-height:1.6; }
+.phone .availability-hours { font-size:16px; font-weight:650; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.phone button.availability-remove { display:grid; place-items:center; width:44px; height:44px; min-height:44px; margin:0; padding:0; border:0; border-radius:12px; background:transparent; color:var(--sun-secondary); }
+.phone .availability-remove .sun-icon { width:18px; height:18px; }
+.large .phone .availability-days { font-size:17px; }
+.large .phone .availability-hours { font-size:18px; }

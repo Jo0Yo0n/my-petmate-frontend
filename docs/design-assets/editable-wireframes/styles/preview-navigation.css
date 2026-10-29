@@ -1,0 +1,115 @@
+/* 미리보기 밖의 공통 메뉴. 휴대폰·내보내기에는 포함하지 않는다. */
+.preview-navigation {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px 28px;
+    width: 100%;
+    margin: 0;
+    padding: 18px 24px;
+    background: #fffefb;
+    border-bottom: 1px solid #ded9cf;
+    color: #332e24;
+    font: 14px/1.5 -apple-system,
+    BlinkMacSystemFont,
+    'Apple SD Gothic Neo',
+    sans-serif;
+}
+
+.preview-navigation .preview-home {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    color: #332e24;
+    font-size: 20px;
+    font-weight: 750;
+    text-decoration: none;
+}
+
+.preview-navigation .preview-home span {
+    color: #6c6457;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.preview-navigation nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+}
+
+.preview-navigation nav a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: #5b5345;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.preview-navigation nav a[aria-current] {
+    background: #f7edd0;
+    color: #59451d;
+    font-weight: 700;
+}
+
+.preview-navigation a:focus-visible {
+    outline: 3px solid #967325;
+    outline-offset: 2px;
+}
+
+body:has(> .studio) {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+}
+
+body:has(> .studio) > .studio {
+    width: 100%;
+}
+
+body:has(> .studio) > main {
+    width: 100%;
+}
+
+body.export {
+    display: block;
+}
+
+body.export > main {
+    width: max-content;
+}
+
+body.export > .preview-navigation,
+.schedule-preview > .preview-navigation {
+    display: none;
+}
+
+.preview-mode-title {
+    font-weight: 700;
+}
+
+@media (max-width: 720px) {
+    body:has(> .studio) {
+        display: block;
+    }
+
+    .preview-navigation {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .preview-navigation nav {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .preview-navigation nav a {
+        padding: 10px 8px;
+        text-align: center;
+    }
+}

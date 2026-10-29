@@ -1,10 +1,10 @@
 // 두 미리보기 진입점이 공유하는 설계 도구와 휴대폰 프레임.
-const sunshine = document.documentElement.dataset.design === "sunshine";
+const sunshine = document.documentElement.dataset.design === 'sunshine';
 document.body.innerHTML = `
     <aside class="studio">
-      <a class="brand" href="?screen=REC-01">My Petmate <small>${sunshine ? "SUNSHINE / DESIGN" : "WIREFRAME SOURCE"}</small></a>
-      <p>${sunshine ? "Sunshine 적용: 로그인·회원가입·추천 목록·상세·채팅. 그 외는 와이어프레임. 앱/서버 미연결" : "전체 화면의 HTML/CSS 와이어프레임 · 앱/서버 미연결"}</p>
-      ${sunshine ? '<a href="index.html">전체 와이어프레임</a> · ' : ""}<a href="sunshine-board.html">Sunshine 적용 5종</a> · <a href="../../ui-foundation.md">디자인 규칙</a>
+      <a class="brand" href="?screen=REC-01">My Petmate <small>${sunshine ? 'SUNSHINE / DESIGN' : 'WIREFRAME SOURCE'}</small></a>
+      <p>${sunshine ? 'Sunshine 적용: F1 전체·F3 추천 목록/상세·F5 채팅(F6 약속 카드). 그 외는 와이어프레임. 앱/서버 미연결' : '전체 화면의 HTML/CSS 와이어프레임 · 앱/서버 미연결'}</p>
+      <p class="preview-mode-title">${sunshine ? '디자인 미리보기' : '와이어프레임'}</p>
       <label
         >레이아웃 점검 폭
         <select id="width">
@@ -27,6 +27,7 @@ document.body.innerHTML = `
           <option value="field-error">필드 오류 · 폼</option>
           <option value="submitting">제출 중 · 폼</option>
           <option value="chat-error">연결·전송 실패 · 채팅</option>
+          <option value="chat-long">긴 내용 입력 · 채팅</option>
         </select></label
       >
       <p id="state-help" role="status"></p>
@@ -51,6 +52,7 @@ document.body.innerHTML = `
         <header id="header"></header>
         <div id="content" class="content"></div>
         <footer id="footer"></footer>
+        <dialog id="feedback-dialog" aria-label="안내"></dialog>
         <dialog id="action-dialog" aria-label="확인 창">
           <div id="action-content"></div>
         </dialog>
@@ -59,10 +61,11 @@ document.body.innerHTML = `
             <h2 id="filter-title">선호 조건</h2>
             <button
               type="button"
+              class="icon-button"
               data-action="closeFilters"
               aria-label="선호 조건 닫기"
             >
-              닫기
+              ${PetmateUI.icon('x')}
             </button>
           </div>
           <div id="filter-content"></div>

@@ -1,184 +1,222 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>My Petmate · 햇살 디자인 시안 5종</title>
-    <link rel="stylesheet" href="sunshine-board.css" />
-  </head>
-  <body>
-    <header class="board-header">
-      <a href="sunshine.html">my petmate <span>SUNSHINE EDITION</span></a
-      ><a href="index.html">전체 와이어프레임 ↗</a>
-    </header>
-    <main>
-      <div class="board-intro">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>My Petmate · 화면별 디자인 목차</title>
+    <link rel="stylesheet" href="styles/sunshine-board.css?v=guardian-activity-8"/>
+    <link rel="stylesheet" href="styles/preview-navigation.css?v=guardian-activity-8"/>
+    <script defer src="scripts/preview-navigation.js?v=guardian-activity-8"></script>
+</head>
+<body>
+<main>
+    <div class="board-intro">
         <div>
-          <p class="eyebrow">EDITABLE HTML / CSS · DESIGN PROPOSAL</p>
-          <h1>햇살 좋은 날,<br />함께 걷는 친구.</h1>
-          <p class="intro-copy">
-            골드의 온기, 크림색의 여유, 반려견이 주인공인 사진.<br />매일의
-            산책을 편안한 만남으로 이어주는 다섯 화면입니다.
-          </p>
+            <p class="eyebrow">HTML / CSS / JS · UI 확인</p>
+            <h1>화면별 디자인 목차</h1>
+            <p class="intro-copy">
+                화면별 디자인 적용 여부와 미리보기를 확인합니다.<br/>각 화면을
+                와이어프레임 또는 디자인 미리보기로 열 수 있습니다.
+            </p>
         </div>
         <div class="palette">
           <span style="--swatch: #f2cd70">Sunshine<code>#F2CD70</code></span
           ><span style="--swatch: #faf8f2">Cream<code>#FAF8F2</code></span
-          ><span style="--swatch: #332e24">Warm ink<code>#332E24</code></span
-          ><span style="--swatch: #566341">Leaf<code>#566341</code></span>
+        ><span style="--swatch: #332e24">Warm ink<code>#332E24</code></span
+        ><span style="--swatch: #566341">Leaf<code>#566341</code></span>
         </div>
-      </div>
-      <div class="board-note">
-        <strong>Sunshine 디자인은 아래 다섯 종류에만 적용되어 있습니다.</strong> 다른 화면은 전체 와이어프레임 원본을 따릅니다. 아래 화면은 실제 HTML입니다. 화면 안에서
-        스크롤·입력·이동할 수 있어요. 독립 미리보기에서는 오류·빈 결과·큰 글씨도
-        선택할 수 있습니다. 모의 데이터만 사용하며 API를 호출하지 않습니다.
-      </div>
-      <nav class="screen-nav">
+    </div>
+    <div class="board-note">
+        <strong
+        >F1 전체 화면과 기존 추천·채팅에 Sunshine을 적용했습니다.</strong
+        >
+        두 보기는 기능·상태를 공유합니다. 미적용 화면의 공통 스타일 상속을
+        디자인 완료로 표시하지 않습니다. 아래 화면은 실제 HTML입니다. 화면
+        안에서 스크롤·입력·이동할 수 있어요. 독립 미리보기에서는 오류·빈 결과·큰
+        글씨도 선택할 수 있습니다. 모의 데이터만 사용하며 API를 호출하지
+        않습니다.
+    </div>
+    <p>
+        <a href="components.html">컴포넌트 목차 →</a> ·
+        <a href="#screen-index">화면별 적용 현황 ↓</a>
+    </p>
+    <section id="screen-index">
+        <h2>화면별 적용 현황</h2>
+        <p>
+            F1은 UI 디자인 범위입니다. 실제 앱·API 구현 완료를 뜻하지 않습니다.
+        </p>
+        <div id="screen-table"></div>
+    </section>
+    <h2>F1 추가 화면 미리보기</h2>
+    <section class="screen-grid" id="f1-grid"></section>
+    <h2>기존 Sunshine 화면</h2>
+    <nav class="screen-nav">
         <a href="#AUTH-01">로그인</a><a href="#AUTH-02">회원가입</a
-        ><a href="#REC-01">추천 목록</a><a href="#REC-03">추천 상세</a
-        ><a href="#CHAT-02">채팅</a>
-      </nav>
-      <section class="screen-grid">
+    ><a href="#REC-01">추천 목록</a><a href="#REC-03">추천 상세</a
+    ><a href="#CHAT-02">채팅</a>
+    </nav>
+    <section class="screen-grid">
         <article id="AUTH-01" class="screen-card">
-          <div class="screen-heading">
-            <span>01 / 로그인</span>
-            <h2>반가운 첫인사</h2>
-            <p>따뜻한 사진과 아치형 프레임, 간결한 입력과 분명한 시작 버튼.</p>
-          </div>
-          <div class="device">
-            <iframe
-              title="로그인 디자인 · 스크롤 가능"
-              src="sunshine.html?screen=AUTH-01&export=1"
-              loading="eager"
-            ></iframe>
-          </div>
-          <div class="screen-links">
-            <a href="sunshine.html?screen=AUTH-01">독립 미리보기 ↗</a
-            ><a href="sunshine.html?screen=AUTH-01&export=1&capture=full"
-              >전체 내용 보기 ↗</a
+            <div class="screen-heading">
+                <span>F1 · AUTH-01 / 로그인</span>
+                <h2>이메일 로그인</h2>
+                <p>이메일·비밀번호 입력, 필수값 확인과 회원가입 이동.</p>
+            </div>
+            <div class="device">
+                <iframe
+                        title="로그인 디자인 · 스크롤 가능"
+                        src="sunshine.html?screen=AUTH-01&export=1"
+                        loading="eager"
+                ></iframe>
+            </div>
+            <div class="screen-links">
+                <a href="sunshine.html?screen=AUTH-01">독립 미리보기 ↗</a
+                ><a href="sunshine.html?screen=AUTH-01&export=1&capture=full"
+            >전체 내용 보기 ↗</a
             >
-          </div>
+            </div>
         </article>
         <article id="AUTH-02" class="screen-card">
-          <div class="screen-heading">
-            <span>02 / 회원가입</span>
-            <h2>함께 걸을 준비</h2>
-            <p>
-              기본 정보와 보호자 유형, 찾기 상태를 나누어 자연스럽게 읽히는 폼.
-            </p>
-          </div>
-          <div class="device">
-            <iframe
-              title="회원가입 디자인 · 스크롤 가능"
-              src="sunshine.html?screen=AUTH-02&export=1"
-              loading="eager"
-            ></iframe>
-          </div>
-          <div class="screen-links">
-            <a href="sunshine.html?screen=AUTH-02">독립 미리보기 ↗</a
-            ><a href="sunshine.html?screen=AUTH-02&export=1&capture=full"
-              >전체 내용 보기 ↗</a
+            <div class="screen-heading">
+                <span>F1 · AUTH-02 / 회원가입</span>
+                <h2>계정·보호자 정보 입력</h2>
+                <p>
+                    계정 정보, 보호자 유형과 조건부 성별, 메이트 찾기 상태를
+                    확인합니다.
+                </p>
+            </div>
+            <div class="device">
+                <iframe
+                        title="회원가입 디자인 · 스크롤 가능"
+                        src="sunshine.html?screen=AUTH-02&export=1"
+                        loading="eager"
+                ></iframe>
+            </div>
+            <div class="screen-links">
+                <a href="sunshine.html?screen=AUTH-02">독립 미리보기 ↗</a
+                ><a href="sunshine.html?screen=AUTH-02&export=1&capture=full"
+            >전체 내용 보기 ↗</a
             >
-          </div>
+            </div>
         </article>
         <article id="REC-01" class="screen-card">
-          <div class="screen-heading">
-            <span>03 / 추천 목록</span>
-            <h2>오늘도, 같이 걸어요</h2>
-            <p>
-              큰 사진과 궁합, 산책 조건을 차례로 읽으며 친구를 비교하는 화면.
-            </p>
-          </div>
-          <div class="device">
-            <iframe
-              title="추천 목록 디자인 · 스크롤 가능"
-              src="sunshine.html?screen=REC-01&export=1"
-              loading="eager"
-            ></iframe>
-          </div>
-          <div class="screen-links">
-            <a href="sunshine.html?screen=REC-01">독립 미리보기 ↗</a
-            ><a href="sunshine.html?screen=REC-01&export=1&capture=full"
-              >전체 내용 보기 ↗</a
+            <div class="screen-heading">
+                <span>F3 · REC-01 / 추천 목록</span>
+                <h2>후보 목록과 선호 조건</h2>
+                <p>기준 반려견 전환, 후보 정보 확인과 상세 이동.</p>
+            </div>
+            <div class="device">
+                <iframe
+                        title="추천 목록 디자인 · 스크롤 가능"
+                        src="sunshine.html?screen=REC-01&export=1"
+                        loading="eager"
+                ></iframe>
+            </div>
+            <div class="screen-links">
+                <a href="sunshine.html?screen=REC-01">독립 미리보기 ↗</a
+                ><a href="sunshine.html?screen=REC-01&export=1&capture=full"
+            >전체 내용 보기 ↗</a
             >
-          </div>
+            </div>
         </article>
         <article id="REC-03" class="screen-card">
-          <div class="screen-heading">
-            <span>04 / 추천 상세</span>
-            <h2>조금 더 알아가는 시간</h2>
-            <p>
-              반려견 사진에서 소개와 산책 조건으로 이어지는 프로필. 결정 버튼은
-              하단에.
-            </p>
-          </div>
-          <div class="device">
-            <iframe
-              title="추천 상세 디자인 · 스크롤 가능"
-              src="sunshine.html?screen=REC-03&export=1"
-              loading="eager"
-            ></iframe>
-          </div>
-          <div class="screen-links">
-            <a href="sunshine.html?screen=REC-03">독립 미리보기 ↗</a
-            ><a href="sunshine.html?screen=REC-03&export=1&capture=full"
-              >전체 내용 보기 ↗</a
+            <div class="screen-heading">
+                <span>F3 · REC-03 / 추천 상세</span>
+                <h2>프로필 확인과 관심·패스</h2>
+                <p>
+                    보호자 정보, 궁합 근거와 산책 조건을 확인합니다. 관심·패스 버튼은
+                    하단에 고정합니다.
+                </p>
+            </div>
+            <div class="device">
+                <iframe
+                        title="추천 상세 디자인 · 스크롤 가능"
+                        src="sunshine.html?screen=REC-03&export=1"
+                        loading="eager"
+                ></iframe>
+            </div>
+            <div class="screen-links">
+                <a href="sunshine.html?screen=REC-03">독립 미리보기 ↗</a
+                ><a href="sunshine.html?screen=REC-03&export=1&capture=full"
+            >전체 내용 보기 ↗</a
             >
-          </div>
+            </div>
         </article>
         <article id="CHAT-02" class="screen-card">
-          <div class="screen-heading">
-            <span>05 / 채팅</span>
-            <h2>산책이 약속이 되는 곳</h2>
-            <p>
-              편안한 말풍선과 또렷한 약속 카드. 메시지 입력은 대화와 분리해
-              고정.
-            </p>
-          </div>
-          <div class="device">
-            <iframe
-              title="채팅 디자인 · 스크롤 가능"
-              src="sunshine.html?screen=CHAT-02&export=1"
-              loading="eager"
-            ></iframe>
-          </div>
-          <div class="screen-links">
-            <a href="sunshine.html?screen=CHAT-02">독립 미리보기 ↗</a
-            ><a href="sunshine.html?screen=CHAT-02&export=1&capture=full"
-              >전체 내용 보기 ↗</a
+            <div class="screen-heading">
+                <span>F5 · CHAT-02 / 채팅 · 약속 카드 F6</span>
+                <h2>메시지와 약속 이력</h2>
+                <p>
+                    이전 제안과 현재 약속을 구분합니다. 입력·전송 영역은 하단에
+                    고정합니다.
+                </p>
+            </div>
+            <div class="device">
+                <iframe
+                        title="채팅 디자인 · 스크롤 가능"
+                        src="sunshine.html?screen=CHAT-02&export=1"
+                        loading="eager"
+                ></iframe>
+            </div>
+            <div class="screen-links">
+                <a href="sunshine.html?screen=CHAT-02">독립 미리보기 ↗</a
+                ><a href="sunshine.html?screen=CHAT-02&export=1&capture=full"
+            >전체 내용 보기 ↗</a
             >
-          </div>
+            </div>
         </article>
-      </section>
-      <section class="source-note">
-        <h2>계속 다듬어 사용할 수 있는 원본</h2>
+    </section>
+    <section class="source-note">
+        <h2>수정할 원본과 검증 범위</h2>
         <p>
-          사진을 제외한 제목·본문·폼·버튼·탭·카드는 HTML/CSS입니다. 색상과 화면
-          구성은 <a href="sunshine.css">sunshine.css</a>, 화면별 마크업은
-          <a href="sunshine.js">sunshine.js</a>에서 수정합니다. 기존 모의 기능은
-          app.js를 재사용합니다.
+            사진을 제외한 제목·본문·폼·버튼·탭·카드는 HTML/CSS입니다. 색상과 화면
+            구성은 <a href="styles/sunshine.css">sunshine.css</a>, 화면별 마크업은
+            <a href="scripts/sunshine.js">sunshine.js</a>에서 수정합니다. 기존 모의 기능은
+            app.js를 재사용합니다.
         </p>
         <p>
-          기존 반려견 사진과 MIT 라이선스의 Phosphor 아이콘만 사용했습니다.
-          이미지 생성·RN 앱 구현·API 연결은 포함하지 않았습니다. 로그인·가입의
-          모의 성공 이동은 기존 와이어프레임과 같으며 실제 인증이 아닙니다.
+            기존 반려견 사진과 MIT 라이선스의 Phosphor 아이콘만 사용했습니다.
+            이미지 생성·RN 앱 구현·API 연결은 포함하지 않았습니다. 로그인·가입의
+            모의 성공 이동은 기존 와이어프레임과 같으며 실제 인증이 아닙니다.
         </p>
         <a href="README.md">원본 안내·적용 범위 보기 →</a>
-      </section>
-    </main>
-    <footer>MY PETMATE · 2026.10.23 · SUNSHINE DESIGN PROPOSAL</footer>
-    <script>
-      const observer = new ResizeObserver((entries) => {
+    </section>
+</main>
+<footer>MY PETMATE · 2026.10.23 · SUNSHINE · HTML UI PREVIEW</footer>
+<script src="scripts/screens.js?v=guardian-activity-8"></script>
+<script>
+    document.getElementById('screen-table').innerHTML =
+        `<table><thead><tr><th>마일스톤</th><th>화면</th><th>디자인 적용</th><th>보기</th></tr></thead><tbody>${SCREENS.filter(
+            (s) => s.kind !== 'state',
+        )
+            .map(
+                (s) =>
+                    `<tr><td>${s.milestone}</td><td>${s.id} · ${s.title}${s.presentation === 'sheet' ? ' · 바텀 시트' : ''}</td><td>${s.designed ? 'Sunshine 적용' : '미적용 · 공통 스타일만 표시'}</td><td><a href="index.html?screen=${s.id}">와이어프레임</a> · <a href="sunshine.html?screen=${s.id}">디자인 미리보기</a></td></tr>`,
+            )
+            .join('')}</tbody></table>`;
+    document.getElementById('f1-grid').innerHTML = [
+        'AUTH-03',
+        'GUARDIAN-01',
+        'GUARDIAN-EDIT',
+        'AUTH-04',
+        'GUARDIAN-02',
+    ]
+        .map((id) => {
+            const s = SCREENS.find((x) => x.id === id);
+            return `<article class="screen-card"><div class="screen-heading"><span>F1 · ${id}</span><h2>${s.title}</h2><p><a href="sunshine.html?screen=${id}">상태 선택·독립 미리보기 →</a></p></div><div class="device"><iframe title="${s.title}" src="sunshine.html?screen=${id}&export=1" loading="lazy"></iframe></div></article>`;
+        })
+        .join('');
+    const observer = new ResizeObserver((entries) => {
         for (const entry of entries) {
-          const width = entry.contentRect.width;
-          entry.target.style.height = (844 * width) / 390 + "px";
-          entry.target.querySelector("iframe").style.transform =
-            "scale(" + width / 390 + ")";
+            const width = entry.contentRect.width;
+            entry.target.style.height = (844 * width) / 390 + 'px';
+            entry.target.querySelector('iframe').style.transform =
+                'scale(' + width / 390 + ')';
         }
-      });
-      document
-        .querySelectorAll(".device")
+    });
+    document
+        .querySelectorAll('.device')
         .forEach((el) => observer.observe(el));
-    </script>
-  </body>
+</script>
+</body>
 </html>
