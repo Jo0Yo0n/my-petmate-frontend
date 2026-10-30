@@ -11,14 +11,25 @@
 
 ## 실행 안내
 
-Expo SDK 57 기반의 첫 화면을 준비 중이다. 실행 환경은 [프론트 가이드](docs/frontend-guide.md#실행-환경과-실행-방식), 남은 검증은 [F0·F1 구현 계획](docs/f0-f1-implementation-plan.md)을 따른다.
+Expo SDK 57 기반의 첫 화면을 준비 중이다. 실행 환경은 [프론트 가이드](docs/frontend-guide.md#실행-환경과-실행-방식), 남은
+검증은 [F0·F1 구현 계획](docs/f0-f1-implementation-plan.md)을 따른다.
 
 ```bash
 npm install
 npm run start
 ```
 
-Xcode와 iOS Simulator 준비 후 개발 서버에서 `i`를 눌러 Expo Go로 실행한다. `npm run ios`로 바로 시뮬레이터 실행을 요청할 수도 있다. 타입 검사는 `npm run typecheck`를 사용한다. 첫 화면의 현재 검증 상태는 [F0·F1 구현 계획](docs/f0-f1-implementation-plan.md)을 따른다.
+Xcode와 iOS Simulator 준비 후 개발 서버에서 `i`를 눌러 Expo Go로 실행한다. `npm run ios`로 바로 시뮬레이터 실행을 요청할 수도 있다. 첫 화면은
+`src/app/index.tsx`에서 시작하고 공통 라우터는 `src/app/_layout.tsx`에서 설정한다. 첫 화면의 현재 검증
+상태는 [F0·F1 구현 계획](docs/f0-f1-implementation-plan.md)을 따른다.
+
+```bash
+npm run lint
+npm run typecheck
+npm test
+```
+
+lint는 앱 소스의 정적 규칙을 확인하고, Jest는 앱 테스트를 실행한다. 아직 앱 테스트가 없으면 Jest는 테스트가 없다고 출력하고 정상 종료한다.
 
 ## 문서를 이어서 관리하는 방법
 
@@ -26,4 +37,7 @@ Xcode와 iOS Simulator 준비 후 개발 서버에서 `i`를 눌러 Expo Go로 �
 
 ## 디자인 미리보기
 
-화면 구성과 모의 동작은 [HTML/CSS 와이어프레임](docs/design-assets/editable-wireframes/index.html), 시각 기준은 [UI Foundation](docs/ui-foundation.md)을 참고한다. 화면별 디자인 적용 범위는 [디자인 목차](docs/design-assets/editable-wireframes/sunshine-board.html), 로컬 실행 방법은 [화면 원본 안내](docs/design-assets/editable-wireframes/README.md)에서 확인한다. 시안은 실제 앱 구현과 별도다.
+화면 구성과 모의 동작은 [HTML/CSS 와이어프레임](docs/design-assets/editable-wireframes/index.html), 시각
+기준은 [UI Foundation](docs/ui-foundation.md)을 참고한다. 화면별 디자인 적용
+범위는 [디자인 목차](docs/design-assets/editable-wireframes/sunshine-board.html), 로컬 실행
+방법은 [화면 원본 안내](docs/design-assets/editable-wireframes/README.md)에서 확인한다. 시안은 실제 앱 구현과 별도다.
