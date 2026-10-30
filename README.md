@@ -11,7 +11,14 @@
 
 ## 실행 안내
 
-앱 생성 전이며 실행 가능한 앱·앱 실행 스크립트는 아직 없다. Prettier용 패키지 설정은 있다. 실행 환경과 첫 실행 기본안은 [프론트 가이드](docs/frontend-guide.md#실행-환경과-실행-방식)에 있다. 앱을 만든 뒤 실제 실행 명령을 이 절에 추가한다.
+Expo SDK 57 기반의 첫 화면을 준비 중이다. 실행 환경은 [프론트 가이드](docs/frontend-guide.md#실행-환경과-실행-방식), 남은 검증은 [F0·F1 구현 계획](docs/f0-f1-implementation-plan.md)을 따른다.
+
+```bash
+npm install
+npm run start
+```
+
+Xcode와 iOS Simulator 준비 후 개발 서버에서 `i`를 눌러 Expo Go로 실행한다. `npm run ios`로 바로 시뮬레이터 실행을 요청할 수도 있다. 타입 검사는 `npm run typecheck`를 사용한다. 첫 화면의 현재 검증 상태는 [F0·F1 구현 계획](docs/f0-f1-implementation-plan.md)을 따른다.
 
 ## 문서를 이어서 관리하는 방법
 
