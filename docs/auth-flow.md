@@ -125,7 +125,7 @@ refresh를 무조건 자동 반복하지 않는다. 일시적 실패에는 재�
 | `M1-REG-FE-03` | 프론트 저장소의 Playwright APIRequestContext로 실제 signup → GET/PATCH me → refresh → 이전 refresh 거부 → logout 흐름. status·body·Content-Type·요청 ID 확인 |
 | 화면           | 유형별 입력·보존 성별·필드 오류·중복 제출·상태 안내·탈퇴 확인·보호 경로 차단                                                                                 |
 | 저장·부분 실패 | 읽기/쓰기/삭제 실패, 회전 응답 유실, `/me` 실패, 오프라인 로그아웃, 탈퇴 결과 불명확, 로그아웃·계정 전환 중 늦은 응답·저장                                   |
-| iOS            | 실제 SecureStore 저장·복원·삭제와 앱 종료·재시작, 키보드·자동완성·작은 화면·큰 글씨·VoiceOver·LAN. Expo Go 확인 후 우리 development build에서도 확인         |
+| iOS            | F1에서 iOS Simulator와 로컬 development build로 SecureStore 저장·복원·삭제, 앱 종료·재시작과 화면 동작 확인. 실제 iPhone의 저장·권한·접근성·LAN은 MVP 기능 구현 후 F8에서 확인 |
 
 Jest 테스트는 실제 프론트 인증 코드를 실행하고 HTTP·저장 경계만 제어한다. Playwright API 테스트만으로 앱 인증 코드가 검증됐다고 판단하지 않는다. iOS 네이티브 화면을 Playwright가
 직접 조작한다고 가정하거나 테스트만을 위해 웹 앱을 추가하지 않는다. 미검증 게이트·서버 마일스톤을 임의로 완료 처리하지 않는다.
