@@ -5,6 +5,16 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
-    "plugins": ["expo-router"]
+    "plugins": [
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "프로필에 사용할 사진을 선택할 수 있도록 사진 접근을 허용해 주세요.",
+          "cameraPermission": "프로필 사진을 촬영할 수 있도록 카메라 접근을 허용해 주세요.",
+          "microphonePermission": false
+        }
+      ]
+    ]
   }
 }
