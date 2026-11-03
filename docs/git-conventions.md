@@ -20,17 +20,17 @@
 
 ### 허용 type
 
-| type       | 사용 기준                                 | 프론트 예시                                     |
-|------------|-------------------------------------------|-------------------------------------------------|
-| `feat`     | 사용자에게 제공하는 새 기능               | `feat: add email login`                         |
-| `fix`      | 기존 동작의 오류 수정                     | `fix: prevent duplicate login submissions`      |
-| `docs`     | 문서만 변경                               | `docs: detail F0 and F1 implementation tasks`   |
+| type       | 사용 기준                                 | 프론트 예시                                                   |
+|------------|-------------------------------------------|---------------------------------------------------------------|
+| `feat`     | 사용자에게 제공하는 새 기능               | `feat: add email login`                                       |
+| `fix`      | 기존 동작의 오류 수정                     | `fix: prevent duplicate login submissions`                    |
+| `docs`     | 문서만 변경                               | `docs: detail F0 and F1 implementation tasks`                 |
 | `design`   | 목업·시안·디자인 에셋 변경                | `design: update interactive mockups and shared UI components` |
-| `test`     | 테스트 추가·수정                          | `test: cover concurrent token refresh requests` |
-| `refactor` | 사용자 동작을 유지하는 코드 구조 변경     | `refactor: simplify session cleanup`            |
-| `chore`    | 다른 type에 해당하지 않는 저장소 유지보수 | `chore: ignore local Expo state`                |
-| `build`    | 앱 생성·빌드 설정·의존성 변경             | `build: initialize Expo application`            |
-| `ci`       | CI 워크플로 변경                          | `ci: run frontend checks on pull requests`      |
+| `test`     | 테스트 추가·수정                          | `test: cover concurrent token refresh requests`               |
+| `refactor` | 사용자 동작을 유지하는 코드 구조 변경     | `refactor: simplify session cleanup`                          |
+| `chore`    | 다른 type에 해당하지 않는 저장소 유지보수 | `chore: ignore local Expo state`                              |
+| `build`    | 앱 생성·빌드 설정·의존성 변경             | `build: initialize Expo application`                          |
+| `ci`       | CI 워크플로 변경                          | `ci: run frontend checks on pull requests`                    |
 
 표의 예시는 메시지 작성 예이며 해당 기능·설정의 구현 완료를 뜻하지 않는다. 기능에 필요한 테스트·문서를 함께 변경했다면 주된 목적에 맞는 type을 사용한다. 테스트가 포함됐다는 이유만으로 `test`로 분류하지
 않는다.

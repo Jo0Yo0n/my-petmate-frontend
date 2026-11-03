@@ -80,5 +80,5 @@
 
 ## Git과 PR
 
-- 커밋 메시지·type·단위·사전 확인은 [커밋 규칙](docs/git-conventions.md#커밋-규칙)을 따른다.
+- 커밋 메시지·type·단위·브랜치 명·사전 확인은 [커밋 규칙](docs/git-conventions.md#커밋-규칙)을 따른다.
 - PR 본문 작성은 [저장소 템플릿](.github/pull_request_template.md)을 사용한다.
