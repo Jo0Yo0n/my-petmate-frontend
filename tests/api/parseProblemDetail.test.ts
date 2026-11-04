@@ -99,3 +99,68 @@ test('본문 읽기 실패를 결과로 반환한다', async () => {
     requestId,
   });
 });
+
+test.each([
+  'type',
+  'title',
+  'status',
+  'detail',
+  'instance',
+  'code',
+  'requestId',
+])(
+  '필수 필드 %s 누락을 계약 오류로 반환하고 헤더 요청 ID를 보존한다',
+  async (field) => {
+    const body: Record<string, unknown> = { ...problem };
+    delete body[field];
+    expect(await parseProblemDetail(response(body))).toEqual({
+      kind: 'invalid-problem',
+      status: 401,
+      requestId,
+    });
+  },
+);
+
+test.each([
+  { ...problem, status: '401' },
+  { ...problem, status: 401.5 },
+  { ...problem, code: '   ' },
+  { ...problem, requestId: 'req-81ARZ3NDEKTSV4RRFFQ69G5FAV' },
+  { ...problem, requestId: 'req-01ARZ3NDEKTSV4RRFFQ69G5FAI' },
+  { ...problem, fieldErrors: [{ field: 1, reason: '필수입니다.' }] },
+  { ...problem, fieldErrors: [{ field: 'email', reason: null }] },
+])('필드 타입과 요청 ID 형식 위반을 거절한다 (%#)', async (body) => {
+  expect(await parseProblemDetail(response(body))).toEqual({
+    kind: 'invalid-problem',
+    status: 401,
+    requestId,
+  });
+});
+
+test('서로 다른 유효한 요청 ID에서는 본문 대신 헤더 ID를 추적에 사용한다', async () => {
+  expect(
+    await parseProblemDetail(
+      response({
+        ...problem,
+        requestId: 'req-01ARZ3NDEKTSV4RRFFQ69G5FAX',
+      }),
+    ),
+  ).toEqual({ kind: 'request-id-mismatch', status: 401, requestId });
+});
+
+test.each(['application/problem+json; charset=UTF-8', 'application/json'])(
+  '%s의 정상 계약을 파싱한다',
+  async (contentType) => {
+    expect(
+      await parseProblemDetail(
+        new Response(JSON.stringify(problem), {
+          status: 401,
+          headers: {
+            'Content-Type': contentType,
+            'My-Petmate-Request-Id': requestId,
+          },
+        }),
+      ),
+    ).toEqual({ kind: 'problem', status: 401, code: problem.code, requestId });
+  },
+);
