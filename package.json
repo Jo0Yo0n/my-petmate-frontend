@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "lint": "eslint src",
     "test": "jest --passWithNoTests",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "openapi:generate": "npm exec --yes --package=openapi-typescript@7.13.0 --package=typescript@5.9.3 -- openapi-typescript ../my-petmate-server/docs/openapi.yaml -o src/api/openapi.d.ts"
   },
   "dependencies": {
     "expo": "~57.0.31",
