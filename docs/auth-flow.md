@@ -1,7 +1,5 @@
 # F1 인증 흐름
 
-앱 구현 전의 클라이언트 설계
-
 ## 기준과 책임
 
 - [OpenAPI](../../my-petmate-server/docs/openapi.yaml): `info.x-token-policy`, `info.x-email-policy`, `/api/auth/*`,
