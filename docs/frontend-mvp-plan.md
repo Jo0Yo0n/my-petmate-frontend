@@ -2,7 +2,7 @@
 
 ## 현재 위치
 
-현재 구현 대상은 **F0→F1**이다. F0 첫 화면의 실행 기반을 준비 중이며 F1 앱 구현은 시작하지 않았다. 작은 구현 단위와 완료 기준은 [F0·F1 구현 계획](f0-f1-implementation-plan.md)을 따른다.
+현재 구현 대상은 **F0→F1**이다. 작은 구현 단위와 완료 기준은 [F0·F1 구현 계획](f0-f1-implementation-plan.md)을 따른다.
 
 ## 범위
 
@@ -16,7 +16,7 @@
 
 ## 기반 선택과 기준 문서
 
-- React Native·Expo·TypeScript strict로 시작한다. 초기 실행 환경과 생성 전 확인 절차는 F0·F1 구현 계획을 따른다.
+- React Native·Expo·TypeScript strict로 시작한다.
 - 일반 RN 컴포넌트·React 기본 상태를 사용한다. 화면 이동은 Expo Router, 세션 유지에는 SecureStore를 도입한다. 추가 상태·폼·UI 의존성은 필요가 확인될 때 판단한다.
 - OpenAPI로 타입을 생성하고 작은 fetch 클라이언트를 사용한다. REST 형식·오류·요청 ID의 기준은 [백엔드 AGENTS](../../my-petmate-server/AGENTS.md)가 연결한
   문서다. 프론트에서 별도 계약을 만들지 않는다.

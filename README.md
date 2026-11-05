@@ -9,6 +9,8 @@
 3. [F0·F1 구현 계획](docs/f0-f1-implementation-plan.md): 다음 구현 단위와 완료 기준.
 4. [프론트 기술 부채](docs/technical-debt.md): 서버 계약 확정 후 연결할 항목과 관련 백엔드 계획.
 
+협업 절차와 커밋·브랜치·PR 규칙은 [Git 규칙](docs/git-conventions.md)을 따른다.
+
 ## 실행 안내
 
 Expo SDK 57 기반 앱 실행 명령
