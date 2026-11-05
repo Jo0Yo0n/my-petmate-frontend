@@ -1,4 +1,4 @@
-import { jest, test, expect, afterEach } from '@jest/globals';
+import { afterEach, expect, jest, test } from '@jest/globals';
 import { router } from 'expo-router';
 import { act, create, type ReactTestRenderer } from 'react-test-renderer';
 import { ActionSheetIOS, Alert, Image, Modal, TextInput } from 'react-native';
@@ -293,6 +293,30 @@ test.each(['success', 'cancel', 'failure'] as const)(
     expect(text()).toContain('프로필 사진 (선택)');
   },
 );
+
+test('로그인 제출 오류를 표시하고 수정하면 모의 제출로 진행한다', () => {
+  jest.useFakeTimers();
+  mount(<LoginScreen />);
+  input('이메일', 'invalid');
+  input('비밀번호', 'x'.repeat(73));
+  expect(text()).not.toContain('이메일 주소 형식을 확인해 주세요.');
+
+  press('로그인');
+  expect(text()).toContain('이메일 주소 형식을 확인해 주세요.');
+  expect(text()).toContain('비밀번호는 72자 이하로 입력해 주세요.');
+  // TODO(4-2): 로그인 API를 연결하면 잘못된 입력에서는 API 함수가 호출되지 않고, 입력을 고쳐 재제출하면 한 번만 호출되는지 확인한다.
+  expect(screen.root.findAllByType(Spinner)).toHaveLength(0);
+
+  input('이메일', 'mate@.');
+  expect(text()).toContain('이메일 주소 형식을 확인해 주세요.');
+
+  input('이메일', ' MATE@EXAMPLE.COM ');
+  input('비밀번호', ' ');
+  expect(text()).not.toContain('이메일 주소 형식을 확인해 주세요.');
+  expect(text()).not.toContain('비밀번호는 72자 이하로 입력해 주세요.');
+  press('로그인');
+  expect(screen.root.findByType(Spinner).props.label).toBe('로그인 중이에요');
+});
 
 function fillSubmissionForm(kind: 'login' | 'signup') {
   mount(kind === 'login' ? <LoginScreen /> : <SignupScreen />);
