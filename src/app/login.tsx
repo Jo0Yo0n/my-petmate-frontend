@@ -16,6 +16,22 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+function validateEmail(value: string) {
+  const email = value.trim().toLowerCase();
+  if (!email) return '이메일을 입력해 주세요.';
+  if (email.length < 3 || email.length > 254) {
+    return '이메일은 3~254자로 입력해 주세요.';
+  }
+  if (!/^[!-~]+$/.test(email) || !/^[^@]+@[^@.]+(?:\.[^@.]+)*$/.test(email)) {
+    return '이메일 주소 형식을 확인해 주세요.';
+  }
+}
+
+function validatePassword(password: string) {
+  if (!password) return '비밀번호를 입력해 주세요.';
+  if (password.length > 72) return '비밀번호는 72자 이하로 입력해 주세요.';
+}
+
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,8 +42,8 @@ export default function LoginScreen() {
 
   function submit() {
     const next = {
-      email: email.trim() ? undefined : '이메일을 입력해 주세요.',
-      password: password ? undefined : '비밀번호를 입력해 주세요.',
+      email: validateEmail(email),
+      password: validatePassword(password),
     };
     setErrors(next);
     if (next.email || next.password) return;
@@ -64,7 +80,15 @@ export default function LoginScreen() {
             autoComplete="username"
             keyboardType="email-address"
             value={email}
-            onChangeText={setEmail}
+            onChangeText={(value) => {
+              setEmail(value);
+              if (errors.email) {
+                setErrors((current) => ({
+                  ...current,
+                  email: validateEmail(value),
+                }));
+              }
+            }}
             placeholder="이메일 주소를 입력해 주세요"
             error={errors.email}
           />
@@ -73,7 +97,15 @@ export default function LoginScreen() {
             autoCapitalize="none"
             autoComplete="current-password"
             value={password}
-            onChangeText={setPassword}
+            onChangeText={(value) => {
+              setPassword(value);
+              if (errors.password) {
+                setErrors((current) => ({
+                  ...current,
+                  password: validatePassword(value),
+                }));
+              }
+            }}
             placeholder="비밀번호를 입력해 주세요"
             secureTextEntry
             error={errors.password}
