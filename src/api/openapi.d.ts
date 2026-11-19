@@ -15,8 +15,7 @@ export interface paths {
         put?: never;
         /**
          * 보호자 계정 생성
-         * @description 회원가입 화면의 필수 비밀번호 확인은 클라이언트에서만 원문과 정확히 비교한다. 미입력·불일치 시 요청을 보내지 않는다. 비밀번호 확인 값은 요청 필드가 아니며 API 전송·영속 저장·로그 기록 대상이 아니다. SignupRequest에는 password만 전송한다. 서버는 기존 password 규칙을 독립적으로 검증한다.
-         *      보호자 활동 지역 1~3개와 활동 가능 시간대는 필수이며 가입 전에 공개 지역 카탈로그로 선택한다.
+         * @description 회원가입 화면의 필수 비밀번호 확인은 클라이언트에서만 원문과 정확히 비교한다. 미입력·불일치 시 요청을 보내지 않는다. 비밀번호 확인 값은 요청 필드가 아니며 API 전송·영속 저장·로그 기록 대상이 아니다. SignupRequest에는 password만 전송한다. 서버는 기존 password 규칙을 독립적으로 검증한다. searching 가입은 활동 지역 1~3개와 활동 가능 시간대 1개 이상이 필수다. paused 가입은 각 목록을 생략하거나 null 또는 빈 배열로 보낼 수 있으며 미등록 목록은 빈 배열로 저장·응답한다. 지역은 가입 전에 공개 지역 카탈로그로 선택한다. 전달한 항목은 찾기 상태와 관계없이 검증한다.
          */
         post: operations["signUp"];
         delete?: never;
@@ -108,8 +107,10 @@ export interface paths {
          *     인증 성공 후 수정 잠금을 위해 현재 Guardian을 조회하는 과정에서 Guardian이 사라지는 예기치 않은
          *     데이터 불일치는 500 INTERNAL_SERVER_ERROR다.
          *
-         *     지역·시간 목록은 다른 수정 필드와 원자적으로 전체 교체한다. 추천 필터 조작은 이 API를 호출하지 않는다.
-         *     닉네임·유형·찾기 상태·활동 지역·시간과 개인 유형의 성별을 모두 전송한다. 사진은 /photos의 별도 요청으로 처리한다.
+         *     paused에서는 지역·시간 목록 각각의 생략·null·빈 배열을 허용하고 해당 목록의 기존 값을 유지한다.
+         *     값이 있는 목록은 요청을 최종 선택 목록으로 적용한다. 다른 수정 필드와 함께 원자적으로 저장한다. 추천 필터 조작은 이 API를 호출하지 않는다.
+         *     닉네임·유형·찾기 상태와 개인 유형의 성별도 모두 전송한다. 사진은 /photos의 별도 요청으로 처리한다.
+         *     searching 요청은 지역 1~3개·시간대 1개 이상을 반드시 포함한다. 기존 값이 있어도 생략·null·빈 배열은 해당 필드를 fieldErrors에 표시하는 400 VALIDATION_FAILED로 거부하며 수정 내용을 저장하지 않는다.
          *     취소한 초안은 전송하지 않으며 저장 성공 응답의 Guardian을 본인 정보의 기준으로 사용한다.
          */
         patch: operations["updateCurrentGuardian"];
@@ -230,7 +231,7 @@ export interface paths {
         };
         /**
          * 시도·시군구·읍면동 선택용 지역 카탈로그
-         * @description 가입 전에도 조회 가능한 공개 지역 카탈로그다. parentId 생략 시 시도, 시도 ID이면 시군구, 시군구 ID이면 읍면동을 반환하고 locality 하위는 빈 배열이다. 저장·필터에는 locality ID만 사용한다. ID는 서버가 관리하는 불투명 값이며 표시 이름·좌표로 조합하지 않는다. 예시 ID는 목업 값이다. 전국 원천·안정 ID·갱신·기존 데이터 처리는 구현 전에 확정한다.
+         * @description 가입 전에도 조회 가능한 공개 지역 카탈로그다. parentId 생략 시 시도, 시도 ID이면 시군구, 시군구 ID이면 읍면동을 반환하고 umd 하위는 빈 배열이다. 저장·필터에는 umd ID만 사용한다. ID는 서버가 관리하는 불투명 값이며 표시 이름·좌표로 조합하지 않는다. 예시 지역 ID는 공식 법정동 코드 기반 카탈로그 ID다. 서울특별시·경기도를 제공 범위로 하며 공식 법정동 API를 원천으로 사용한다. 안정 ID·갱신·기존 데이터 처리는 구현 전에 확정한다.
          */
         get: operations["listChildRegions"];
         put?: never;
@@ -271,6 +272,29 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/dogs/{dogId}/discovery/{targetDogId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * 추천·받은 관심·보낸 관심 상대 상세
+         * @description 본인 소유 반려견을 기준으로 context의 접근 조건을 다시 확인한다.
+         *     recommendation은 양쪽 찾기 상태·안전 제외를 적용한다. 지역·시간과 임시 필터는 목록 선정 조건이다.
+         *     received_like와 sent_like는 해당 목록에 포함 가능한 관심이 있어야 하며 찾기 상태는 제한하지 않는다.
+         *     차단·안전 제외·비활성 계정 등 접근 불가 대상은 404다. 상대의 등록 지역·시간은 상세에서만 제공한다.
+         */
+        get: operations["getDiscoveryDogDetail"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/dogs/{dogId}/received-likes": {
         parameters: {
             query?: never;
@@ -290,11 +314,11 @@ export interface paths {
          *     다음 페이지는 직전 페이지 마지막 항목보다 뒤에 정렬되는 항목만 반환한다. 페이지 사이 새 관심이 cursor보다 앞에 정렬되면 현재 페이지 흐름에는 포함되지 않으므로,
          *     새 항목을 확인하려면 첫 페이지부터 다시 조회한다. 페이지 간 동일한 시점의 목록을 고정하는 스냅샷 일관성은 보장하지 않는다.
          *     - 처리·차단된 항목은 후속 페이지에서 사라질 수 있다. 잘못된/다른 dogId의 cursor는 400 VALIDATION_FAILED다.
-         *     - 목록 항목을 열면 별도 반려견 조회 요청 없이 이 응답의 dog·guardian 필드에 포함된 공개 프로필 정보로 화면을 표시한다.
+         *     - 목록 항목을 열면 상세 API를 context=received_like로 호출한다.
          *     - 사용자가 liked 또는 passed를 선택하면 기존 POST /api/dogs/{dogId}/likes를 호출한다. 경로의 dogId는 사용자가 선택한 본인 반려견 ID이고,
-         *     요청의 targetDogId는 목록 항목의 dog.id다. status에는 사용자가 선택한 liked 또는 passed를 보낸다.
-         *     - 서버는 반대 방향의 liked가 있는지 확인한다. 양쪽 모두 liked이면 매칭을 만들고, 응답의 matched와 match에 그 결과를 반환한다.
-         *     상대의 지역·시간은 guardian에 포함하며 좌표·거리는 반환하지 않는다. 저장 지역·시간과 추천 필터로 받은 관심을 제한하지 않는다.
+         *     요청의 targetDogId는 목록 항목의 dog.id, receivedInteractionId는 목록 항목의 id다. status에는 사용자가 선택한 liked 또는 passed를 보낸다.
+         *     - 서버는 지정된 관심 전송 건에만 응답을 적용한다. 양쪽 모두 liked이면 매칭을 만들고, 응답의 matched와 match에 그 결과를 반환한다.
+         *     상대의 등록 지역·시간은 상세 조회에서만 반환한다. 저장 지역·시간과 추천 필터로 받은 관심을 제한하지 않는다.
          */
         get: operations["listReceivedDogLikes"];
         put?: never;
@@ -373,9 +397,15 @@ export interface paths {
         /**
          * 추천 또는 받은 관심에 like 또는 pass
          * @description 새 선제 관심은 양쪽 보호자가 searching일 때만 허용한다.
-         *     반대 방향의 미처리 liked가 존재하면 양쪽 찾기 상태와 무관하게 liked/passed로 응답할 수 있다.
+         *     받은 관심의 liked/passed 응답은 receivedInteractionId로 전송 건을 지정한다. 양쪽 보호자의 찾기 상태와 관계없이 응답할 수 있다.
+         *     ID가 없으면 선제 요청으로 처리하며 다른 관심에 대한 응답으로 연결하지 않는다. 선제 요청 시 반대 방향의 응답 대기 관심이 있으면 409 STATE_CONFLICT로 받은 관심을 다시 조회하도록 한다.
+         *     지정한 ID가 없거나 요청 반려견 쌍과 방향이 일치하지 않으면 404다. 지정한 관심이 취소됐다면 409 STATE_CONFLICT이며 프론트는 받은 관심 첫 페이지를 다시 조회한다.
+         *     취소된 관심 이후 같은 쌍에 새 관심이 도착해도 이전 관심에 대한 응답을 새 관심에 적용하지 않는다.
          *     응답 시 소유권·계정 상태·차단·안전 제외와 기존 관심 상태를 서버에서 재검증한다.
-         *     같은 반려견 쌍의 같은 응답 재전송은 멱등하게 현재 결과를 반환하며 매칭을 중복 생성하지 않는다.
+         *     새 선제 liked 전송은 고유 ID를 발급하고 취소·응답 이력을 보존한다. 같은 방향에는 응답 대기 관심을 최대 한 건만 허용한다.
+         *     새 선제 liked에는 clientRequestId가 필수이며, 누락은 400 VALIDATION_FAILED다. 보호자와 요청 ID별 결과를 보존하며 취소 뒤에도 같은 요청에는 원래 결과를 반환한다.
+         *     같은 요청 ID로 다른 내용을 보내거나 다른 요청 ID로 이미 대기 중인 같은 방향에 관심을 보내면 409 STATE_CONFLICT다.
+         *     같은 receivedInteractionId에 같은 응답을 재전송하면 최초 처리 결과를 반환한다. 이미 처리된 같은 건에 다른 응답을 보내면 409 STATE_CONFLICT다.
          *     관심·찾기 상태 변경의 동시 요청은 DB의 최종 상태를 기준으로 원자적으로 판정한다.
          *     새 선제 관심의 찾기 상태 조건이 맞지 않으면 409 STATE_CONFLICT를 반환한다.
          *     동시에 상충하는 관심 응답의 충돌은 409 STATE_CONFLICT다.
@@ -677,22 +707,32 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
-        /** @description 지역 카탈로그의 locality ID를 1~3개 선택한다. 중복·알 수 없는 ID·상위 지역 ID는 거부한다. 순서는 추천 우선순위가 아니다. */
+        /** @description 지역 카탈로그의 umd ID를 최대 3개 선택한다. paused는 빈 배열을 허용하고 searching의 최종 저장값에는 1개 이상 필요하다. null은 허용하지 않는다. 중복·알 수 없는 ID·상위 지역 ID는 거부한다. 순서는 추천 우선순위가 아니다. */
         ActivityRegionIds: string[];
         ActivityRegion: {
+            /** Format: uuid */
             id: string;
-            /** @description 서버의 지역 카탈로그에서 해석한 시도·시군구·읍면동 전체 표시 이름. */
-            displayName: string;
+            /** @description 서버의 지역 카탈로그에서 해석한 상위 지역부터 선택한 읍·면·동까지의 경로. */
+            path: components["schemas"]["RegionPathSegment"][];
         };
-        /** @description 보호자가 저장한 주 활동 지역. ID가 중복되지 않으며 표시 이름은 서버 카탈로그를 따른다. */
+        RegionPathSegment: {
+            level: components["schemas"]["Region"]["level"];
+            name: components["schemas"]["Region"]["name"];
+        };
+        /** @description 보호자가 저장한 주 활동 지역. 미등록은 빈 배열이며 searching의 최종 저장값에는 1개 이상 필요하다. ID가 중복되지 않으며 경로는 서버 카탈로그를 따른다. */
         ActivityRegions: components["schemas"]["ActivityRegion"][];
-        /** @description Asia/Seoul의 반복 가능한 요일별 시간대. 같은 요일의 구간 중복·겹침은 거부하며 맞닿은 구간은 허용한다. 시작·종료는 같은 요일 안의 시각이며 자정을 넘는 단일 구간은 허용하지 않는다. */
+        /** @description Asia/Seoul의 반복 가능한 요일별 시간대. paused는 빈 배열을 허용하고 searching의 최종 저장값에는 1개 이상 필요하다. 미등록 응답은 빈 배열이며 null은 허용하지 않는다. 같은 요일의 구간 중복·겹침은 거부하며 맞닿은 구간은 허용한다. 종료 시각 24:00은 해당 요일의 끝을 뜻한다. 자정을 넘는 일정은 요일별 구간으로 나눈다. */
         AvailableTimeSlots: components["schemas"]["AvailableTimeSlot"][];
         Region: {
+            /** Format: uuid */
             id: string;
             name: string;
-            /** @enum {string} */
-            level: "sido" | "sigungu" | "locality";
+            /**
+             * @description sido는 시·도, sgg는 시·군·구, umd는 읍·면·동을 나타낸다.
+             * @enum {string}
+             */
+            level: "sido" | "sgg" | "umd";
+            /** Format: uuid */
             parentId: string | null;
         };
         RegionList: {
@@ -702,7 +742,7 @@ export interface components {
         ProfileType: "individual" | "couple" | "family";
         /** @enum {string} */
         Gender: "female" | "male";
-        /** @description 앞뒤 공백을 제거한 1~30자 닉네임. 중복을 허용하며 인증 식별자로 사용하지 않는다. 가입·본인 정보 수정에서 필수다. */
+        /** @description 공백을 허용하지 않는 2~20자 닉네임. 앞뒤 공백도 거부한다. 영문, 한글 완성형, 숫자만 사용할 수 있다. 대소문자를 구분하며 중복을 허용하지 않는다. 가입·본인 정보 수정에서 필수이며 인증 식별자로 사용하지 않는다. */
         GuardianNickname: string;
         /**
          * @description 계정 단위 찾기 상태. paused는 새 추천·선제 관심을 중지하지만 기존 받은 관심 응답·매칭·채팅·약속은 유지한다. 요청에서 반드시 명시하며 기본값은 없다.
@@ -809,6 +849,7 @@ export interface components {
             activityRegions: components["schemas"]["ActivityRegions"];
             availableTimeSlots: components["schemas"]["AvailableTimeSlots"];
         };
+        /** @description searching에서는 지역·시간이 필수다. paused에서는 각 목록의 생략·null·빈 배열을 허용하고 미등록은 빈 배열로 저장·응답한다. 전달된 항목은 상태와 관계없이 검증한다. */
         SignupRequest: components["schemas"]["IndividualSignupRequest"] | components["schemas"]["CoupleSignupRequest"] | components["schemas"]["FamilySignupRequest"];
         IndividualSignupRequest: {
             /** Format: email */
@@ -818,17 +859,20 @@ export interface components {
              * @description 영문 대문자, 영문 소문자, 숫자, 허용 특수문자(! @
              */
             password: string;
+            /** @constant */
+            profileType: "individual";
+            gender: components["schemas"]["Gender"];
+            discoveryStatus: components["schemas"]["DiscoveryStatus"];
+            nickname: components["schemas"]["GuardianNickname"];
+            activityRegionIds?: components["schemas"]["ActivityRegionIds"] | null;
+            availableTimeSlots?: components["schemas"]["AvailableTimeSlots"] | null;
+        } & (unknown & {
             /**
              * @description discriminator enum property added by openapi-typescript
              * @enum {string}
              */
             profileType: "individual";
-            gender: components["schemas"]["Gender"];
-            discoveryStatus: components["schemas"]["DiscoveryStatus"];
-            nickname: components["schemas"]["GuardianNickname"];
-            activityRegionIds: components["schemas"]["ActivityRegionIds"];
-            availableTimeSlots: components["schemas"]["AvailableTimeSlots"];
-        };
+        });
         CoupleSignupRequest: {
             /** Format: email */
             email: string;
@@ -837,17 +881,20 @@ export interface components {
              * @description 영문 대문자, 영문 소문자, 숫자, 허용 특수문자(! @
              */
             password: string;
+            /** @constant */
+            profileType: "couple";
+            gender?: components["schemas"]["IgnoredGuardianGender"];
+            discoveryStatus: components["schemas"]["DiscoveryStatus"];
+            nickname: components["schemas"]["GuardianNickname"];
+            activityRegionIds?: components["schemas"]["ActivityRegionIds"] | null;
+            availableTimeSlots?: components["schemas"]["AvailableTimeSlots"] | null;
+        } & (unknown & {
             /**
              * @description discriminator enum property added by openapi-typescript
              * @enum {string}
              */
             profileType: "couple";
-            gender?: components["schemas"]["IgnoredGuardianGender"];
-            discoveryStatus: components["schemas"]["DiscoveryStatus"];
-            nickname: components["schemas"]["GuardianNickname"];
-            activityRegionIds: components["schemas"]["ActivityRegionIds"];
-            availableTimeSlots: components["schemas"]["AvailableTimeSlots"];
-        };
+        });
         FamilySignupRequest: {
             /** Format: email */
             email: string;
@@ -856,62 +903,78 @@ export interface components {
              * @description 영문 대문자, 영문 소문자, 숫자, 허용 특수문자(! @
              */
             password: string;
+            /** @constant */
+            profileType: "family";
+            gender?: components["schemas"]["IgnoredGuardianGender"];
+            discoveryStatus: components["schemas"]["DiscoveryStatus"];
+            nickname: components["schemas"]["GuardianNickname"];
+            activityRegionIds?: components["schemas"]["ActivityRegionIds"] | null;
+            availableTimeSlots?: components["schemas"]["AvailableTimeSlots"] | null;
+        } & (unknown & {
             /**
              * @description discriminator enum property added by openapi-typescript
              * @enum {string}
              */
             profileType: "family";
-            gender?: components["schemas"]["IgnoredGuardianGender"];
-            discoveryStatus: components["schemas"]["DiscoveryStatus"];
-            nickname: components["schemas"]["GuardianNickname"];
-            activityRegionIds: components["schemas"]["ActivityRegionIds"];
-            availableTimeSlots: components["schemas"]["AvailableTimeSlots"];
-        };
+        });
         /**
          * @description 닉네임·유형·성별·찾기 상태·주 활동 지역·활동 가능 시간을 수정하며 계정 상태는 받지 않는다. individual은 gender가 필수다.
          *     individual 요청에 한해 DB의 gender가 null이면 최초 저장하고 기존 값과 같으면 허용한다.
          *     individual 요청의 성별이 기존 값과 다르면 409 STATE_CONFLICT로 거부한다.
          *     DB 확인과 저장은 동시 요청에서도 최초 성별이 덮어써지지 않도록 수행한다.
          *
-         *     지역 목록과 시간대 목록은 요청 값으로 전체 교체하고 다른 필드와 함께 원자적으로 저장한다.
+         *     paused에서는 지역·시간 목록 각각의 생략·null·빈 배열을 허용하고 해당 목록의 기존 값을 유지한다.
+         *     값이 있는 목록은 요청을 최종 선택 목록으로 적용한다. 기존과 요청에 모두 있는 항목은 유지할 수 있고 요청에만 있는 항목은 추가하며 기존에만 있는 항목은 제거한다. 모든 행의 삭제·재삽입을 요구하지 않는다.
+         *     searching 요청은 지역 1~3개·시간대 1개 이상을 반드시 포함한다. 기존 값이 있어도 생략·null·빈 배열은 해당 필드를 fieldErrors에 표시하는 400 VALIDATION_FAILED로 거부한다.
+         *     두 목록은 각각 처리하며 GET /api/guardians/me는 paused에서도 저장된 지역·시간을 반환한다. 미등록 응답만 빈 배열이다.
+         *     전달된 항목은 상태와 관계없이 검증한다. 최종 상태 검증과 다른 필드의 저장을 같은 트랜잭션에서 수행하며 실패하면 전체 롤백하고 400 VALIDATION_FAILED를 반환한다.
          */
         GuardianUpdateRequest: components["schemas"]["IndividualGuardianUpdateRequest"] | components["schemas"]["CoupleGuardianUpdateRequest"] | components["schemas"]["FamilyGuardianUpdateRequest"];
         IndividualGuardianUpdateRequest: {
+            /** @constant */
+            profileType: "individual";
+            gender: components["schemas"]["Gender"];
+            discoveryStatus: components["schemas"]["DiscoveryStatus"];
+            nickname: components["schemas"]["GuardianNickname"];
+            activityRegionIds?: components["schemas"]["ActivityRegionIds"] | null;
+            availableTimeSlots?: components["schemas"]["AvailableTimeSlots"] | null;
+        } & (unknown & {
             /**
              * @description discriminator enum property added by openapi-typescript
              * @enum {string}
              */
             profileType: "individual";
-            gender: components["schemas"]["Gender"];
+        });
+        CoupleGuardianUpdateRequest: {
+            /** @constant */
+            profileType: "couple";
+            gender?: components["schemas"]["IgnoredGuardianGender"];
             discoveryStatus: components["schemas"]["DiscoveryStatus"];
             nickname: components["schemas"]["GuardianNickname"];
-            activityRegionIds: components["schemas"]["ActivityRegionIds"];
-            availableTimeSlots: components["schemas"]["AvailableTimeSlots"];
-        };
-        CoupleGuardianUpdateRequest: {
+            activityRegionIds?: components["schemas"]["ActivityRegionIds"] | null;
+            availableTimeSlots?: components["schemas"]["AvailableTimeSlots"] | null;
+        } & (unknown & {
             /**
              * @description discriminator enum property added by openapi-typescript
              * @enum {string}
              */
             profileType: "couple";
+        });
+        FamilyGuardianUpdateRequest: {
+            /** @constant */
+            profileType: "family";
             gender?: components["schemas"]["IgnoredGuardianGender"];
             discoveryStatus: components["schemas"]["DiscoveryStatus"];
             nickname: components["schemas"]["GuardianNickname"];
-            activityRegionIds: components["schemas"]["ActivityRegionIds"];
-            availableTimeSlots: components["schemas"]["AvailableTimeSlots"];
-        };
-        FamilyGuardianUpdateRequest: {
+            activityRegionIds?: components["schemas"]["ActivityRegionIds"] | null;
+            availableTimeSlots?: components["schemas"]["AvailableTimeSlots"] | null;
+        } & (unknown & {
             /**
              * @description discriminator enum property added by openapi-typescript
              * @enum {string}
              */
             profileType: "family";
-            gender?: components["schemas"]["IgnoredGuardianGender"];
-            discoveryStatus: components["schemas"]["DiscoveryStatus"];
-            nickname: components["schemas"]["GuardianNickname"];
-            activityRegionIds: components["schemas"]["ActivityRegionIds"];
-            availableTimeSlots: components["schemas"]["AvailableTimeSlots"];
-        };
+        });
         LoginRequest: {
             /** Format: email */
             email: string;
@@ -955,7 +1018,7 @@ export interface components {
         UnfamiliarDogReaction: "calm" | "cautious" | "excited";
         /** @enum {string} */
         DayOfWeek: "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun";
-        /** @description Asia/Seoul의 반복 가능한 요일과 10분 단위 HH:mm 시작·종료 시간. startTime < endTime이어야 한다. 추천에서는 같은 요일의 구간이 양의 길이로 겹칠 때만 시간이 맞는 것으로 판단한다. */
+        /** @description Asia/Seoul의 반복 가능한 요일과 10분 단위 HH:mm 시작·종료 시간. startTime < endTime이어야 한다. 24:00은 종료 시각에만 허용한다. 추천에서는 같은 요일의 구간이 양의 길이로 겹칠 때만 시간이 맞는 것으로 판단한다. */
         AvailableTimeSlot: {
             dayOfWeek: components["schemas"]["DayOfWeek"];
             /** @example 09:00 */
@@ -968,7 +1031,7 @@ export interface components {
          * @description 필수 생년월일. Asia/Seoul의 오늘 이후 날짜와 만 30세를 초과하는 날짜는 거부한다. 기존 age에서 임의의 생년월일을 생성하지 않는다.
          */
         DogBirthDate: string;
-        /** @description breed=other일 때만 선택 입력한다. 앞뒤 공백을 제거하고 빈 값은 생략한다. 다른 견종과 함께 전송하면 VALIDATION_FAILED다. */
+        /** @description breed=other일 때만 선택 입력한다. 전송값에는 공백이 아닌 문자가 하나 이상 필요하며 프론트와 서버 모두 이를 검증한다. 서버는 앞뒤 공백을 제거해 저장한다. 다른 견종과 함께 전송하면 VALIDATION_FAILED다. */
         DogBreedOther: string;
         /** @description birthDate를 저장하고 age·ageMonths는 요청으로 받지 않는다. breedOther는 breed=other일 때만 받으며 다른 견종으로 변경하면 기존 값을 제거한다. */
         DogProfileInput: {
@@ -1023,7 +1086,7 @@ export interface components {
         PublicDog: components["schemas"]["Dog"];
         /** @enum {string} */
         CompatibilityGrade: "excellent" | "good" | "check_conditions";
-        /** @description 추천·받은 관심의 상대 보호자 공개 프로필. 닉네임·선택 사진·활동 지역·활동 가능 시간을 제공한다. email·보존 성별·원본 사진 키는 포함하지 않는다. 현재 유형 표시는 별도 guardianIdentity를 사용한다. */
+        /** @description 추천·받은 관심·보낸 관심 상세 전용 상대 보호자 공개 프로필. 닉네임·선택 사진·활동 지역·활동 가능 시간을 제공한다. email·보존 성별·원본 사진 키는 포함하지 않는다. 현재 유형 표시는 별도 guardianIdentity를 사용한다. */
         PublicGuardianProfile: {
             nickname: components["schemas"]["GuardianNickname"];
             /** Format: uri */
@@ -1032,11 +1095,10 @@ export interface components {
             availableTimeSlots: components["schemas"]["AvailableTimeSlots"];
         };
         RecommendationItem: {
-            dog: components["schemas"]["PublicDog"];
-            guardianIdentity: components["schemas"]["GuardianIdentity"];
+            dog: components["schemas"]["DogSummary"];
             compatibilityGrade: components["schemas"]["CompatibilityGrade"];
             reasons: string[];
-            guardian: components["schemas"]["PublicGuardianProfile"];
+            guardian?: components["schemas"]["PublicGuardianProfile"];
         };
         /** @description 저장 정보와 임시 필터에서 해석한 실제 추천 조건. regionIds·availableTimeSlots는 기본값까지 채워 반환하며 다른 생략 필터는 빈 배열이다. */
         AppliedRecommendationFilters: {
@@ -1057,11 +1119,10 @@ export interface components {
              * @description 받은 liked interaction ID. 클라이언트 중복 제거에 사용한다.
              */
             id: string;
-            dog: components["schemas"]["PublicDog"];
-            guardianIdentity: components["schemas"]["GuardianIdentity"];
+            dog: components["schemas"]["DogSummary"];
             /** Format: date-time */
             receivedAt: string;
-            guardian: components["schemas"]["PublicGuardianProfile"];
+            guardian?: components["schemas"]["PublicGuardianProfile"];
         };
         ReceivedLikeList: {
             items: components["schemas"]["ReceivedLikeItem"][];
@@ -1070,11 +1131,10 @@ export interface components {
         SentLikeItem: {
             /** Format: uuid */
             id: string;
-            dog: components["schemas"]["PublicDog"];
-            guardianIdentity: components["schemas"]["GuardianIdentity"];
+            dog: components["schemas"]["DogSummary"];
             /** Format: date-time */
             sentAt: string;
-            guardian: components["schemas"]["PublicGuardianProfile"];
+            guardian?: components["schemas"]["PublicGuardianProfile"];
         };
         SentLikeList: {
             items: components["schemas"]["SentLikeItem"][];
@@ -1085,6 +1145,16 @@ export interface components {
         DogInteractionRequest: {
             /** Format: uuid */
             targetDogId: string;
+            /**
+             * Format: uuid
+             * @description 받은 관심에 응답할 때 필수다. 받은 관심 목록 항목의 서버 발급 id를 사용한다.
+             */
+            receivedInteractionId?: string;
+            /**
+             * Format: uuid
+             * @description 새 선제 liked 전송마다 프론트가 UUID v4를 생성해 보낸다. 같은 전송의 재시도에는 최초에 생성한 값을 재사용한다.
+             */
+            clientRequestId?: string;
             status: components["schemas"]["DogInteractionStatus"];
         };
         DogInteractionResponse: {
@@ -1249,7 +1319,7 @@ export interface components {
          * @description 앱이 오류별 동작을 결정할 때 사용하는 안정적인 기계 판독용 코드.
          * @enum {string}
          */
-        ErrorCode: "VALIDATION_FAILED" | "MALFORMED_REQUEST" | "AUTH_TOKEN_EXPIRED" | "AUTH_TOKEN_INVALID" | "AUTH_INVALID_CREDENTIALS" | "AUTH_REFRESH_INVALID" | "FORBIDDEN" | "ACCOUNT_RESTRICTED" | "ACCOUNT_WITHDRAWN" | "RESOURCE_NOT_FOUND" | "EMAIL_ALREADY_EXISTS" | "STATE_CONFLICT" | "MATCH_CLOSED" | "MATCH_BLOCKED" | "APPOINTMENT_STATE_CONFLICT" | "REVIEW_NOT_ELIGIBLE" | "REVIEW_ALREADY_SUBMITTED" | "PAYLOAD_TOO_LARGE" | "UNSUPPORTED_MEDIA_TYPE" | "METHOD_NOT_ALLOWED" | "NOT_ACCEPTABLE" | "INTERNAL_SERVER_ERROR";
+        ErrorCode: "VALIDATION_FAILED" | "MALFORMED_REQUEST" | "AUTH_TOKEN_EXPIRED" | "AUTH_TOKEN_INVALID" | "AUTH_INVALID_CREDENTIALS" | "AUTH_REFRESH_INVALID" | "FORBIDDEN" | "ACCOUNT_RESTRICTED" | "ACCOUNT_WITHDRAWN" | "RESOURCE_NOT_FOUND" | "EMAIL_ALREADY_EXISTS" | "NICKNAME_ALREADY_EXISTS" | "STATE_CONFLICT" | "MATCH_CLOSED" | "MATCH_BLOCKED" | "APPOINTMENT_STATE_CONFLICT" | "REVIEW_NOT_ELIGIBLE" | "REVIEW_ALREADY_SUBMITTED" | "PAYLOAD_TOO_LARGE" | "UNSUPPORTED_MEDIA_TYPE" | "METHOD_NOT_ALLOWED" | "NOT_ACCEPTABLE" | "INTERNAL_SERVER_ERROR";
         /** @description RFC 9457 Problem Details에 My Petmate 확장 필드를 추가한 REST 오류 응답. */
         ProblemDetail: {
             /**
@@ -1437,23 +1507,12 @@ export interface components {
                 "application/problem+json": components["schemas"]["ProblemDetail"];
             };
         };
-        /** @description 이미 가입된 이메일과 충돌 */
-        EmailAlreadyExistsError: {
+        /** @description 이미 사용 중인 이메일 또는 닉네임과 충돌 */
+        SignupConflictError: {
             headers: {
                 [name: string]: unknown;
             };
             content: {
-                /**
-                 * @example {
-                 *       "type": "urn:my-petmate:problem:email-already-exists",
-                 *       "title": "이미 가입된 이메일",
-                 *       "status": 409,
-                 *       "detail": "이미 사용 중인 이메일입니다.",
-                 *       "instance": "/api/auth/signup",
-                 *       "code": "EMAIL_ALREADY_EXISTS",
-                 *       "requestId": "req-01ARZ3NDEKTSV4RRFFQ69G5FAV"
-                 *     }
-                 */
                 "application/problem+json": components["schemas"]["ProblemDetail"];
             };
         };
@@ -1607,7 +1666,7 @@ export interface components {
         SizeGroups: components["schemas"]["SizeGroup"][];
         WalkIntensities: components["schemas"]["WalkIntensity"][];
         UnfamiliarDogReactions: components["schemas"]["UnfamiliarDogReaction"][];
-        /** @description 카탈로그 locality ID를 쉼표로 구분해 1~3개 선택한다. 지정하면 보호자의 저장 활동 지역을 이번 요청에서 대체한다. 후보 보호자의 활동 지역과 하나 이상 겹쳐야 한다. 선택 지역 간 OR, 시간·기타 필터와 AND다. 생략하면 저장 지역을 사용한다. 빈 값·중복·알 수 없는 ID·상위 지역 ID·4개 이상은 400 VALIDATION_FAILED다. */
+        /** @description 카탈로그 umd ID를 쉼표로 구분해 1~3개 선택한다. 지정하면 보호자의 저장 활동 지역을 이번 요청에서 대체한다. 후보 보호자의 활동 지역과 하나 이상 겹쳐야 한다. 선택 지역 간 OR, 시간·기타 필터와 AND다. 생략하면 저장 지역을 사용한다. 빈 값·중복·알 수 없는 ID·상위 지역 ID·4개 이상은 400 VALIDATION_FAILED다. */
         RegionIds: string[];
         /** @description 여성·남성·커플·가족 복수 선택. 별도 공개 동의 조건은 없다. */
         GuardianIdentities: components["schemas"]["GuardianIdentity"][];
@@ -1665,8 +1724,21 @@ export interface operations {
                      *         "photoUrl": null,
                      *         "activityRegions": [
                      *           {
-                     *             "id": "locality-demo-mangwon",
-                     *             "displayName": "서울특별시 마포구 망원동"
+                     *             "id": "c6cd82c5-907c-50f8-b341-44c379916e78",
+                     *             "path": [
+                     *               {
+                     *                 "level": "sido",
+                     *                 "name": "경기도"
+                     *               },
+                     *               {
+                     *                 "level": "sgg",
+                     *                 "name": "안산시 상록구"
+                     *               },
+                     *               {
+                     *                 "level": "umd",
+                     *                 "name": "일동"
+                     *               }
+                     *             ]
                      *           }
                      *         ],
                      *         "availableTimeSlots": [
@@ -1685,7 +1757,7 @@ export interface operations {
             400: components["responses"]["RequestBodyError"];
             405: components["responses"]["MethodNotAllowedError"];
             406: components["responses"]["NotAcceptableError"];
-            409: components["responses"]["EmailAlreadyExistsError"];
+            409: components["responses"]["SignupConflictError"];
             500: components["responses"]["InternalServerError"];
         };
     };
@@ -1827,8 +1899,21 @@ export interface operations {
                      *       "photoUrl": null,
                      *       "activityRegions": [
                      *         {
-                     *           "id": "locality-demo-mangwon",
-                     *           "displayName": "서울특별시 마포구 망원동"
+                     *           "id": "c6cd82c5-907c-50f8-b341-44c379916e78",
+                     *           "path": [
+                     *             {
+                     *               "level": "sido",
+                     *               "name": "경기도"
+                     *             },
+                     *             {
+                     *               "level": "sgg",
+                     *               "name": "안산시 상록구"
+                     *             },
+                     *             {
+                     *               "level": "umd",
+                     *               "name": "일동"
+                     *             }
+                     *           ]
                      *         }
                      *       ],
                      *       "availableTimeSlots": [
@@ -1863,9 +1948,9 @@ export interface operations {
                  * @example {
                  *       "profileType": "couple",
                  *       "discoveryStatus": "paused",
-                 *       "nickname": "보리네",
+                 *       "nickname": "새보리네",
                  *       "activityRegionIds": [
-                 *         "locality-demo-mangwon"
+                 *         "c6cd82c5-907c-50f8-b341-44c379916e78"
                  *       ],
                  *       "availableTimeSlots": [
                  *         {
@@ -2185,6 +2270,7 @@ export interface operations {
     listChildRegions: {
         parameters: {
             query?: {
+                /** @description 생략하면 시도 목록을 반환한다. 빈 값이나 UUID 형식 오류는 400, 미등록 UUID는 404다. */
                 parentId?: string;
             };
             header?: never;
@@ -2193,7 +2279,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description 직계 하위 지역. 표시 순서대로 반환한다. */
+            /** @description 직계 하위 지역. name 오름차순, 동명인 경우 id 오름차순으로 반환한다. */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -2203,10 +2289,10 @@ export interface operations {
                      * @example {
                      *       "items": [
                      *         {
-                     *           "id": "locality-demo-mangwon",
-                     *           "name": "망원동",
-                     *           "level": "locality",
-                     *           "parentId": "mapo-demo"
+                     *           "id": "c6cd82c5-907c-50f8-b341-44c379916e78",
+                     *           "name": "일동",
+                     *           "level": "umd",
+                     *           "parentId": "c328470e-f1ce-5c02-9349-5cb331c61fc6"
                      *         }
                      *       ]
                      *     }
@@ -2230,7 +2316,7 @@ export interface operations {
                 unfamiliarDogReactions?: components["parameters"]["UnfamiliarDogReactions"];
                 /** @description 지정하면 보호자의 저장 시간대 전체를 이번 요청에서 대체한다. JSON 배열을 URL 인코딩해 전달한다. 생략하면 저장 시간대를 사용하며 빈 배열은 거부한다. 프로필은 수정하지 않는다. */
                 availableTimeSlots?: components["parameters"]["AvailableTimeSlots"];
-                /** @description 카탈로그 locality ID를 쉼표로 구분해 1~3개 선택한다. 지정하면 보호자의 저장 활동 지역을 이번 요청에서 대체한다. 후보 보호자의 활동 지역과 하나 이상 겹쳐야 한다. 선택 지역 간 OR, 시간·기타 필터와 AND다. 생략하면 저장 지역을 사용한다. 빈 값·중복·알 수 없는 ID·상위 지역 ID·4개 이상은 400 VALIDATION_FAILED다. */
+                /** @description 카탈로그 umd ID를 쉼표로 구분해 1~3개 선택한다. 지정하면 보호자의 저장 활동 지역을 이번 요청에서 대체한다. 후보 보호자의 활동 지역과 하나 이상 겹쳐야 한다. 선택 지역 간 OR, 시간·기타 필터와 AND다. 생략하면 저장 지역을 사용한다. 빈 값·중복·알 수 없는 ID·상위 지역 ID·4개 이상은 400 VALIDATION_FAILED다. */
                 regionIds?: components["parameters"]["RegionIds"];
                 /** @description 여성·남성·커플·가족 복수 선택. 별도 공개 동의 조건은 없다. */
                 guardianIdentities?: components["parameters"]["GuardianIdentities"];
@@ -2256,45 +2342,13 @@ export interface operations {
                      *           "dog": {
                      *             "id": "e514d9ad-0a7e-4e50-b62a-b3cbb112e2ee",
                      *             "name": "구름",
-                     *             "photoUrl": "https://cdn.example.com/private/gureum.jpg?expires=...",
-                     *             "breed": "poodle",
-                     *             "birthDate": "2023-01-01",
-                     *             "age": 3,
-                     *             "ageMonths": 45,
-                     *             "breedOther": null,
-                     *             "sex": "male",
-                     *             "weightKg": 7.1,
-                     *             "sizeGroup": "small",
-                     *             "neutered": true,
-                     *             "vaccinated": true,
-                     *             "animalRegistered": true,
-                     *             "preferredWalkIntensity": "moderate",
-                     *             "unfamiliarDogReaction": "calm",
-                     *             "selfIntroduction": "친구와 나란히 걷는 걸 좋아해요."
+                     *             "photoUrl": "https://cdn.example.com/private/gureum.jpg?expires=..."
                      *           },
-                     *           "guardianIdentity": "male",
                      *           "compatibilityGrade": "excellent",
                      *           "reasons": [
                      *             "산책 강도와 낯선 반려견 반응이 잘 맞아요.",
                      *             "토요일 가능 시간이 겹쳐요."
-                     *           ],
-                     *           "guardian": {
-                     *             "nickname": "구름네",
-                     *             "photoUrl": null,
-                     *             "activityRegions": [
-                     *               {
-                     *                 "id": "locality-demo-mangwon",
-                     *                 "displayName": "서울특별시 마포구 망원동"
-                     *               }
-                     *             ],
-                     *             "availableTimeSlots": [
-                     *               {
-                     *                 "dayOfWeek": "sat",
-                     *                 "startTime": "10:00",
-                     *                 "endTime": "12:00"
-                     *               }
-                     *             ]
-                     *           }
+                     *           ]
                      *         }
                      *       ],
                      *       "appliedFilters": {
@@ -2306,7 +2360,7 @@ export interface operations {
                      *         ],
                      *         "unfamiliarDogReactions": [],
                      *         "regionIds": [
-                     *           "locality-demo-mangwon"
+                     *           "c6cd82c5-907c-50f8-b341-44c379916e78"
                      *         ],
                      *         "guardianIdentities": [
                      *           "male"
@@ -2325,6 +2379,42 @@ export interface operations {
                 };
             };
             400: components["responses"]["RecommendationValidationError"];
+            401: components["responses"]["AuthenticationError"];
+            403: components["responses"]["PermissionError"];
+            404: components["responses"]["NotFoundError"];
+            405: components["responses"]["MethodNotAllowedError"];
+            406: components["responses"]["NotAcceptableError"];
+            500: components["responses"]["InternalServerError"];
+        };
+    };
+    getDiscoveryDogDetail: {
+        parameters: {
+            query: {
+                context: "recommendation" | "received_like" | "sent_like";
+            };
+            header?: never;
+            path: {
+                dogId: components["parameters"]["DogId"];
+                targetDogId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description 상대 반려견과 보호자 상세 */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        dog: components["schemas"]["PublicDog"];
+                        guardianIdentity: components["schemas"]["GuardianIdentity"];
+                        guardian: components["schemas"]["PublicGuardianProfile"];
+                    };
+                };
+            };
+            400: components["responses"]["ValidationError"];
             401: components["responses"]["AuthenticationError"];
             403: components["responses"]["PermissionError"];
             404: components["responses"]["NotFoundError"];
