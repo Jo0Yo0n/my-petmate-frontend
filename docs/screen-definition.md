@@ -2,9 +2,9 @@
 
 ## 목적과 범위 원칙
 
-이 문서는 iPhone MVP의 화면 동작을 정의한다. 제품 요구는 [백엔드 seed](../../my-petmate-server/docs/seed.yaml), REST
-통신은 [OpenAPI](../../my-petmate-server/docs/openapi.yaml), 오류·계정 상태
-거부는 [오류 계약](../../my-petmate-server/docs/error-response.md)이 기준이다. 현재 범위·진행은 [MVP 계획](frontend-mvp-plan.md)을 따른다.
+이 문서는 iPhone MVP의 화면 동작을 정의한다. 제품 요구는 [백엔드 seed](https://github.com/Jo0Yo0n/my-petmate-server/blob/main/docs/seed.yaml), REST
+통신은 [OpenAPI](https://github.com/Jo0Yo0n/my-petmate-server/blob/main/docs/openapi.yaml), 오류·계정 상태
+거부는 [오류 계약](https://github.com/Jo0Yo0n/my-petmate-server/blob/main/docs/error-response.md)이 기준이다. 현재 범위·진행은 [MVP 계획](frontend-mvp-plan.md)을 따른다.
 
 전체 와이어프레임의 원본은 [HTML/CSS 화면 자료](design-assets/editable-wireframes/README.md)다. 시각
 기준은 [Sunshine 디자인 규칙](ui-foundation.md)을 따른다. Sunshine은 F1 전체 화면·탭 셸과 기존 F3 추천 목록·상세·F5 채팅 (F6 약속 카드)에 적용하며 나머지는 와이어프레임
@@ -82,7 +82,7 @@ flowchart TD
 
 ### A. F1 인증과 내 정보
 
-F1은 아래 사용자 흐름과 추천·매칭·내 반려견 탭 셸을 제공한다. 토큰 저장·복원·갱신과 오류 처리의 상세 기준은 [인증 흐름](auth-flow.md), 요청·응답은 [OpenAPI](../../my-petmate-server/docs/openapi.yaml)를 따른다.
+F1은 아래 사용자 흐름과 추천·매칭·내 반려견 탭 셸을 제공한다. 토큰 저장·복원·갱신과 오류 처리의 상세 기준은 [인증 흐름](auth-flow.md), 요청·응답은 [OpenAPI](https://github.com/Jo0Yo0n/my-petmate-server/blob/main/docs/openapi.yaml)를 따른다.
 
 #### AUTH-01 로그인
 

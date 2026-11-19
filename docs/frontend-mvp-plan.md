@@ -14,14 +14,14 @@
   수행한다. 백엔드 상태 변경은 해당 저장소의 절차와 별도 요청을 따른다.
 
 확정된 계약의 프론트 연동 과제는 [프론트 기술 부채](technical-debt.md), 서버의 구현·이관
-과제는 [백엔드 M2 계획](../../my-petmate-server/docs/backend-mvp-plan.md#m2-반려견-프로필)에서 관리한다.
+과제는 [백엔드 M2 계획](https://github.com/Jo0Yo0n/my-petmate-server/blob/main/docs/backend-mvp-plan.md#m2-반려견-프로필)에서 관리한다.
 
 ## 기반 선택과 기준 문서
 
 - React Native·Expo·TypeScript strict로 시작한다.
 - 일반 RN 컴포넌트·React 기본 상태를 사용한다. 화면 이동은 Expo Router, 세션 유지에는 SecureStore를 도입한다. 추가 상태·폼·UI 의존성은 필요가 확인될 때 판단한다.
-- OpenAPI로 타입을 생성하고 작은 fetch 클라이언트를 사용한다. REST 형식·오류·요청 ID의 기준은 [백엔드 AGENTS](../../my-petmate-server/AGENTS.md)가 연결한
-  문서다. 프론트에서 별도 계약을 만들지 않는다.
+- OpenAPI로 타입을 생성하고 작은 fetch 클라이언트를 사용한다. REST 형식·오류·요청 ID의 기준은 백엔드 저장소의
+  [문서 지도](https://github.com/Jo0Yo0n/my-petmate-server/blob/main/docs/README.md#문서-지도)가 연결한 계약 문서다. 프론트에서 별도 계약을 만들지 않는다.
 - 인증의 저장·복원·갱신·종료·내 정보·탈퇴·실패·테스트는 [인증 흐름](auth-flow.md)을 따른다.
 - 화면 동작은 [화면 정의](screen-definition.md), 시각 규칙은 [UI Foundation](ui-foundation.md), 도구·개념·환경은 [프론트 가이드](frontend-guide.md)
   에
@@ -51,7 +51,7 @@
 
 - F2 사진: 사진 선택·편집·변환 방식은 HEIC 처리, 실패 경로와 서버 제한을 확인해 결정한다. 정사각형 편집과 최대 2048px JPEG 품질 0.8은 확정 전 구상이다.
 - F1 지역 카탈로그: 전국 원천·안정 ID·갱신·기존 계정 데이터 처리의 서버
-  과제는 [백엔드 지역 계획](../../my-petmate-server/docs/backend-mvp-plan.md#읍면동-지역-필터--구현검증-대기)을 따른다. 주소 입력·지오코딩은 MVP에서 제공하지 않는다.
+  과제는 [백엔드 M1 계획](https://github.com/Jo0Yo0n/my-petmate-server/blob/main/docs/backend-mvp-plan.md#m1-인증-기반)을 따른다. 주소 입력·지오코딩은 MVP에서 제공하지 않는다.
 - F2 임시 저장: 내용·복원·삭제·계정 전환 정책은 해당 단계에서 결정한다.
 
 각 단계에서 해당 항목을 상세 구현 계획으로 옮겨 결정·검증한다.

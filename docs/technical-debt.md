@@ -2,7 +2,7 @@
 
 ## F2 · 서버 계약 확정 후 연동
 
-생년월일·기타 견종명의 서버 구현·이관·검증 상태는 [백엔드 M2 계획](../../my-petmate-server/docs/backend-mvp-plan.md#m2-반려견-프로필)에서 관리한다. 확정된 OpenAPI 계약을 따르며 서버 연동 완료로 간주하지 않는다.
+생년월일·기타 견종명의 서버 구현·이관·검증 상태는 [백엔드 M2 계획](https://github.com/Jo0Yo0n/my-petmate-server/blob/main/docs/backend-mvp-plan.md#m2-반려견-프로필)에서 관리한다. 확정된 OpenAPI 계약을 따르며 서버 연동 완료로 간주하지 않는다.
 
 - [ ] 서버 준비 후 생성 타입과 등록·수정 요청을 birthDate·breedOther로 갱신한다. 서버의 age·ageMonths 응답으로 24·25개월 표시 경계를 검증한다.
 - [ ] 저장 후 재조회와 기존 데이터의 목록·상세 표시를 검증한다.
@@ -10,7 +10,7 @@
 
 ## F1 · 보호자 활동 정보 계약 연동
 
-서버 구현·이관·검증 상태는 [M1 게이트](../../my-petmate-server/docs/m1-auth-contract-checklist.md#보호자-프로필-계약--구현검증-대기), 지역 데이터 미결 사항은 [지역 계획](../../my-petmate-server/docs/backend-mvp-plan.md#읍면동-지역-필터--구현검증-대기)을 따른다.
+서버 구현·이관·검증 상태와 지역 데이터 미결 사항은 [백엔드 M1 계획](https://github.com/Jo0Yo0n/my-petmate-server/blob/main/docs/backend-mvp-plan.md#m1-인증-기반)을 따른다.
 
 - [ ] 공개 지역 카탈로그와 가입·본인 조회/수정의 활동 지역·시간을 실제 API에 연결한다. 지역 ID를 이름이나 좌표로 만들지 않는다.
 - [ ] 최신 계약으로 타입을 생성하고 반려견 요청의 지역·시간·좌표 및 추천·받은 관심의 거리 필드를 제거한다.
@@ -18,5 +18,5 @@
 
 ## F4 · 보낸 관심 계약 연동
 
-- [ ] 확정된 OpenAPI의 보낸 관심 조회·취소를 연결한다. 서버 구현 상태는 [M4 계획](../../my-petmate-server/docs/backend-mvp-plan.md#m4-좋아요와-매칭)을 따른다.
+- [ ] 확정된 OpenAPI의 보낸 관심 조회·취소를 연결한다. 서버 구현 상태는 [M4 계획](https://github.com/Jo0Yo0n/my-petmate-server/blob/main/docs/backend-mvp-plan.md#m4-좋아요와-매칭)을 따른다.
 - [ ] 반려견별 cursor·빈 목록·취소 재시도·상대 응답과의 경합 및 409 후 첫 페이지 재조회를 검증한다.
