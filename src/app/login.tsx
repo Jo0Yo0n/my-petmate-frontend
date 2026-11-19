@@ -4,9 +4,9 @@ import { BrandWordmark } from '../components/BrandWordmark';
 import { AuthSwitch } from '../components/AuthSwitch';
 import { AuthHeading } from '../components/AuthHeading';
 import { Spinner } from '../components/Spinner';
-import { usePreviewSubmission } from '../hooks/usePreviewSubmission';
-import { useState } from 'react';
-import { router } from 'expo-router';
+import { useSession } from '../auth/SessionProvider';
+import { useEffect, useRef, useState } from 'react';
+import { Redirect, router } from 'expo-router';
 import {
   Alert,
   Image,
@@ -38,18 +38,45 @@ export default function LoginScreen() {
   const [errors, setErrors] = useState<{ email?: string; password?: string }>(
     {},
   );
-  const { isSubmitting, submitPreview } = usePreviewSubmission();
+  const { guardian, login } = useSession();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const pending = useRef<AbortController | null>(null);
 
-  function submit() {
+  useEffect(() => () => pending.current?.abort(), []);
+
+  if (guardian) return <Redirect href="/profile" />;
+
+  async function submit() {
+    if (pending.current) return;
     const next = {
       email: validateEmail(email),
       password: validatePassword(password),
     };
     setErrors(next);
     if (next.email || next.password) return;
-    submitPreview(() =>
-      Alert.alert('로그인 준비 중', '아직 로그인 요청은 전송되지 않아요.'),
-    );
+    const request = new AbortController();
+    pending.current = request;
+    setIsSubmitting(true);
+    try {
+      const message = await login(
+        { email: email.trim().toLowerCase(), password },
+        request.signal,
+      );
+      if (!request.signal.aborted && message)
+        Alert.alert('로그인 실패', message);
+    } catch {
+      if (!request.signal.aborted)
+        Alert.alert(
+          '로그인 실패',
+          '로그인하지 못했어요. 잠시 후 다시 시도해 주세요.',
+        );
+    } finally {
+      if (!request.signal.aborted) {
+        pending.current = null;
+        setPassword('');
+        setIsSubmitting(false);
+      }
+    }
   }
 
   return (
