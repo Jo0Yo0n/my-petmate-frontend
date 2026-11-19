@@ -2,9 +2,9 @@
 
 ## 기준과 책임
 
-- [OpenAPI](../../my-petmate-server/docs/openapi.yaml): `info.x-token-policy`, `info.x-email-policy`, `/api/auth/*`,
+- [OpenAPI](https://github.com/Jo0Yo0n/my-petmate-server/blob/main/docs/openapi.yaml): `info.x-token-policy`, `info.x-email-policy`, `/api/auth/*`,
   `/api/guardians/me`, `/api/guardians/me/withdraw`, `Guardian*`·`*SignupRequest`·`LoginRequest` 스키마.
-- [오류 계약](../../my-petmate-server/docs/error-response.md): 오류 본문·요청 ID·계정 상태 오류의 검증 순서.
+- [오류 계약](https://github.com/Jo0Yo0n/my-petmate-server/blob/main/docs/error-response.md): 오류 본문·요청 ID·계정 상태 오류의 검증 순서.
 - [백엔드 M1 계획](https://github.com/Jo0Yo0n/my-petmate-server/blob/main/docs/backend-mvp-plan.md#m1-인증-기반)과
   [M1 마일스톤](https://github.com/Jo0Yo0n/my-petmate-server/milestone/1): 서버 완료 판정과 프론트 검증 항목.
 

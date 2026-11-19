@@ -14,7 +14,7 @@
   수행한다. 백엔드 상태 변경은 해당 저장소의 절차와 별도 요청을 따른다.
 
 확정된 계약의 프론트 연동 과제는 [프론트 기술 부채](technical-debt.md), 서버의 구현·이관
-과제는 [백엔드 M2 계획](../../my-petmate-server/docs/backend-mvp-plan.md#m2-반려견-프로필)에서 관리한다.
+과제는 [백엔드 M2 계획](https://github.com/Jo0Yo0n/my-petmate-server/blob/main/docs/backend-mvp-plan.md#m2-반려견-프로필)에서 관리한다.
 
 ## 기반 선택과 기준 문서
 
