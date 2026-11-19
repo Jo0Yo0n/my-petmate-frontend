@@ -50,3 +50,6 @@ pnpm-debug.log*
 # Operating system files
 .DS_Store
 Thumbs.db
+
+# Local agent skills
+/.agents/
