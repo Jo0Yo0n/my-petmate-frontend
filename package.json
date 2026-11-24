@@ -29,7 +29,10 @@
   },
   "jest": {
     "preset": "jest-expo",
-    "testPathIgnorePatterns": ["/node_modules/", "<rootDir>/tests/design-preview.test.cjs"]
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/tests/design-preview.test.cjs"
+    ]
   },
   "devDependencies": {
     "@react-native/jest-preset": "^0.86.3",

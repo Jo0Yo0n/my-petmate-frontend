@@ -6,7 +6,7 @@
 
 1. [MVP 계획의 현재 위치](docs/frontend-mvp-plan.md#현재-위치): 전체 단계와 지금 어디까지 왔는가.
 2. [프론트 가이드](docs/frontend-guide.md): 화면·상태·API·저장·실행 도구는 어떻게 연결되는가.
-3. [F0·F1 구현 계획](docs/f0-f1-implementation-plan.md): 다음 구현 단위와 완료 기준.
+3. [현재 위치가 가리키는 상세 구현 계획](docs/frontend-mvp-plan.md#현재-위치): 다음 구현 단위와 완료 기준.
 4. [프론트 기술 부채](docs/technical-debt.md): 서버 계약 확정 후 연결할 항목과 관련 백엔드 계획.
 
 협업 절차와 커밋·브랜치·PR 규칙은 [Git 규칙](docs/git-conventions.md)을 따른다.
@@ -22,7 +22,7 @@ npm run start
 
 Xcode와 iOS Simulator 준비 후 개발 서버에서 `i`를 눌러 Expo Go로 실행한다. `npm run ios`로 바로 시뮬레이터 실행을 요청할 수도 있다. 첫 화면은
 `src/app/index.tsx`에서 시작하고 공통 라우터는 `src/app/_layout.tsx`에서 설정한다. 첫 화면의 현재 검증
-상태는 [F0·F1 구현 계획](docs/f0-f1-implementation-plan.md)을 따른다.
+상태는 [현재 위치가 가리키는 상세 구현 계획](docs/frontend-mvp-plan.md#현재-위치)을 따른다.
 
 검증 명령
 
